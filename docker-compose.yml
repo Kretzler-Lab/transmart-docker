@@ -11,7 +11,7 @@ services:
       - "./transmart-web/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf"
       - "./transmart-web/httpd.conf:/usr/local/apache2/conf/httpd.conf"
   tmapp:
-    image: dennyverbeeck/transmart-app:etriks-v4.0
+    image: tmdocker/transmart-app:latest
     restart: unless-stopped
     ports:
       - "127.0.0.1:8009:8009"
@@ -27,10 +27,10 @@ services:
       - "apptmp:/tmp"
       - "appwebapps:/usr/local/tomcat/webapps"
   tmgwava:
-    image: dennyverbeeck/transmart-gwava:tmf-16.2
+    image: tmdocker/transmart-gwava:latest
     restart: unless-stopped
   tmdb:
-    image: dennyverbeeck/transmart-db:etriks-v4.0
+    image: tmdocker/transmart-db:latest
     restart: unless-stopped
     ports:
       - "127.0.0.1:5432:5432"
@@ -38,16 +38,16 @@ services:
       - "postgresdata:/var/lib/postgresql"
       - "postgreslogs:/var/log/postgresql"
   tmsolr:
-    image: dennyverbeeck/transmart-solr:etriks-v4.0
+    image: tmdocker/transmart-solr:latest
     restart: unless-stopped
   tmrserve:
-    image: dennyverbeeck/transmart-rserve:etriks-v4.0
+    image: tmdocker/transmart-rserve:latest
     restart: unless-stopped
     volumes:
       - "apptmp:/tmp"
       - "appwebapps:/usr/local/tomcat/webapps"
   tmload:
-    image: dennyverbeeck/transmart-load:etriks-v4.0
+    image: tmdocker/transmart-load:latest
     depends_on:
       - tmdb
 

@@ -11,7 +11,11 @@ Table of Contents
 transmart-docker
 ================
 
-The purpose of this repository is to provide a Docker-based installation of TranSMART. Since TranSMART consists of multiple services, `docker-compose` is used to build images for the different services and manage the links between them. Apache is used to reverse proxy requests to the Tomcat server. This branch of the repository contains [eTRIKS](https://www.etriks.org/) version `4.0`. The default settings are geared towards deployment on a server. If you want to try TranSMART on your local machine, please refer to the 'Running a local instance' section in this readme.
+The purpose of this repository is to provide a Docker-based installation of TranSMART. Since TranSMART consists of multiple services, `docker-compose` is used to build images for the different services and manage the links between them. Apache is used to reverse proxy requests to the Tomcat server. This branch of the repository is configured for tranSMART 19. The default settings are geared towards deployment on a server. If you want to try TranSMART on your local machine, please refer to the 'Running a local instance' section in this Readme.
+
+This repository is under development. Release-nn.n branches will be created for each supported tranSMART version.
+
+The original code was developed by Denny Verbeeck for the eTRIKS project. This repository starts from the 'eTRIKS 4.0' code, identical to tranSMART 16.3 with some additional SmartR workflows.
 
 Usage
 -----
@@ -135,12 +139,12 @@ $KITCHEN -norep=Y -file=/transmart-data/env/tranSMART-ETL/Kettle/postgres/Kettle
 -param:WORD_MAP_FILE=x \
 -param:TOP_NODE='\Public Studies\My Study\'
 ```
-Edit the parameters to match your specific case. Notice we specified the `DATA_LOCATION` to be `/my_study/`, so we will need to mount our study directory to that location in the container. We will also need to connect te container to the network where our database is connected, by default this network will be called `transmartdocker_default`. The default Jave heap size is 512MB, for large datasets it may be required to increase this. This can be done with the `JAVAMAXMEM` environment variable. The following command accomplishes all of these things, and runs the shell script we just created.
+Edit the parameters to match your specific case. Notice we specified the `DATA_LOCATION` to be `/my_study/`, so we will need to mount our study directory to that location in the container. We will also need to connect te container to the network where our database is connected, by default this network will be called `transmartdocker_default`. The default Java heap size is 512MB, for large datasets it may be required to increase this. This can be done with the `JAVAMAXMEM` environment variable. The following command accomplishes all of these things, and runs the shell script we just created.
 ```
 docker run -t --rm              \
   --network transmartdocker_default \
   -v $HOME/my_study:/my_study    \
   -e JAVAMAXMEM='4096'           \
-  dennyverbeeck/transmart-load:etriks-v4.0 bash /my_study/load_clinical.sh
+  tmdocker/transmart-load:latest bash /my_study/load_clinical.sh
 ```
 Docker will start a new container based on the `tmload` image, mount your data into it, run the load command and remove the container upon exit. In a different terminal, you can run the following command to keep an eye on the workload of your containers: `docker stats $(docker ps --format={{.Names}})`.
