@@ -11,7 +11,7 @@ services:
       - "./transmart-web/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf"
       - "./transmart-web/httpd.conf:/usr/local/apache2/conf/httpd.conf"
   tmapp:
-    image: tmdocker/transmart-app:latest
+    image: transmartfoundation/transmart-app:latest
     restart: unless-stopped
     ports:
       - "127.0.0.1:8009:8009"
@@ -27,10 +27,10 @@ services:
       - "apptmp:/tmp"
       - "appwebapps:/usr/local/tomcat/webapps"
   tmgwava:
-    image: tmdocker/transmart-gwava:latest
+    image: transmartfoundation/transmart-gwava:latest
     restart: unless-stopped
   tmdb:
-    image: tmdocker/transmart-db:latest
+    image: transmartfoundation/transmart-db:latest
     restart: unless-stopped
     ports:
       - "127.0.0.1:5432:5432"
@@ -38,16 +38,16 @@ services:
       - "postgresdata:/var/lib/postgresql"
       - "postgreslogs:/var/log/postgresql"
   tmsolr:
-    image: tmdocker/transmart-solr:latest
+    image: transmartfoundation/transmart-solr:latest
     restart: unless-stopped
   tmrserve:
-    image: tmdocker/transmart-rserve:latest
+    image: transmartfoundation/transmart-rserve:latest
     restart: unless-stopped
     volumes:
       - "apptmp:/tmp"
       - "appwebapps:/usr/local/tomcat/webapps"
   tmload:
-    image: tmdocker/transmart-load:latest
+    image: transmartfoundation/transmart-load:latest
     depends_on:
       - tmdb
 
