@@ -8,7 +8,7 @@ else
   echo "tunepgsql.sh: Total memory auto-detected: $TOTALMEM kB"
 fi
 
-cat >> /etc/postgresql/9.3/main/postgresql.conf <<EOD
+cat >> /etc/postgresql/14/main/postgresql.conf <<EOD
 max_connections = 50
 shared_buffers = $((TOTALMEM/4))kB
 effective_cache_size = $((TOTALMEM*3/4))kB
