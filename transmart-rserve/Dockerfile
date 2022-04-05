@@ -1,35 +1,51 @@
-FROM debian:jessie
-MAINTAINER Denny Verbeeck <dverbeec@its.jnj.com>
+FROM ubuntu:18.04
+MAINTAINER Peter Rice <peter.rice@i2b2transmart.org>
 
-RUN apt-get update && apt-get install -y --no-install-recommends curl unzip make ca-certificates
-# This is the latest commit + upgrade of qdnaseq package, not yet merged as of building of this image
-RUN curl -L https://github.com/transmart/transmart-data/archive/ceb21f907e955a27617cbb19f40bce693de3da68.zip -o transmart-data.zip && \
-    unzip transmart-data.zip && \
-    mv transmart-data-ceb21f907e955a27617cbb19f40bce693de3da68 transmart-data && \
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends curl unzip make ca-certificates openjdk-8-jdk openjdk-8-jre && \
+    useradd --user-group --no-log-init --create-home --home-dir /home/ruser --shell /bin/bash --password rpassword ruser && \
+    DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get install -y libcairo-dev gfortran g++ \
+        libreadline-dev libxt-dev libpango1.0-dev libprotoc-dev \
+    	texlive-fonts-recommended tex-gyre texlive-latex-extra liblz4-tool pv \
+    	libbz2-dev liblzma-dev libcurl4-openssl-dev libjpeg-dev libxml2-dev libssl-dev libpcre2-dev
+
+USER ruser
+
+WORKDIR /home/ruser
+
+RUN curl --location --silent --show-error http://sativa.home/beta/release19_1_0_artifacts/transmart-data-release-19.1.zip -o transmart-data.zip && \
+    unzip -q transmart-data.zip && \
+    mv transmart-data-release-19.1 transmart-data && \
     rm transmart-data.zip
 
-WORKDIR /transmart-data
+WORKDIR /home/ruser/transmart-data
 
 ENV TABLESPACES=dummy
 
-RUN apt-get install -y libcairo-dev gfortran g++ libreadline-dev libxt-dev libpango1.0-dev libprotoc-dev \
-    texlive-fonts-recommended tex-gyre liblz4-tool pv
-
-
-# Remove the -march=native option so our container will run on more CPUs, add it in again
-# after building so people can rebuild it if they want to
 # Keep trying make command until we succeed, it seems downloading R packages fails regularly
-RUN sed -i 's/R_FLAGS ?= -O2 -march=native/R_FLAGS ?= -O2/' R/Makefile && \
-    until make -C R install_packages; do echo "Failed, retrying..."; done && \
-    sed -i 's/R_FLAGS ?= -O2/R_FLAGS ?= -O2 -march=native/' R/Makefile
+
+# Clean up the unwanted transmart-data files
+# Save only the R directory
+
+RUN until make -C R install_packages; do echo "Failed, retrying..."; done && \
+    mv R /home/ruser/R && \
+    rm -rf /home/ruser/transmart-data/* && \
+    rm -rf .gitignore .travis.yml && \
+    mv /home/ruser/R /home/ruser/transmart-data/ && \
+    echo remote enable >> /home/ruser/transmart-data/R/Rserv_nodaemon.conf
+
+USER root
 
 RUN apt-get purge -y --auto-remove curl unzip make g++ ca-certificates && \
-    rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/* && \
+    chown -R ruser:ruser /home/ruser/transmart-data
 
-RUN sed -i s/deamon/daemon/ /transmart-data/R/Rserv_nodaemon.conf
-RUN echo remote enable >> /transmart-data/R/Rserv_nodaemon.conf
+USER ruser
+
+WORKDIR /home/ruser/transmart-data/R
 
 EXPOSE 6311
 
-CMD ["/transmart-data/R/root/lib/R/bin/R","CMD","Rserve.dbg","--no-save","--RS-conf","/transmart-data/R/Rserv_nodaemon.conf"]
+# Should add a volume for the logfile output
 
+ENTRYPOINT ["/home/ruser/transmart-data/R/root/lib/R/bin/R","CMD","Rserve.dbg","--no-save","--RS-conf","/home/ruser/transmart-data/R/Rserv_nodaemon.conf"]
