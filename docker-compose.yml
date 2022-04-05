@@ -1,4 +1,4 @@
-version: '2'
+version: '3.5'
 
 services:
   tmweb:
@@ -18,17 +18,13 @@ services:
     depends_on:
       - tmdb
       - tmsolr
-      - tmgwava
     volumes:
-      - "./transmart-app/Config.groovy:/root/.grails/transmartConfig/Config.groovy"
-      - "./transmart-app/DataSource.groovy:/root/.grails/transmartConfig/DataSource.groovy"
-      - "./transmart-app/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
+      - "./transmart-app/Config.groovy:/var/lib/tomcat8/.grails/transmartConfig/Config.groovy"
+      - "./transmart-app/DataSource.groovy:/var/lib/tomcat8/.grails/transmartConfig/DataSource.groovy"
+      - "./transmart-app/setenv.sh:/usr/share/tomcat8/bin/setenv.sh"
       - "appdata:/root/.grails"
       - "apptmp:/tmp"
-      - "appwebapps:/usr/local/tomcat/webapps"
-  tmgwava:
-    image: transmartfoundation/transmart-gwava:latest
-    restart: unless-stopped
+      - "appwebapps:/usr/local/tomcat8/webapps"
   tmdb:
     image: transmartfoundation/transmart-db:latest
     restart: unless-stopped
@@ -45,7 +41,7 @@ services:
     restart: unless-stopped
     volumes:
       - "apptmp:/tmp"
-      - "appwebapps:/usr/local/tomcat/webapps"
+      - "appwebapps:/usr/local/tomcat8/webapps"
   tmload:
     image: transmartfoundation/transmart-load:latest
     depends_on:
