@@ -7,14 +7,26 @@ services:
     network_mode: host
     depends_on:
       - tmapp
+    expose:
+      - 80
+      - 443
+    ports:
+      - ${DOCKER_HTTP_PORT:-80}:80
+      - ${DOCKER_HTTPS_PORT:-443}:443
+    env_file:
+      - ${ENV_FILE}
     volumes:
       - "./transmart-web/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf"
       - "./transmart-web/httpd.conf:/usr/local/apache2/conf/httpd.conf"
   tmapp:
     image: transmartfoundation/transmart-app:latest
     restart: unless-stopped
+    expose:
+      - 8009
     ports:
-      - "127.0.0.1:8009:8009"
+      - ${DOCKER_TOMCAT_PORT:-8009}:8009"
+    env_file:
+      - ${ENV_FILE}
     depends_on:
       - tmdb
       - tmsolr
@@ -28,17 +40,33 @@ services:
   tmdb:
     image: transmartfoundation/transmart-db:latest
     restart: unless-stopped
+    expose:
+      - 5432
     ports:
-      - "127.0.0.1:5432:5432"
+      - ${DOCKER_DB_PORT:-5432}:5432"
+    env_file:
+      - ${ENV_FILE}
     volumes:
       - "postgresdata:/var/lib/postgresql"
       - "postgreslogs:/var/log/postgresql"
   tmsolr:
     image: transmartfoundation/transmart-solr:latest
     restart: unless-stopped
+    expose:
+      - 8983
+    ports:
+      - ${DOCKER_SOLR_PORT:-8983}:8983
+    env_file:
+      - ${ENV_FILE}
   tmrserve:
     image: transmartfoundation/transmart-rserve:latest
     restart: unless-stopped
+    expose:
+      - 6311
+    ports:
+      - ${DOCKER_RSERVE_PORT:-6311}:6311"
+    env_file:
+      - ${ENV_FILE}
     volumes:
       - "apptmp:/tmp"
       - "appwebapps:/usr/local/tomcat8/webapps"
@@ -46,6 +74,8 @@ services:
     image: transmartfoundation/transmart-load:latest
     depends_on:
       - tmdb
+    env_file:
+      - ${ENV_FILE}
 
 volumes:
   appdata:
