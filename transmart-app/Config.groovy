@@ -650,7 +650,7 @@ if (gwavaEnabled) {
     // assume deployment alongside transmart
     com { recomdata { rwg { webstart {
         def url       = new URL(transmartURL)
-        codebase      = "http://tmgwava:8080/gwava"
+        codebase      = "http://localhost:8080/gwava"
         jar           = './ManhattanViz2.1g.jar'
         mainClass     = 'com.pfizer.mrbt.genomics.Driver'
         gwavaInstance = 'transmartstg'
