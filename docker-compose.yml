@@ -23,8 +23,10 @@ services:
     restart: unless-stopped
     expose:
       - 8009
+      - 8080
     ports:
-      - ${DOCKER_TOMCAT_PORT:-8009}:8009
+      - ${DOCKER_TOMCATAJP_PORT:-8009}:8009
+      - ${DOCKER_TOMCAT_PORT:-8080}:8080
     env_file:
       - ${ENV_FILE}
     depends_on:
