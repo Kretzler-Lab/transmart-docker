@@ -36,6 +36,7 @@ services:
       - "appdata:/root/.grails"
       - "apptmp:/tmp"
       - "appwebapps:/usr/local/tomcat/webapps"
+      - "appweblogs:/usr/local/tomcat/logs"
   tmdb:
     image: transmartfoundation/transmart-db:latest
     restart: unless-stopped
@@ -79,5 +80,6 @@ volumes:
   appdata:
   apptmp:
   appwebapps:
+  appweblogs:
   postgresdata:
   postgreslogs:
