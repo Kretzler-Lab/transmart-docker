@@ -1,9 +1,9 @@
 dataSource {
     driverClassName = 'org.postgresql.Driver'
-    url             = 'jdbc:postgresql://tmdb/transmart'
+    url             = 'jdbc:postgresql://${DOCKER_DB_HOST}:${DOCKER_DB_PORT}/${DOCKER_DB_DATABASE}'
     dialect         = 'org.hibernate.dialect.PostgreSQLDialect'
-    username        = 'biomart_user'
-    password        = 'biomart_user'
+    username        = '${DOCKER_DB_USER}'
+    password        = '$(DOCKER_DB_PASSWORD}'
     dbCreate        = 'none'
     
     properties {
