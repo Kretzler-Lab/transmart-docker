@@ -68,7 +68,6 @@ services:
       - ${ENV_FILE}
     volumes:
       - "apptmp:/tmp"
-      - "appwebapps:/usr/local/tomcat8/webapps"
   tmload:
     image: transmartfoundation/transmart-load:latest
     depends_on:

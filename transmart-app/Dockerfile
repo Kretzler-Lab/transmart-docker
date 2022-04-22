@@ -1,16 +1,31 @@
-FROM tomcat:8-jdk8
+FROM tomcat:8.0-jre8
 MAINTAINER Peter Rice <peter.rice@i2b2transmart.org>
 
-RUN curl --location --silent --show-error --insecure http://sativa.home/beta/release19_1_0_artifacts/transmartApp-release-19.1.war --output /usr/local/tomcat/webapps/transmart.war && \
+ENV RUN_USER            tomcat
+ENV RUN_GROUP           tomcat
+
+ENV USER_ID 1000
+ENV GROUP_ID 1000
+
+# Add a tomcat user
+RUN apt-get update && \
+    apt-get install -y gosu && \
+    curl --location --silent --show-error --insecure http://sativa.home/beta/release19_1_0_artifacts/transmartApp-release-19.1.war --output /usr/local/tomcat/webapps/transmart.war && \
     curl --location --silent --show-error --insecure http://sativa.home/beta/release19_1_0_artifacts/gwava-release-19.1.war --output /usr/local/tomcat/webapps/gwava.war && \
     curl --location --silent --show-error --insecure http://sativa.home/beta/release19_1_0_artifacts/transmart-manual-release-19.1.zip --output /usr/local/tomcat/webapps/transmart-manual.zip && \
     cd /usr/local/tomcat/webapps/ && \
-    unzip -q transmart-manual.zip && rm transmart-manual.zip && \
-    sed -i 's#securerandom.source=file:/dev/random#securerandom.source=file:/dev/urandom#' /usr/local/openjdk-8/jre/lib/security/java.security
+    unzip -q transmart-manual.zip && \
+    mv transmart-manual-release-19.1 transmart-manual && \
+    rm transmart-manual.zip && \
+    groupadd -r ${RUN_GROUP} && \
+    useradd -g ${RUN_GROUP} -d ${CATALINA_HOME} -s /bin/bash ${RUN_USER} && \
+    chown -R ${RUN_USER}:${RUN_GROUP} ${CATALINA_HOME}
 
-ENV JAVA_HOME=/usr/local/openjdk-8
+COPY docker-entrypoint.sh /docker-entrypoint.sh
 
-# change the random number generator to /dev/urandom, since inside a container there is not a lot of
-# entropy to feed /dev/random and it will block for a long time when starting the application
+EXPOSE 8080
 
-# Finally runs tomcat8 pre-defined in tomcat:8-jdk8
+# Use 'run' to keep tomcat running and docker alive
+
+ENTRYPOINT ["/docker-entrypoint.sh"]
+CMD ["catalina.sh", "run"]

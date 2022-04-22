@@ -20,9 +20,9 @@ def searchIndex       = catalinaBase + '/searchIndex' //create this directory
 def jobsDirectory     = "/tmp"
 def oauthEnabled      = true
 def samlEnabled       = false
-def gwavaEnabled      = false
+def gwavaEnabled      = true
 def ldapEnabled       = false
-def transmartURL      = "http://localhost/transmart"
+def transmartURL      = "http://localhost:8080/transmart"
 
 //Disabling/Enabling UI tabs
 ui {
@@ -41,8 +41,9 @@ ui {
             dataExportJobs.hide = false
             // Note: by default the analysisJobs panel is NOT shown
             // Currently, it is only used in special cases
-            analysisJobs.show = false
+            analysisJobs.show = true
             workspace.hide = false
+            xnatViewer.show = true
         }
     }
     /*
@@ -107,7 +108,7 @@ log4j = {
                             maxFileSize: '100MB')
             }
             root {
-                warn 'transmart'
+                info 'transmart' // warn for fewer messages
             }
         }
     }
@@ -154,9 +155,32 @@ com.recomdata.adminEmail = "transmart-discuss@googlegroups.com"
 com.recomdata.appTitle = "tranSMART v" + org.transmart.originalConfigBinding.appVersion
 
 // Location of the help pages. Should be an absolute URL.
-// Currently, these are distribution with transmart,
+// Currently, these are distributed
 // so it can also point to that location copy.
-com.recomdata.adminHelpURL = "$transmartURL/help/adminHelp/default.htm"
+com.recomdata.adminHelpURL = "$transmartURL"+"manual/"
+
+// Welcome screen text to override default description of Browse and Analyze tabs
+com.recomdata.transmartIntro = '''<p>The <b>Browse</b> window lets you search and dive into the information contained in tranSMART,
+		including Programs, Studies, Assays and the associated Analyses Results, Subject Level Data and Raw Files.
+		This is also the location to export files stored in tranSMART. Note: to edit the Program, Study, or Assay
+		information, you must be logged in as an Administrator.
+            </p><br/>
+
+            <p>The <b>Analyze</b> window lets you perform a number of analyses either on studies selected
+		in the Browse window, or from the global search box located in the top ribbon of your screen.
+		More information about the analyses you can perform is available in the “Help" section of the "Utilities" menu.
+            </p>'''
+
+// Summary text to appear on welcome screen, login screen, and comparison query
+com.recomdata.transmartSummary = '''<p>
+This is a Docker instance of tranSMART 19.1.
+</p>'''
+
+edu { harvard { transmart {
+    email.logo = ''		// logo for email
+    email.notify = ''		// 
+    access.level1 = 'auto'	// automatically assign STUDY_OWNER role
+}}}
 
 environments { development {
     com.recomdata.bugreportURL = 'https://jira.transmartfoundation.org'
@@ -183,7 +207,7 @@ environments { development {
 
 // Whether to enable guest auto login.
 // If it's enabled no login is required to access tranSMART.
-com.recomdata.guestAutoLogin = false
+com.recomdata.guestAutoLogin = true
 environments { development { com.recomdata.guestAutoLogin = true } }
 
 // Guest account user name - if guestAutoLogin is true, this is the username of
@@ -218,16 +242,6 @@ sampleExplorer {
     resultsGridWidth = 100
     idfield = 'id'
 }
-
-edu.harvard.transmart.sampleBreakdownMap = [
-    "id":"Aliquots in Cohort"
-]
-
-// Solr configuration for the Sample Explorer
-com { recomdata { solr {
-    maxNewsStories = 10
-    maxRows = 10000
-}}}
 
 /* }}} */
 
@@ -276,6 +290,32 @@ environments {
 }
 /* }}} */
 
+/* {{{ SmartR Configuration */
+
+// directory to copy scripts - with server URL appended to allow for multiple servers
+smartR.remoteScriptDirectory = "/tmp/smart_r_scripts"
+smartR.remoteScriptDirectory += transmartURL.replaceAll("\\W+","")
+
+environments {
+    production {
+	smartR.baseDir = '/tmp/heim-production'
+    }
+    development {
+	smartR.baseDir = '/tmp/heim-dev'
+    }
+}
+def smartrBaseDirectory = new File(smartR.baseDir)
+def smartrRemoteScriptDirectory = new File(smartR.remoteScriptDirectory)
+
+[smartR.baseDir,smartR.remoteScriptDirectory].each {
+    File useDir = new File(it)
+    if(!useDir.exists()) {
+	useDir.mkdir()
+    }
+}
+
+/* }}} */
+
 /* {{{ GWAS Configuration */
 
 com.recomdata.dataUpload.appTitle="Upload data to tranSMART"
@@ -299,6 +339,13 @@ com.recomdata.dataUpload.etl.dir = gwasEtlDirectory.absolutePath
         it.mkdir()
     }
 }
+
+/* }}} */
+
+/* {{{ GWAS plink */
+
+grails.plugin.transmartGwasPlink.enabled=true
+grails.plugin.transmartGwasPlink.plinkPath="/usr/lib/plink.plink"
 
 /* }}} */
 
@@ -341,7 +388,7 @@ grails { plugin { springsecurity {
     requestMap.className = 'org.transmart.searchapp.Requestmap'
     // requestmap in db
     securityConfigType = grails.plugin.springsecurity.SecurityConfigType.Requestmap
-    // url to redirect after login in
+    // url to redirect after login
     // just_rest branch provides alternative default via org.transmart.defaultLoginRedirect
     successHandler.defaultTargetUrl = org.transmart.defaultLoginRedirect ?: '/userLanding'
     // logout url
@@ -373,7 +420,7 @@ grails { plugin { springsecurity {
             '/css/**'                     : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/js/**'                      : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/grails-errorhandler'        : ['IS_AUTHENTICATED_ANONYMOUSLY'],
-            '/images/analysisFiles/**'    : ['IS_AUTHENTICATED_REMEMBERED'],
+            '/analysisFiles/**'           : ['IS_AUTHENTICATED_REMEMBERED'],
             '/images/**'                  : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/static/**'                  : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/search/loadAJAX**'          : ['IS_AUTHENTICATED_ANONYMOUSLY'],
@@ -389,6 +436,9 @@ grails { plugin { springsecurity {
             '/userGroup/**'               : ['ROLE_ADMIN'],
             '/secureObjectAccess/**'      : ['ROLE_ADMIN'],
             '/oauthAdmin/**'              : ['ROLE_ADMIN'],
+//            '/buildInfo/**'               : ['ROLE_ADMIN'],
+            '/configInfo/**'              : ['ROLE_ADMIN'],
+//            '/statusInfo/**'              : ['ROLE_ADMIN'],
             *                             : (oauthEnabled ?  oauthEndpoints : [:]),
             *                             : (gwavaEnabled ?  gwavaMappings : [:]),
             '/**'                         : ['IS_AUTHENTICATED_REMEMBERED'], // must be last
@@ -482,7 +532,7 @@ grails { plugin { springsecurity {
 /* }}} */
 
 
-//{{{ LDAP Configuration
+//{{{ LDAP Configuration for eTRIKS in the original docker Config.groovy
 
 if (ldapEnabled) {
     grails.plugin.springsecurity.ldap.active = true
@@ -650,13 +700,18 @@ if (gwavaEnabled) {
     // assume deployment alongside transmart
     com { recomdata { rwg { webstart {
         def url       = new URL(transmartURL)
-        codebase      = "http://localhost:8080/gwava"
+        codebase      = "$url.protocol://$url.host${url.port != -1 ? ":$url.port" : ''}/gwava"
         jar           = './ManhattanViz2.1g.jar'
         mainClass     = 'com.pfizer.mrbt.genomics.Driver'
         gwavaInstance = 'transmartstg'
         transmart.url = transmartURL - ~'\\/$'
    } } } }
-   com { recomdata { rwg { qqplots {
+   com { recomdata { rwg {
+        qqplots {
+            cacheImages = new File(jobsDirectory, 'cachedQQplotImages').toString()
+        }
+        manhattanplots {
+            cacheImages = new File(jobsDirectory, 'cachedManhattanplotImages').toString()
        cacheImages = new File(jobsDirectory, 'cachedQQplotImages').toString()
    } } } }
 }
@@ -725,6 +780,34 @@ com { recomdata { solr {
 
 /* }}} */
 
+/* {{{ Metacore analytics */
+
+com.thomsonreuters.transmart.metacoreAnalyticsEnable = true
+/* with no other settings defined, these URLs are used.
+ The demoEnrichmentURL default in the 16.1 metacore plugin code
+ is obsolete so the correct URL must be defined here. */
+com.thomsonreuters.transmart.demoEnrichmentURL = "http://pathwaymaps.com"
+com.thomsonreuters.transmart.demoMapBaseURL = "http://pathwaymaps.com/maps/"
+
+/* this value is defined automatically to 'demo', 'system' or 'user' */
+//com.thomsonreuters.transmart.metacoreSettingsMode = "demo"
+
+/* these settings are used to override the demo settings */
+//com.thomsonreuters.transmart.metacoreURL = "http://localhost/"
+//com.thomsonreuters.transmart.metacoreDefaultLogin = ""
+//com.thomsonreuters.transmart.metacoreDefaultPassword = ""
+//com.thomsonreuters.transmart.metacoreLogin = ""
+//com.thomsonreuters.transmart.metacorePassword = ""
+
+/* }}} */
+
+/* {{{ galaxy export plugin */
+
+com.galaxy.export.galaxyEnabled = true
+com.galaxy.export.galaxyURL = "http://usegalaxy.org/"
+
+/* }}} */
+
 // I002 – Insertion point 'end'
 
 
@@ -788,6 +871,21 @@ dataExport {
 //com.recomdata.passwordstrength.description =
 //    'It should contain a minimum of 8 characters including at least ' +
 //    '1 upper and 1 lower case letter, 1 digit and 1 special character.'
+
+/* {{{ Help configuration */
+
+org { transmartproject { helpUrls {
+    index = "$transmartURL"+"manual/"
+    heatMap = "$transmartURL"+"manual/advanced_analysis_R_export.html#heatmap"
+}}}
+    		 
+
+/* {{{ I2B2 joint platform configuration */
+
+// If true, tranSMART will accept data loaded by I2B2 as study 'I2B2'
+org.transmart.i2b2.view.enable = true
+
+/* }}} */
 
 // You MUST leave this at the end
 // Do not move it up, otherwise syntax errors may not be detected
