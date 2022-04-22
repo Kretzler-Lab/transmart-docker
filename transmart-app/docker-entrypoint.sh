@@ -7,6 +7,7 @@ GROUP_ID=${TOMCAT_GROUP_ID:-1000}
 echo "docker-entrypoint.sh"
 pwd
 ls -al /usr/local/tomcat
+printenv
 
 ###
 # Tomcat user
@@ -22,6 +23,4 @@ ls -al /usr/local/tomcat
 
 #chown -R tomcat:tomcat ${CATALINA_HOME} && chmod 400 ${CATALINA_HOME}/conf/*
 sync
-exec gosu tomcat "$@"
-
-exec "$@"
+exec gosu tomcat catalina.sh run
