@@ -30,12 +30,12 @@ services:
       - tmdb
       - tmsolr
     volumes:
-      - "./transmart-app/Config.groovy:/var/lib/tomcat8/.grails/transmartConfig/Config.groovy"
-      - "./transmart-app/DataSource.groovy:/var/lib/tomcat8/.grails/transmartConfig/DataSource.groovy"
-      - "./transmart-app/setenv.sh:/usr/share/tomcat8/bin/setenv.sh"
+      - "./transmart-app/Config.groovy:/usr/local/tomcat/.grails/transmartConfig/Config.groovy"
+      - "./transmart-app/DataSource.groovy:/usr/local/tomcat/.grails/transmartConfig/DataSource.groovy"
+      - "./transmart-app/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
       - "appdata:/root/.grails"
       - "apptmp:/tmp"
-      - "appwebapps:/usr/local/tomcat8/webapps"
+      - "appwebapps:/usr/local/tomcat/webapps"
   tmdb:
     image: transmartfoundation/transmart-db:latest
     restart: unless-stopped
