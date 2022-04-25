@@ -1,9 +1,6 @@
 FROM tomcat:8.0-jre8
 MAINTAINER Peter Rice <peter.rice@i2b2transmart.org>
 
-ENV DOCKER_TOMCAT_RUN_USER            tomcat
-ENV DOCKER_TOMCAT_RUN_GROUP           tomcat
-
 ENV DOCKER_TOMCAT_USER_ID 1000
 ENV DOCKER_TOMCAT_GROUP_ID 1000
 
@@ -17,9 +14,6 @@ RUN apt-get update && \
     unzip -q transmart-manual.zip && \
     mv transmart-manual-release-19.1 transmart-manual && \
     rm transmart-manual.zip && \
-    groupadd -r ${DOCKER_TOMCAT_RUN_GROUP} --gid ${DOCKER_TOMCAT_GROUP_ID} && \
-    useradd -g ${DOCKER_TOMCAT_RUN_GROUP} -d ${CATALINA_HOME} -s /bin/bash ${DOCKER_TOMCAT_RUN_USER} --uid ${DOCKER_TOMCAT_USER_ID} && \
-    chown -R ${DOCKER_TOMCAT_RUN_USER}:${DOCKER_TOMCAT_RUN_GROUP} ${CATALINA_HOME}
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 

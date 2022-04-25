@@ -10,17 +10,18 @@ ls -al /usr/local/tomcat
 printenv
 
 ###
-# Tomcat user
+# Tomcat user defined here so caller can set UID and GID to match a local non-priveleged user
 ###
-#groupadd -r tomcat -g ${GROUP_ID}
-#useradd --shell /bin/bash -u ${USER_ID} -g tomcat --home-dir ${CATALINA_HOME} \
-#        --comment "Tomcat user" tomcat
+groupadd -r tomcat -g ${GROUP_ID}
+useradd --shell /bin/bash -u ${USER_ID} -g tomcat --home-dir ${CATALINA_HOME} \
+        --comment "Tomcat user" tomcat
 
 ###
 # Change CATALINA_HOME ownership to tomcat user and tomcat group
 # Restrict permissions on conf
+# Change here to match user-controlled UID and GID
 ###
 
-#chown -R tomcat:tomcat ${CATALINA_HOME} && chmod 400 ${CATALINA_HOME}/conf/*
+chown -R tomcat:tomcat ${CATALINA_HOME} && chmod 400 ${CATALINA_HOME}/conf/*
 sync
 exec gosu tomcat catalina.sh run
