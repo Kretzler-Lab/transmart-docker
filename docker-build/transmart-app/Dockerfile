@@ -4,6 +4,12 @@ MAINTAINER Peter Rice <peter.rice@i2b2transmart.org>
 ENV DOCKER_TOMCAT_USER_ID 1000
 ENV DOCKER_TOMCAT_GROUP_ID 1000
 
+ENV DOCKER_DB_HOST	tmdb
+ENV DOCKER_DB_PORT	5432
+ENV DOCKER_DB_DATABASE	transmart
+ENV DOCKER_DB_USER	biomart_user
+ENV DOCKER_DB_PASSWORD	biomart_user
+
 # Add a tomcat user
 RUN apt-get update && \
     apt-get install -y gosu && \
@@ -14,6 +20,7 @@ RUN apt-get update && \
     unzip -q transmart-manual.zip && \
     mv transmart-manual-release-19.1 transmart-manual && \
     rm transmart-manual.zip && \
+    mkdir -p /usr/local/tomcat/.grails/transmartConfig
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
