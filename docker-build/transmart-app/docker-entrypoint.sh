@@ -39,6 +39,9 @@ echo "cat DataSource.groovy"
 echo "---------------------"
 cat /usr/local/tomcat/.grails/transmartConfig/DataSource.groovy
 
+echo "cat /etc/hosts"
+cat /etc/hosts
+
 echo "=== done ==="
 
 
