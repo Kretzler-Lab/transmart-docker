@@ -37,7 +37,9 @@ USER postgres
 # And add ``listen_addresses`` to ``/etc/postgresql/14/main/postgresql.conf``
 # Create a PostgreSQL role named ``transmartadmin`` with ``transmart`` as the password
 
-RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/14/main/pg_hba.conf && \
+RUN echo "host all  all    samehost  md5" >> /etc/postgresql/14/main/pg_hba.conf && \
+    echo "host all  all    samenet   md5" >> /etc/postgresql/14/main/pg_hba.conf && \
+    echo "host all  all    127.0.0.1/32 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
     echo "listen_addresses='*'" >> /etc/postgresql/14/main/postgresql.conf && \
     /etc/init.d/postgresql start && \
     psql --command "CREATE USER transmartadmin WITH SUPERUSER PASSWORD 'transmart';" && \
@@ -46,6 +48,25 @@ RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/14/main/pg_hba.con
 #### Load transmart db
 
 USER root
+
+# Using defaults calculations from PgTune (https://github.com/le0pard/pgtune)
+ADD tunepgsql.sh /usr/bin/tunepgsql.sh
+
+# Move/replace directory as workaround for AUFS issue
+# described at (https://github.com/moby/moby/issues/783#issuecomment-56013588)
+RUN chmod +x /usr/bin/tunepgsql.sh && \
+    mkdir /etc/ssl/private-copy && \
+    mv /etc/ssl/private/* /etc/ssl/private-copy/ && \
+    rm -r /etc/ssl/private && \
+    mv /etc/ssl/private-copy /etc/ssl/private && \
+    chmod -R 0700 /etc/ssl/private && \
+    chown -R postgres /etc/ssl/private
+
+# Start postgresql service
+# Create a new transmart database
+# Stop postgresql service
+# Clean up transmart-data files
+# Purge no longer needed installed packages
 
 RUN cd transmart-data && make -C env /var/lib/postgresql/tablespaces ../vars groovy && \
     . ./vars && \
@@ -56,18 +77,6 @@ RUN cd transmart-data && make -C env /var/lib/postgresql/tablespaces ../vars gro
     apt-get purge -y --auto-remove curl unzip make php7.2-cli php7.2-json ca-certificates
 
 EXPOSE 5432
-
-# Using defaults calculations from PgTune (https://github.com/le0pard/pgtune)
-ADD tunepgsql.sh /usr/bin/tunepgsql.sh
-
-# Add workaround for AUFS issue described at (https://github.com/moby/moby/issues/783#issuecomment-56013588)
-RUN chmod +x /usr/bin/tunepgsql.sh && \
-    mkdir /etc/ssl/private-copy && \
-    mv /etc/ssl/private/* /etc/ssl/private-copy/ && \
-    rm -r /etc/ssl/private && \
-    mv /etc/ssl/private-copy /etc/ssl/private && \
-    chmod -R 0700 /etc/ssl/private && \
-    chown -R postgres /etc/ssl/private
 
 USER postgres
 
