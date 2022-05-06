@@ -14,7 +14,7 @@ RUN apt-get update && \
     echo "deb http://apt.postgresql.org/pub/repos/apt/ bionic-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
     curl --location --silent --show-error --insecure https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - && \
     apt -y update && \
-    DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get install -y --no-install-recommends postgresql-14 postgresql-client-14 postgresql-contrib-14
+    DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get install -y --no-install-recommends iproute2 iptables net-tools postgresql-14 postgresql-client-14 postgresql-contrib-14
 
 #RUN apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys B97B0AFCAA1A47F044F244A07FCC7D46ACCC4CF8
 
@@ -40,6 +40,12 @@ USER postgres
 RUN echo "host all  all    samehost  md5" >> /etc/postgresql/14/main/pg_hba.conf && \
     echo "host all  all    samenet   md5" >> /etc/postgresql/14/main/pg_hba.conf && \
     echo "host all  all    127.0.0.1/32 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
+    echo "host all  all    0.0.0.0/32 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
+    echo "# Docker network IP addresses: bridge, docker_default, transmart-docker_default transmart-docker_transmart" >> /etc/postgresql/14/main/pg_hba.conf && \
+    echo "host all  all    172.17.0.0/16 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
+    echo "host all  all    172.18.0.0/16 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
+    echo "host all  all    172.19.0.0/16 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
+    echo "host all  all    172.20.0.0/16 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
     echo "listen_addresses='*'" >> /etc/postgresql/14/main/postgresql.conf && \
     /etc/init.d/postgresql start && \
     psql --command "CREATE USER transmartadmin WITH SUPERUSER PASSWORD 'transmart';" && \
