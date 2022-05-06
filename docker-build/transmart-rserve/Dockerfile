@@ -16,7 +16,15 @@ WORKDIR /home/ruser
 RUN curl --location --silent --show-error http://sativa.home/beta/release19_1_0_artifacts/transmart-data-release-19.1.zip -o transmart-data.zip && \
     unzip -q transmart-data.zip && \
     mv transmart-data-release-19.1 transmart-data && \
-    rm transmart-data.zip
+    rm transmart-data.zip && \
+    mv transmart-data/R /home/ruser/R && \
+    mv transmart-data/Makefile /home/ruser/Makefile && \
+    mv transmart-data/makefile.inc /home/ruser/makefile.inc && \
+    rm -rf /home/ruser/transmart-data/* && \
+    rm transmart-data/.gitignore transmart-data/.travis.yml && \
+    mv /home/ruser/R transmart-data/ && \
+    mv /home/ruser/Makefile transmart-data/ && \
+    mv /home/ruser/makefile.inc transmart-data/
 
 WORKDIR /home/ruser/transmart-data
 
@@ -27,11 +35,9 @@ ENV TABLESPACES=dummy
 # Clean up the unwanted transmart-data files
 # Save only the R directory
 
-RUN until make -C R install_packages; do echo "Failed, retrying..."; done && \
-    mv R /home/ruser/R && \
-    rm -rf /home/ruser/transmart-data/* && \
-    rm -rf .gitignore .travis.yml && \
-    mv /home/ruser/R /home/ruser/transmart-data/ && \
+#RUN until make -C R install_packages; do echo "Failed, retrying..."; done && \
+
+RUN make -C R install_packages && \
     echo remote enable >> /home/ruser/transmart-data/R/Rserv_nodaemon.conf
 
 USER root
