@@ -29,6 +29,9 @@ services:
     depends_on:
       - tmdb
       - tmsolr
+      - tmrserve
+    networks:
+      - transmart
     volumes:
       - "./transmart-app/Config.groovy:/usr/local/tomcat/.grails/transmartConfig/Config.groovy"
       - "./transmart-app/DataSource.groovy:/usr/local/tomcat/.grails/transmartConfig/DataSource.groovy"
@@ -46,6 +49,8 @@ services:
       - ${DOCKER_DB_PORT:-5432}:5432
     env_file:
       - ${ENV_FILE}
+    networks:
+      - transmart
     volumes:
       - "postgresdata:/var/lib/postgresql"
       - "postgreslogs:/var/log/postgresql"
@@ -58,6 +63,8 @@ services:
       - ${DOCKER_SOLR_PORT:-8983}:8983
     env_file:
       - ${ENV_FILE}
+    networks:
+      - transmart
   tmrserve:
     image: transmartfoundation/transmart-rserve:latest
     restart: unless-stopped
@@ -69,8 +76,11 @@ services:
       - ${ENV_FILE}
     volumes:
       - "apptmp:/tmp"
+    networks:
+      - transmart
   tmload:
     image: transmartfoundation/transmart-load:latest
+    network_mode: host
     depends_on:
       - tmdb
     env_file:
@@ -83,3 +93,6 @@ volumes:
   appweblogs:
   postgresdata:
   postgreslogs:
+
+networks:
+  transmart:
