@@ -80,11 +80,12 @@ services:
       - transmart
   tmload:
     image: transmartfoundation/transmart-load:latest
-    network_mode: host
     depends_on:
       - tmdb
     env_file:
       - ${ENV_FILE}
+    networks:
+      - transmart
 
 volumes:
   appdata:
