@@ -8,7 +8,7 @@ RUN apt-get update && \
 
 WORKDIR /home/tmload
 
-RUN curl --location --silent --show-error --insecure http://sativa.home/beta/release19_1_0_artifacts/transmart-data-release-19.1.zip --output transmart-data.zip && \
+RUN curl --location --silent --show-error --insecure http://library.transmartfoundation.org/beta/beta19_1_0_artifacts/transmart-data-release-19.1.zip --output transmart-data.zip && \
     unzip -q transmart-data.zip && \
     mv transmart-data-release-19.1 transmart-data && \
     rm transmart-data.zip && \
@@ -44,8 +44,9 @@ WORKDIR /home/tmload/transmart-data
 # install Pentaho Data Integration (Kettle)
 
 RUN make -C env groovy data-integration && \
+    make -C samples/postgres jdbcdriver && \
     cd env && \
-    curl --location --silent --show-error http://sativa.home/beta/release19_1_0_artifacts/transmart-etl-release-19.1.zip --output transmart-etl.zip && \
+    curl --location --silent --show-error http://library.transmartfoundation.org/beta/beta19_1_0_artifacts/transmart-etl-release-19.1.zip --output transmart-etl.zip && \
     unzip transmart-etl.zip && \
     rm transmart-etl.zip && \
     chown -R tmload:tmload /home/tmload/.kettle && \

@@ -13,7 +13,7 @@ USER ruser
 
 WORKDIR /home/ruser
 
-RUN curl --location --silent --show-error http://sativa.home/beta/release19_1_0_artifacts/transmart-data-release-19.1.zip -o transmart-data.zip && \
+RUN curl --location --silent --show-error http://library.transmartfoundation.org/beta/beta19_1_0_artifacts/transmart-data-release-19.1.zip -o transmart-data.zip && \
     unzip -q transmart-data.zip && \
     mv transmart-data-release-19.1 transmart-data && \
     rm transmart-data.zip && \

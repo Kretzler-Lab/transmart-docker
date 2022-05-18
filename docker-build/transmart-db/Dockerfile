@@ -5,7 +5,7 @@ ENV LANG en_US.utf8
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends curl unzip make ca-certificates gnupg apt-utils php7.2-cli php7.2-json sudo  openjdk-8-jdk openjdk-8-jre locales && \
-    curl --location --silent --show-error --insecure http://sativa.home/beta/release19_1_0_artifacts/transmart-data-release-19.1.zip --output transmart-data.zip && \
+    curl --location --silent --show-error --insecure http://library.transmartfoundation.org/beta/beta19_1_0_artifacts/transmart-data-release-19.1.zip --output transmart-data.zip && \
     unzip -q transmart-data.zip && \
     mv transmart-data-release-19.1 transmart-data && \
     rm transmart-data.zip && \

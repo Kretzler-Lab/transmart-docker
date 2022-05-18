@@ -13,9 +13,9 @@ ENV DOCKER_DB_PASSWORD	biomart_user
 # Add a tomcat user
 RUN apt-get update && \
     apt-get install -y gosu && \
-    curl --location --silent --show-error --insecure http://sativa.home/beta/release19_1_0_artifacts/transmartApp-release-19.1.war --output /usr/local/tomcat/webapps/transmart.war && \
-    curl --location --silent --show-error --insecure http://sativa.home/beta/release19_1_0_artifacts/gwava-release-19.1.war --output /usr/local/tomcat/webapps/gwava.war && \
-    curl --location --silent --show-error --insecure http://sativa.home/beta/release19_1_0_artifacts/transmart-manual-release-19.1.zip --output /usr/local/tomcat/webapps/transmart-manual.zip && \
+    curl --location --silent --show-error --insecure http://library.transmartfoundation.org/beta/beta19_1_0_artifacts/transmartApp-release-19.1.war --output /usr/local/tomcat/webapps/transmart.war && \
+    curl --location --silent --show-error --insecure http://library.transmartfoundation.org/beta/beta19_1_0_artifacts/gwava-release-19.1.war --output /usr/local/tomcat/webapps/gwava.war && \
+    curl --location --silent --show-error --insecure http://library.transmartfoundation.org/beta/beta19_1_0_artifacts/transmart-manual-release-19.1.zip --output /usr/local/tomcat/webapps/transmart-manual.zip && \
     cd /usr/local/tomcat/webapps/ && \
     unzip -q transmart-manual.zip && \
     mv transmart-manual-release-19.1 transmart-manual && \
