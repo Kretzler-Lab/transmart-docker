@@ -23,24 +23,24 @@ useradd --shell /bin/bash --uid ${USER_ID} --gid tomcat --home-dir ${CATALINA_HO
 
 chown -R tomcat:tomcat ${CATALINA_HOME} && chmod 400 ${CATALINA_HOME}/conf/*
 
-echo "ls -alR /usr/local/tomcat"
-echo "-------------------------"
-ls -alR /usr/local/tomcat
+#echo "ls -alR /usr/local/tomcat"
+#echo "-------------------------"
+#ls -alR /usr/local/tomcat
 
-echo "ls -al /usr/local/tomcat/.grails"
-echo "--------------------------------"
-ls -al /usr/local/tomcat/.grails
+#echo "ls -al /usr/local/tomcat/.grails"
+#echo "--------------------------------"
+#ls -al /usr/local/tomcat/.grails
 
-echo "dosu tomcat ls -alR ~tomcat/.grails/transmartConfig"
-echo "---------------------------------------------"
+#echo "dosu tomcat ls -alR ~tomcat/.grails/transmartConfig"
+#echo "---------------------------------------------"
 gosu tomcat ls -alR ~tomcat/.grails/transmartConfig
 
 echo "cat DataSource.groovy"
 echo "---------------------"
 cat /usr/local/tomcat/.grails/transmartConfig/DataSource.groovy
 
-echo "cat /etc/hosts"
-cat /etc/hosts
+#echo "cat /etc/hosts"
+#cat /etc/hosts
 
 echo "=== done ==="
 
