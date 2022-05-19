@@ -8,6 +8,24 @@ RUN apt-get update && \
 
 WORKDIR /home/tmload
 
+ENV TABLESPACES=dummy \
+    PATH=/home/tmload/transmart-data/env:$PATH \
+    KETTLE_JOBS_PSQL=/home/tmload/transmart-data/env/transmart-etl/Kettle/postgres/Kettle-ETL/ \
+    R_JOBS_PSQL=/home/tmload/transmart-data/env/transmart-etl/Kettle/postgres/R/ \
+    KITCHEN=/home/tmload/transmart-data/env/data-integration/kitchen.sh \
+    PGHOST=tmdb \
+    PGPORT=5432 \
+    PGDATABASE=transmart \
+    PGUSER=transmartadmin \
+    PGPASSWORD=transmart \
+    PGSQL_BIN=/usr/bin
+
+WORKDIR /home/tmload
+
+USER tmload
+
+ADD kettle.properties /home/tmload/.kettle/kettle.properties
+
 RUN curl --location --silent --show-error --insecure http://library.transmartfoundation.org/beta/beta19_1_0_artifacts/transmart-data-release-19.1.zip --output transmart-data.zip && \
     unzip -q transmart-data.zip && \
     mv transmart-data-release-19.1 transmart-data && \
@@ -25,36 +43,19 @@ RUN curl --location --silent --show-error --insecure http://library.transmartfou
     mv /home/tmload/Makefile transmart-data/ && \
     mv /home/tmload/makefile.inc transmart-data/
 
-ADD kettle.properties /home/tmload/.kettle/kettle.properties
-
-ENV TABLESPACES=dummy \
-    PATH=/home/tmload/transmart-data/env:$PATH \
-    KETTLE_JOBS_PSQL=/home/tmload/transmart-data/env/transmart-etl/Kettle/postgres/Kettle-ETL/ \
-    KITCHEN=/home/tmload/transmart-data/env/data-integration/kitchen.sh \
-    PGHOST=tmdb \
-    PGPORT=5432 \
-    PGDATABASE=transmart \
-    PGUSER=transmartadmin \
-    PGPASSWORD=transmart \
-    PGSQL_BIN=/usr/bin
-
-WORKDIR /home/tmload/transmart-data
-
 # install groovy - replace with transmart-data download
 # install Pentaho Data Integration (Kettle)
+
+WORKDIR /home/tmload/transmart-data
 
 RUN make -C env groovy data-integration && \
     make -C samples/postgres jdbcdriver && \
     cd env && \
     curl --location --silent --show-error http://library.transmartfoundation.org/beta/beta19_1_0_artifacts/transmart-etl-release-19.1.zip --output transmart-etl.zip && \
-    unzip transmart-etl.zip && \
-    rm transmart-etl.zip && \
-    chown -R tmload:tmload /home/tmload/.kettle && \
-    chown -R tmload:tmload /home/tmload/transmart-data
+    unzip -q transmart-etl.zip && \
+    mv transmart-etl-release-19.1 transmart-etl && \
+    rm transmart-etl.zip
 
-USER tmload
-
-RUN make -C env groovy data-integration && \
-    make update_datasets
+RUN make update_datasets
 
 CMD ["echo","Use the make commands provided by samples/postgres to load data. E.g. run\ndocker-compose run --rm tmload make -C samples/postgres load_clinical_ElevadaGSE14468\nFor more information go to https://wiki.transmartfoundation.org/display/transmartwiki/Curated+Data."]
