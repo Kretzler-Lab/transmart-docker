@@ -1,9 +1,9 @@
 dataSource {
     driverClassName = 'org.postgresql.Driver'
-    url             = "jdbc:postgresql://${DOCKER_DB_HOST}:${DOCKER_DB_PORT}/${DOCKER_DB_DATABASE}"
+    url             = "jdbc:postgresql://${System.getenv("DOCKER_DB_HOST")}:${System.getenv("DOCKER_DB_PORT")}/${System.getenv("DOCKER_DB_DATABASE")}"
     dialect         = 'org.hibernate.dialect.PostgreSQLDialect'
-    username        = "${DOCKER_DB_USER}"
-    password        = "${DOCKER_DB_PASSWORD}"
+    username        = "${System.getenv("DOCKER_DB_USER")}"
+    password        = "${System.getenv("DOCKER_DB_PASSWORD")}"
     dbCreate        = 'none'
     
     properties {
