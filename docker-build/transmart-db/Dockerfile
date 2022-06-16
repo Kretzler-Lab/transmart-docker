@@ -37,15 +37,9 @@ USER postgres
 # And add ``listen_addresses`` to ``/etc/postgresql/14/main/postgresql.conf``
 # Create a PostgreSQL role named ``transmartadmin`` with ``transmart`` as the password
 
-RUN echo "host all  all    samehost  md5" >> /etc/postgresql/14/main/pg_hba.conf && \
-    echo "host all  all    samenet   md5" >> /etc/postgresql/14/main/pg_hba.conf && \
-    echo "host all  all    127.0.0.1/32 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
-    echo "host all  all    0.0.0.0/32 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
-    echo "# Docker network IP addresses: bridge, docker_default, transmart-docker_default transmart-docker_transmart" >> /etc/postgresql/14/main/pg_hba.conf && \
-    echo "host all  all    172.17.0.0/16 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
-    echo "host all  all    172.18.0.0/16 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
-    echo "host all  all    172.19.0.0/16 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
-    echo "host all  all    172.20.0.0/16 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
+RUN echo "host all  all    samenet  md5" >> /etc/postgresql/14/main/pg_hba.conf && \
+    echo "# Docker network IP addresses:" >> /etc/postgresql/14/main/pg_hba.conf && \
+    echo "#host all  all    172.17.0.0/16 md5" >> /etc/postgresql/14/main/pg_hba.conf && \
     echo "listen_addresses='*'" >> /etc/postgresql/14/main/postgresql.conf && \
     /etc/init.d/postgresql start && \
     psql --command "CREATE USER transmartadmin WITH SUPERUSER PASSWORD 'transmart';" && \
