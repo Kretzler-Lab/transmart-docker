@@ -13,6 +13,10 @@ USER ruser
 
 WORKDIR /home/ruser
 
+# Install transmart-data
+# Clean up the unwanted transmart-data files
+# Save only the R directory
+
 RUN curl --location --silent --show-error http://library.transmartfoundation.org/beta/beta19_1_0_artifacts/transmart-data-release-19.1.zip -o transmart-data.zip && \
     unzip -q transmart-data.zip && \
     mv transmart-data-release-19.1 transmart-data && \
@@ -30,14 +34,7 @@ WORKDIR /home/ruser/transmart-data
 
 ENV TABLESPACES=dummy
 
-# Keep trying make command until we succeed, it seems downloading R packages fails regularly
-
-# Clean up the unwanted transmart-data files
-# Save only the R directory
-
-#RUN until make -C R install_packages; do echo "Failed, retrying..."; done && \
-
-RUN make -C R install_packages && \
+RUN make -j 1 -C R install_packages && \
     echo remote enable >> /home/ruser/transmart-data/R/Rserv_nodaemon.conf
 
 USER root
