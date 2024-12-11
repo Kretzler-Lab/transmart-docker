@@ -21,7 +21,6 @@ RUN apt-get update && \
     #rm transmart-manual.zip && \
     mkdir -p /usr/local/tomcat/.grails/transmartConfig
 
-COPY Config.groovy /usr/local/tomcat/.grails/transmartConfig/Config.groovy
 COPY transmart.war /usr/local/tomcat/webapps/transmart.war
 COPY docker-entrypoint.sh /docker-entrypoint.sh
 
