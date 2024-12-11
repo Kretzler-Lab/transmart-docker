@@ -1,0 +1,15 @@
+set -x
+$KITCHEN -norep=Y -file=/home/tmload/transmart-data/env/transmart-etl/Kettle/postgres/Kettle-ETL/load_gene_expression_data.kjb  \
+-param:DATA_FILE_PREFIX=Neptune_V6_Exp_ \
+-param:DATA_TYPE=T
+-param:MAP_FILENAME=Neptune_V6_Mapping.txt
+-param:DATA_LOCATION=/my_study/clinical \
+-param:HIGHLIGHT_STUDY=N \
+-param:SQLLDR_PATH=/usr/bin/psql \
+-param:LOAD_TYPE=I \
+-param:RECORD_EXCLUSION_FILE=x \
+-param:SECURITY_REQUIRED=Y \
+-param:SORT_DIR=$HOME \
+-param:STUDY_ID=MY_STUDY \
+-param:WORD_MAP_FILE=x \
+-param:TOP_NODE='\Private Studies\Neptune_V36\'

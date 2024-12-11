@@ -8,6 +8,7 @@
  * production environment when running grails run-app are scenarios that have
  * NOT been tested.
  */
+
 quickStartURL = "../../files/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
 dataAttestationText = """
         <p>
@@ -29,19 +30,6 @@ dataAttestationText = """
                                                                                                                                         </p>
                                                                                                                                         """
 
-// if running as a WAR, we need these
-def catalinaBase      = System.getProperty('catalina.base') ?: '.'
-
-def explodedWarDir    = catalinaBase + '/webapps/transmart'
-def solrPort          = 8983 //port of appserver where solr runs (under ctx path /solr)
-def searchIndex       = catalinaBase + '/searchIndex' //create this directory
-// for running transmart as WAR, create this directory and then create an alias
-def jobsDirectory     = "/tmp"
-def oauthEnabled      = true
-def samlEnabled       = false
-def gwavaEnabled      = false
-def transmartURL      = "http://miktmc-ap-ps1a.med.umich.edu/transmart"
-
 motd {
     motd_title = "<center>Welcome<center>"
     motd_text = """\
@@ -58,31 +46,48 @@ Contact <a href="mailto:neptunetmsupport@umich.edu" style="color: #0000EE; text-
 """
 }
 
-org.transmartproject.enableAcrossTrials = false
+// if running as a WAR, we need these
+def catalinaBase      = System.getProperty('catalina.base') ?: '.'
+
+def explodedWarDir    = catalinaBase + '/webapps/transmart'
+def solrPort          = 8983 //port of appserver where solr runs (under ctx path /solr)
+def searchIndex       = catalinaBase + '/searchIndex' //create this directory
+// for running transmart as WAR, create this directory and then create an alias
+def jobsDirectory     = "/tmp"
+def oauthEnabled      = true
+def samlEnabled       = false
+def gwavaEnabled      = true
+def ldapEnabled       = false
+def transmartURL      = "http://miktmc-ap-ps1a.med.umich.edu:8080/transmart"
 
 //Disabling/Enabling UI tabs
 ui {
     tabs {
         //Search was not part of 1.2. It's not working properly. You need to set `show` to `true` to see it on UI
         search.show = false
-        browse.hide = true
+        browse.hide = false
         //Note: analyze tab is always shown
-        sampleExplorer.hide = true
+        sampleExplorer.hide = false
         geneSignature.hide = false
-        gwas.hide = true
-        uploadData.hide = true
+        gwas.hide = false
+        uploadData.hide = false
         datasetExplorer {
-            gridView.hide = true
-            dataExport.hide = true
-            dataExportJobs.hide = true
+            gridView.hide = false
+            dataExport.hide = false
+            dataExportJobs.hide = false
             // Note: by default the analysisJobs panel is NOT shown
             // Currently, it is only used in special cases
-            analysisJobs.show = false
+            analysisJobs.show = true
             workspace.hide = false
-    	    rawDataExport.enabled = false
+            xnatViewer.show = true
         }
     }
-    jirareport.hide = true
+    /*
+    //The below disclaimer appears on the login screen, just below the login button.
+    loginScreen {
+        disclaimer = "Please be aware that tranSMART is a data-integration tool that allows for exploration of available study data. The information shown in tranSMART, and derived from performed analyses, are for research purposes only. NOT for decision making in e.g. clinical trial studies."
+    }
+    */
 }
 
 // I001 – Insertion point 'post-WAR-variables'
@@ -139,7 +144,7 @@ log4j = {
                             maxFileSize: '100MB')
             }
             root {
-                warn 'transmart'
+                info 'transmart' // warn for fewer messages
             }
         }
     }
@@ -148,10 +153,14 @@ log4j = {
 
 /* {{{ Faceted Search Configuration */
 environments {
-    development {                                                                                                                                                    com.rwg.solr.scheme = 'http'
-        com.rwg.solr.host   = 'tmsolr:8983'                                                                                                                          com.rwg.solr.path   = '/solr/rwg/select/'
-    }                                                                                                                                                        
-    production {                                                                                                                                                     com.rwg.solr.scheme = 'http'
+    development {
+        com.rwg.solr.scheme = 'http'
+        com.rwg.solr.host   = 'tmsolr:8983'
+        com.rwg.solr.path   = '/solr/rwg/select/'
+    }
+
+    production {
+        com.rwg.solr.scheme = 'http'
         com.rwg.solr.host   = 'tmsolr:' + solrPort
         com.rwg.solr.path   = '/solr/rwg/select/'
     }
@@ -167,38 +176,52 @@ com.recomdata.dataUpload.adminEmail = 'No data upload adminEmail value set - con
 
 /* {{{ Personalization */
 // application logo to be used in the login page
-com.recomdata.largeLogo = "Neptune_Logo_Big.png"
+com.recomdata.largeLogo = "transmartlogo.jpg"
 
 // application logo to be used in the search page
-com.recomdata.smallLogo="Neptune_Logo_Small.png"
+com.recomdata.smallLogo="transmartlogosmall.jpg"
 
 // contact email address
-com.recomdata.contactUs = "NeptuneTMSupport@umich.edu"
+com.recomdata.contactUs = "transmart-discuss@googlegroups.com"
 
 // site administrator contact email address
-com.recomdata.adminEmail = "NeptuneTMSupport@umich.edu"
+com.recomdata.adminEmail = "transmart-discuss@googlegroups.com"
 
 // application title
-com.recomdata.appTitle = "Neptune tranSMART"
-
-//Quick Start Guide URL
-quickStartURL = "../../files/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
-scatterPlotURL = "../../files/NEPTUNE_scatterplot.pdf"
-boxPlotURL = "../../files/NEPTUNE_boxplot.pdf"
-diffexURL = "../../files/NEPTUNE_diffex.pdf"
-proteinsURL = "../../files/Proteins_in_NEPTUNE_tranSMART.xlsx"
+com.recomdata.appTitle = "tranSMART v" + org.transmart.originalConfigBinding.appVersion
 
 // Location of the help pages. Should be an absolute URL.
-com.recomdata.adminHelpURL = "http://transmart-app.readthedocs.io/en/latest/index.html"
+// Currently, these are distributed
+// so it can also point to that location copy.
+com.recomdata.adminHelpURL = "$transmartURL"+"manual/"
+
+// Welcome screen text to override default description of Browse and Analyze tabs
+com.recomdata.transmartIntro = '''<p>The <b>Browse</b> window lets you search and dive into the information contained in tranSMART,
+		including Programs, Studies, Assays and the associated Analyses Results, Subject Level Data and Raw Files.
+		This is also the location to export files stored in tranSMART. Note: to edit the Program, Study, or Assay
+		information, you must be logged in as an Administrator.
+            </p><br/>
+
+            <p>The <b>Analyze</b> window lets you perform a number of analyses either on studies selected
+		in the Browse window, or from the global search box located in the top ribbon of your screen.
+		More information about the analyses you can perform is available in the “Help" section of the "Utilities" menu.
+            </p>'''
+
+// Summary text to appear on welcome screen, login screen, and comparison query
+com.recomdata.transmartSummary = '''<p>
+This is a Docker instance of tranSMART 19.1.
+</p>'''
+
+edu { harvard { transmart {
+    email.logo = ''		// logo for email
+    email.notify = ''		// 
+    access.level1 = 'auto'	// automatically assign STUDY_OWNER role
+}}}
 
 environments { development {
     com.recomdata.bugreportURL = 'https://jira.transmartfoundation.org'
 } }
 
-// Keys without defaults (see Config-extra.php.sample):
-// com.recomdata.projectName
-// com.recomdata.providerName
-// com.recomdata.providerURL
 /* }}} */
 
 /* {{{ Login */
@@ -220,7 +243,7 @@ environments { development {
 
 // Whether to enable guest auto login.
 // If it's enabled no login is required to access tranSMART.
-com.recomdata.guestAutoLogin = false
+com.recomdata.guestAutoLogin = true
 environments { development { com.recomdata.guestAutoLogin = true } }
 
 // Guest account user name - if guestAutoLogin is true, this is the username of
@@ -255,16 +278,6 @@ sampleExplorer {
     resultsGridWidth = 100
     idfield = 'id'
 }
-
-edu.harvard.transmart.sampleBreakdownMap = [
-    "id":"Aliquots in Cohort"
-]
-
-// Solr configuration for the Sample Explorer
-com { recomdata { solr {
-    maxNewsStories = 10
-    maxRows = 10000
-}}}
 
 /* }}} */
 
@@ -301,8 +314,6 @@ environments {
         // The working directory for R scripts, where the jobs get created and
         // output files get generated
         RModules.tempFolderDirectory = jobsDirectory
-        RModules.deployment.rscripts = "/tmp/Rscripts"
-        RModules.deployment.dataexportRscripts = "/tmp/dataexportRscripts"
     }
     development {
         RModules.tempFolderDirectory = "/tmp"
@@ -315,19 +326,45 @@ environments {
 }
 /* }}} */
 
+/* {{{ SmartR Configuration */
+
+// directory to copy scripts - with server URL appended to allow for multiple servers
+smartR.remoteScriptDirectory = "/tmp/smart_r_scripts"
+smartR.remoteScriptDirectory += transmartURL.replaceAll("\\W+","")
+
+environments {
+    production {
+	smartR.baseDir = '/tmp/heim-production'
+    }
+    development {
+	smartR.baseDir = '/tmp/heim-dev'
+    }
+}
+def smartrBaseDirectory = new File(smartR.baseDir)
+def smartrRemoteScriptDirectory = new File(smartR.remoteScriptDirectory)
+
+[smartR.baseDir,smartR.remoteScriptDirectory].each {
+    File useDir = new File(it)
+    if(!useDir.exists()) {
+	useDir.mkdir()
+    }
+}
+
+/* }}} */
+
 /* {{{ GWAS Configuration */
 
 com.recomdata.dataUpload.appTitle="Upload data to tranSMART"
 com.recomdata.dataUpload.stageScript="run_analysis_stage"
 
 // Directory path of com.recomdata.dataUpload.stageScript
-def gwasEtlDirectory = new File(System.getenv('HOME'), '.grails/transmart-gwasetl')
+def gwasEtlDirectory = new File(System.getProperty("user.home"), '.grails/transmart-gwasetl')
 
 // Directory to hold GWAS file uploads
-def gwasUploadsDirectory = new File(System.getenv('HOME'), '.grails/transmart-datauploads')
+def gwasUploadsDirectory = new File(System.getProperty("user.home"), '.grails/transmart-datauploads')
 
 // Directory to preload with template files with names <type>-template.txt
-def gwasTemplatesDirectory = new File(System.getenv('HOME'), '.grails/transmart-templates')
+def gwasTemplatesDirectory = new File(System.getProperty("user.home"), '.grails/transmart-templates')
 
 com.recomdata.dataUpload.templates.dir = gwasTemplatesDirectory.absolutePath
 com.recomdata.dataUpload.uploads.dir = gwasUploadsDirectory.absolutePath
@@ -338,6 +375,13 @@ com.recomdata.dataUpload.etl.dir = gwasEtlDirectory.absolutePath
         it.mkdir()
     }
 }
+
+/* }}} */
+
+/* {{{ GWAS plink */
+
+grails.plugin.transmartGwasPlink.enabled=true
+grails.plugin.transmartGwasPlink.plinkPath="/usr/lib/plink.plink"
 
 /* }}} */
 
@@ -380,7 +424,7 @@ grails { plugin { springsecurity {
     requestMap.className = 'org.transmart.searchapp.Requestmap'
     // requestmap in db
     securityConfigType = grails.plugin.springsecurity.SecurityConfigType.Requestmap
-    // url to redirect after login in
+    // url to redirect after login
     // just_rest branch provides alternative default via org.transmart.defaultLoginRedirect
     successHandler.defaultTargetUrl = org.transmart.defaultLoginRedirect ?: '/userLanding'
     // logout url
@@ -412,13 +456,12 @@ grails { plugin { springsecurity {
             '/css/**'                     : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/js/**'                      : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/grails-errorhandler'        : ['IS_AUTHENTICATED_ANONYMOUSLY'],
-            '/images/analysisFiles/**'    : ['IS_AUTHENTICATED_REMEMBERED'],
+            '/analysisFiles/**'           : ['IS_AUTHENTICATED_REMEMBERED'],
             '/images/**'                  : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/static/**'                  : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/search/loadAJAX**'          : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/analysis/getGenePatternFile': ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/analysis/getTestFile'       : ['IS_AUTHENTICATED_ANONYMOUSLY'],
-            '/monitor'                    : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/requestmap/**'              : ['ROLE_ADMIN'],
             '/role/**'                    : ['ROLE_ADMIN'],
             '/authUser/**'                : ['ROLE_ADMIN'],
@@ -429,6 +472,9 @@ grails { plugin { springsecurity {
             '/userGroup/**'               : ['ROLE_ADMIN'],
             '/secureObjectAccess/**'      : ['ROLE_ADMIN'],
             '/oauthAdmin/**'              : ['ROLE_ADMIN'],
+//            '/buildInfo/**'               : ['ROLE_ADMIN'],
+            '/configInfo/**'              : ['ROLE_ADMIN'],
+//            '/statusInfo/**'              : ['ROLE_ADMIN'],
             *                             : (oauthEnabled ?  oauthEndpoints : [:]),
             *                             : (gwavaEnabled ?  gwavaMappings : [:]),
             '/**'                         : ['IS_AUTHENTICATED_REMEMBERED'], // must be last
@@ -472,6 +518,7 @@ grails { plugin { springsecurity {
                 '/observations/**': securedResourcesFilters,
                 '/patient_sets/**': securedResourcesFilters,
                 '/oauth/inspectToken': securedResourcesFilters,
+                '/transmart-rest-api-version': 'none',
                 '/**': [
                         'JOINED_FILTERS',
                         '-statelessSecurityContextPersistenceFilter',
@@ -487,8 +534,10 @@ grails { plugin { springsecurity {
         def glowingBearRedirectUris = [
                 transmartURL - ~/transmart\/?$/ + 'connections',
         ]
+        if (transmartURL.startsWith('http://localhost:')) {
         // for dev, node reverse proxy runs on 8001
         glowingBearRedirectUris << 'http://localhost:8001/connections'
+        }
 
         oauthProvider {
             authorization.requireRegisteredRedirectUri = true
@@ -518,6 +567,58 @@ grails { plugin { springsecurity {
 } } }
 /* }}} */
 
+
+//{{{ LDAP Configuration for eTRIKS in the original docker Config.groovy
+
+if (ldapEnabled) {
+    grails.plugin.springsecurity.ldap.active = true
+    org.transmart.security.spnegoEnabled = true
+
+    grails { plugin { springsecurity {
+        providerNames << 'ldapAuthProvider'
+    } } }
+
+    grails { plugin { springsecurity { ldap {
+        active = true
+
+        context {
+            // Address of the LDAP server
+            server = 'ldap://openldap:389'
+            // Distinguished Name (DN) to authenticate with
+            managerDn = 'cn=admin,dc=etriks,dc=eu'
+            // Password to authenticate with
+            managerPassword = 'admin'
+            // Whether or not integrate internal roles. Blurry notion, documentation missing
+            allowInternaRoles = 'false'
+        }
+
+        search {
+            // Context name to search in, relative to the base of the configured ContextSource, e.g. 'dc=example,dc=com', 'ou=users,dc=example,dc=com'
+            base = 'dc=etriks,dc=eu'
+            // The filter expression used in the user search
+            filter = '(uid={0})'
+        }
+
+        // Names of attribute ids to return; use null to return all and an empty list to return none
+        authenticator.attributesToReturn = ['uid', 'mail', 'cn']
+
+        authorities {
+            // The base DN from which the search for group membership should be performed
+            groupSearchBase = 'ou=transmart,dc=etriks,dc=eu'
+            // The pattern to be used for the user search. {0} is the user's DN
+            groupSearchFilter = 'memberUid={1}'
+            // Whether PartialResultExceptions should be ignored in searches, typically used with Active Directory since AD servers often have a problem with referrals
+            ignorePartialResultException = true
+            // Whether to infer roles based on group membership
+            retrieveGroupRoles = true
+            // Whether to retrieve additional roles from the database using the User/Role many-to-many
+            retrieveDatabaseRoles = false
+        }
+} } } } }
+
+/* } } } */
+
+
 //{{{ SAML Configuration
 
 if (samlEnabled) {
@@ -545,7 +646,7 @@ if (samlEnabled) {
             /* {{{ Service provider details (we) */
             sp {
                 // ID of the Service Provider
-                id = "gustavo-transmart"
+                id = "transmart"
 
                 // URL of the service provider. This should be autodected, but it isn't
                 url = "http://localhost:8080/transmart"
@@ -564,7 +665,7 @@ if (samlEnabled) {
             // retrieving it from the provider on startup to prevent transmart from
             // being unable to start due to provider being down. A copy will still be
             // periodically fetched from the provider
-            idp.metadataFile = '/home/glopes/idp-local-metadata.xml'
+            idp.metadataFile = '/root/idp-local-metadata.xml'
 
             /* {{{ Keystore details */
             keystore {
@@ -573,7 +674,7 @@ if (samlEnabled) {
                 //    -keystore transmart.jks -storepass changeit \
                 //    -validity 3602 -keysize 2048
                 // Location of the keystore. You can use other schemes, like classpath:resource/samlKeystore.jks
-                file = 'file:///home/glopes/transmart.jks'
+                file = 'file:///root/transmart.jks'
 
                 // keystore's storepass
                 password="changeit"
@@ -641,7 +742,12 @@ if (gwavaEnabled) {
         gwavaInstance = 'transmartstg'
         transmart.url = transmartURL - ~'\\/$'
    } } } }
-   com { recomdata { rwg { qqplots {
+   com { recomdata { rwg {
+        qqplots {
+            cacheImages = new File(jobsDirectory, 'cachedQQplotImages').toString()
+        }
+        manhattanplots {
+            cacheImages = new File(jobsDirectory, 'cachedManhattanplotImages').toString()
        cacheImages = new File(jobsDirectory, 'cachedQQplotImages').toString()
    } } } }
 }
@@ -662,7 +768,7 @@ com.rwg.solr.update.path = '/solr/browse/dataimport/'
 com.recomdata.solr.baseURL = "${com.rwg.solr.scheme}://${com.rwg.solr.host}" +
                              "${new File(com.rwg.solr.browse.path).parent}"
 
-def fileStoreDirectory = new File(System.getenv('HOME'), '.grails/transmart-filestore')
+def fileStoreDirectory = new File(System.getProperty("user.home"), '.grails/transmart-filestore')
 def fileImportDirectory = new File(System.getProperty("java.io.tmpdir"), 'transmart-fileimport')
 com.recomdata.FmFolderService.filestoreDirectory = fileStoreDirectory.absolutePath
 com.recomdata.FmFolderService.importDirectory = fileImportDirectory.absolutePath
@@ -708,10 +814,118 @@ com { recomdata { solr {
     maxRows = 10000
 }}}
 
-org.transmart.configFine = true
+/* }}} */
+
+/* {{{ Metacore analytics */
+
+com.thomsonreuters.transmart.metacoreAnalyticsEnable = true
+/* with no other settings defined, these URLs are used.
+ The demoEnrichmentURL default in the 16.1 metacore plugin code
+ is obsolete so the correct URL must be defined here. */
+com.thomsonreuters.transmart.demoEnrichmentURL = "http://pathwaymaps.com"
+com.thomsonreuters.transmart.demoMapBaseURL = "http://pathwaymaps.com/maps/"
+
+/* this value is defined automatically to 'demo', 'system' or 'user' */
+//com.thomsonreuters.transmart.metacoreSettingsMode = "demo"
+
+/* these settings are used to override the demo settings */
+//com.thomsonreuters.transmart.metacoreURL = "http://localhost/"
+//com.thomsonreuters.transmart.metacoreDefaultLogin = ""
+//com.thomsonreuters.transmart.metacoreDefaultPassword = ""
+//com.thomsonreuters.transmart.metacoreLogin = ""
+//com.thomsonreuters.transmart.metacorePassword = ""
+
+/* }}} */
+
+/* {{{ galaxy export plugin */
+
+com.galaxy.export.galaxyEnabled = true
+com.galaxy.export.galaxyURL = "http://usegalaxy.org/"
 
 /* }}} */
 
 // I002 – Insertion point 'end'
+
+
+// {{{ Personalization
+// Project name shown on the welcome page
+//com.recomdata.projectName = "MyProject"
+// com.recomdata.projectURL = "http://myproject.org/"
+// com.recomdata.projectLogo = "/myprojectbanner.jpg"
+
+// name and URL of the supporter entity shown on the welcome page
+//com.recomdata.providerName = "tranSMART Foundation"
+//com.recomdata.providerURL = "http://www.transmartfoundation.org"
+//com.recomdata.providerLogo = "/transmart/static/images/transmartlogo.jpg"
+
+// Contact e-mail
+//com.recomdata.contactUs = "support@mycompany.com"
+//com.recomdata.adminEmail = "support@mycompany.com"
+// }}}
+
+// Password strength criteria, please change description accordingly
+//com.recomdata.passwordstrength.pattern = ~/^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/
+
+// Password strength regex that is used to test user's passwords that are entered by themselves.
+// Take care to change org.transmartproject.app.user.ChangePasswordCommand.newPassword.lowPasswordStrength
+// variable inside messages.properties file of web app.
+/*
+user.password.strength.regex = '''(?x)
+^
+(?=.*[A-Z])      #Ensure string has an uppercase letter.
+(?=.*[!@\#$&*]) #Ensure string has one special case letter.
+(?=.*[0-9])      #Ensure string has a digit.
+.{8,}            #Ensure string length is not less then 8.
+$'''
+*/
+
+//Alternative color scheme for aCGH BED tracks.
+//Current colors are captured from cghCall R package.
+//Although do not correspond exactly.
+/*
+dataExport {
+    bed {
+        acgh {
+            rgbColorScheme {
+                //white
+                invalid       = [255, 255, 255]
+                //red
+                loss          = [205,   0,   0]
+                //dark
+                normal        = [ 10,  10,  10]
+                //green
+                gain          = [  0, 255,   0]
+                //dark green
+                amplification = [  0, 100,   0]
+            }
+        }
+    }
+}
+*/
+
+// Password strength description, please change according to pattern
+//com.recomdata.passwordstrength.description =
+//    'It should contain a minimum of 8 characters including at least ' +
+//    '1 upper and 1 lower case letter, 1 digit and 1 special character.'
+
+/* {{{ Help configuration */
+
+org { transmartproject { helpUrls {
+    index = "$transmartURL"+"manual/"
+    heatMap = "$transmartURL"+"manual/advanced_analysis_R_export.html#heatmap"
+}}}
+    		 
+
+/* {{{ I2B2 joint platform configuration */
+
+// If true, tranSMART will accept data loaded by I2B2 as study 'I2B2'
+org.transmart.i2b2.view.enable = true
+
+/* }}} */
+
+// You MUST leave this at the end
+// Do not move it up, otherwise syntax errors may not be detected
+
+org.transmart.configFine = true
 
 // vim: set fdm=marker et ts=4 sw=4 filetype=groovy ai:
