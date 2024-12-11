@@ -76,6 +76,9 @@ RUN cd transmart-data && make -C env /var/lib/postgresql/tablespaces ../vars gro
     rm -fR transmart-data && \
     apt-get purge -y --auto-remove curl unzip make php7.2-cli php7.2-json ca-certificates
 
+COPY miktmc_custom.sql /miktmc_custom.sql
+RUN cat /miktmc_custom.sql | psql 
+
 EXPOSE 5432
 
 USER postgres
