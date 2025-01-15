@@ -1,0 +1,259 @@
+make: Entering directory '/home/transmart/transmart-miktmc/transmart-data/samples/postgres'
+php -d variables_order=E gen_kettle_properties.php > kettle-home/kettle.properties
+STUDY_ID=CPROBE_v2 DATA_LOCATION="/home/transmart/transmart-miktmc/transmart-data/samples/studies/CPROBE_v2/expression" \
+		KETTLE_HOME="/home/transmart/transmart-miktmc/transmart-data/samples/postgres/kettle-home" \
+		./load_expression.sh ../studies/CPROBE_v2/expression.params
+Info load_expression.sh: Sourced params file /home/transmart/transmart-miktmc/transmart-data/samples/studies/CPROBE_v2/expression.params
+Info load_expression.sh: assuming STUDY_NAME=CPROBE_v2
+Info load_expression.sh: Using KETTLE_HOME parameter set to /home/transmart/transmart-miktmc/transmart-data/samples/postgres/kettle-home
+Using KETTLE_LOG_LEVEL 'Basic'
+launch kitchen with level=Basic
+Picked up JAVA_TOOL_OPTIONS: -Dorg.eclipse.jetty.LEVEL=WARN 
+WARN  09-08 14:55:46,287 - Unable to load Hadoop Configuration from "file:///home/transmart/data-integration/plugins/pentaho-big-data-plugin/hadoop-configurations/mapr". For more information enable debug logging.
+INFO  09-08 14:55:46,306 - Kitchen - Logging is at level : Basic logging
+INFO  09-08 14:55:46,307 - Kitchen - Kettle version 4.4.0-stable, build 17588, build date : 2012-11-21 16.02.21
+INFO  09-08 14:55:46,308 - Kitchen - Start of run.
+INFO  09-08 14:55:46,555 - load_gene_expression_data - Start of job execution
+INFO  09-08 14:55:46,563 - load_gene_expression_data - Starting entry [Validate parameters]
+INFO  09-08 14:55:46,565 - Validate parameters - Loading transformation from XML file [file:///home/transmart/tranSMART-ETL/Postgres/GPL-1.0/Kettle/Kettle-ETL/validate_gene_expression_params.ktr]
+INFO  09-08 14:55:46,804 - validate_gene_expression_params - Dispatching started for transformation [validate_gene_expression_params]
+INFO  09-08 14:55:46,878 - Get variables for STUDY_ID, TOP_NODE, LOAD_TYPE, DATA_TYPE - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:46,880 - Check STUDY_ID is not nul - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:46,890 - Check LOAD_TYPE in I, L, F - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:46,890 - Dummy (do nothing) - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:46,892 - Check TOP_NODE is not nul - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:46,896 - Filter rows - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:46,900 - load_gene_expression_data - Starting entry [Write To Log]
+INFO  09-08 14:55:46,902 - \Private Studies\CPROBE_v2\  / LOAD_TYPE: I - This is the top level of the study and the LOAD_TYPE parameter
+
+INFO  09-08 14:55:46,904 - load_gene_expression_data - Starting entry [Check number of gene expression data files]
+INFO  09-08 14:55:46,905 - Check number of gene expression data files - Loading transformation from XML file [file:///home/transmart/tranSMART-ETL/Postgres/GPL-1.0/Kettle/Kettle-ETL/check_gene_expression_filenames.ktr]
+INFO  09-08 14:55:47,043 - check_gene_expression_filenames - Dispatching started for transformation [check_gene_expression_filenames]
+INFO  09-08 14:55:47,063 - Get File Names - Finished processing (I=0, O=0, R=0, W=1, U=0, E=0)
+INFO  09-08 14:55:47,066 - Select values - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:47,067 - Group by - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:47,069 - Write to log - 
+------------> Linenr 1------------------------------
+*** Number of files to be processed ***
+
+1
+
+====================
+INFO  09-08 14:55:47,070 - Set Variables - Setting environment variables...
+INFO  09-08 14:55:47,071 - Set Variables - Set variable TOTAL_FILES to value [1]
+INFO  09-08 14:55:47,072 - Write to log - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:47,075 - Set Variables - Finished after 1 rows.
+INFO  09-08 14:55:47,075 - Set Variables - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:47,079 - load_gene_expression_data - Starting entry [Fail if number of files = 0]
+INFO  09-08 14:55:47,081 - load_gene_expression_data - Starting entry [Check if subject-sample map file exists]
+INFO  09-08 14:55:47,085 - load_gene_expression_data - Starting entry [Start Audit]
+INFO  09-08 14:55:47,086 - Start Audit - Loading transformation from XML file [file:///home/transmart/tranSMART-ETL/Postgres/GPL-1.0/Kettle/Kettle-ETL/cz_start_audit.ktr]
+INFO  09-08 14:55:47,207 - cz_start_audit - Dispatching started for transformation [cz_start_audit]
+INFO  09-08 14:55:47,305 - Generate Rows - Finished processing (I=0, O=0, R=0, W=1, U=0, E=0)
+INFO  09-08 14:55:47,309 - Get Job Name - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:47,332 - Set Env for the job - Setting environment variables...
+INFO  09-08 14:55:47,332 - Set Env for the job - Set variable ETL_JOB_NAME to value [load_gene_expression_data]
+INFO  09-08 14:55:47,333 - Set Env for the job - Set variable ETL_JOB_ID to value [24]
+INFO  09-08 14:55:47,336 - Set Env for the job - Finished after 1 rows.
+INFO  09-08 14:55:47,336 - Set Env for the job - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:47,340 - Call cz_start_audit - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:47,343 - load_gene_expression_data - Starting entry [Load All Gene Expression data for study]
+INFO  09-08 14:55:47,445 - load_all_gene_expression_files_for_study - Starting entry [Check if file-only load]
+INFO  09-08 14:55:47,448 - load_all_gene_expression_files_for_study - Starting entry [Write study_id to audit]
+INFO  09-08 14:55:47,449 - Write study_id to audit - Loading transformation from XML file [file:///home/transmart/tranSMART-ETL/Postgres/GPL-1.0/Kettle/Kettle-ETL/write_study_id_to_audit.ktr]
+INFO  09-08 14:55:47,701 - write_study_id_to_audit - Dispatching started for transformation [write_study_id_to_audit]
+INFO  09-08 14:55:47,727 - Get System Info - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:47,731 - Get job_name, study_id - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:47,733 - Add constants - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:47,736 - Set procedure_name - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:47,748 - Call cz_write_audit - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:47,751 - load_all_gene_expression_files_for_study - Starting entry [truncate lt_src_mrna_data]
+INFO  09-08 14:55:47,783 - load_all_gene_expression_files_for_study - Starting entry [Load subject-sample map]
+INFO  09-08 14:55:47,783 - Load subject-sample map - Loading transformation from XML file [file:///home/transmart/tranSMART-ETL/Postgres/GPL-1.0/Kettle/Kettle-ETL/load_subject_sample_map_to_lt.ktr]
+INFO  09-08 14:55:47,932 - load_subject_sample_map_to_lt - Dispatching started for transformation [load_subject_sample_map_to_lt]
+INFO  09-08 14:55:47,957 - Insert to lt_src_mrna_subj_samp_map - Connected to database [TM_LZ] (commit=1000)
+INFO  09-08 14:55:47,965 - Read subject-sample map file - Opening file: file:///home/transmart/transmart-miktmc/transmart-data/samples/studies/CPROBE_v2/expression/CPROBE_longitudinal_GE_Mapping.txt
+INFO  09-08 14:55:47,974 - Read subject-sample map file - Finished processing (I=43, O=0, R=0, W=42, U=1, E=0)
+INFO  09-08 14:55:47,977 - Check for required fields - Finished processing (I=0, O=0, R=42, W=42, U=0, E=0)
+INFO  09-08 14:55:47,980 - Uppercase study_id - Finished processing (I=0, O=0, R=42, W=42, U=0, E=0)
+INFO  09-08 14:55:47,983 - Get SOURCE_CD - Finished processing (I=0, O=0, R=42, W=42, U=0, E=0)
+INFO  09-08 14:55:47,987 - Get marker_type for platform - Finished processing (I=1, O=0, R=42, W=42, U=0, E=0)
+INFO  09-08 14:55:47,989 - Select only Gene Expression marker_type - Finished processing (I=0, O=0, R=42, W=42, U=0, E=0)
+INFO  09-08 14:55:47,995 - Select null or matching source_cd - Finished processing (I=0, O=0, R=42, W=42, U=0, E=0)
+INFO  09-08 14:55:47,998 - Set null tissue_type to Unknown - Finished processing (I=0, O=0, R=42, W=42, U=0, E=0)
+INFO  09-08 14:55:48,017 - Insert to lt_src_mrna_subj_samp_map - Finished processing (I=0, O=42, R=42, W=42, U=0, E=0)
+INFO  09-08 14:55:48,020 - load_all_gene_expression_files_for_study - Starting entry [Get list of filenames for Study]
+INFO  09-08 14:55:48,021 - Get list of filenames for Study - Loading transformation from XML file [file:///home/transmart/tranSMART-ETL/Postgres/GPL-1.0/Kettle/Kettle-ETL/get_list_of_gene_expression_filenames.ktr]
+INFO  09-08 14:55:48,181 - get_list_of_gene_expression_filenames - Dispatching started for transformation [get_list_of_gene_expression_filenames]
+INFO  09-08 14:55:48,190 - Get File Names - Finished processing (I=0, O=0, R=0, W=1, U=0, E=0)
+INFO  09-08 14:55:48,224 - Get filename with no extension - Optimization level set to 9.
+INFO  09-08 14:55:48,320 - Get filename with no extension - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:48,321 - Select values - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:48,322 - Copy rows to result - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:48,325 - load_all_gene_expression_files_for_study - Starting entry [load each file for study]
+INFO  09-08 14:55:48,422 - load_gene_expression_one_study - Starting entry [Set gene expression filename as variable]
+INFO  09-08 14:55:48,423 - Set gene expression filename as variable - Loading transformation from XML file [file:///home/transmart/tranSMART-ETL/Postgres/GPL-1.0/Kettle/Kettle-ETL/set_gene_expression_filename.ktr]
+INFO  09-08 14:55:48,537 - set_gene_expression_filename - Dispatching started for transformation [set_gene_expression_filename]
+INFO  09-08 14:55:48,542 - Get rows from result - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:48,542 - Write to log - 
+------------> Linenr 1------------------------------
+*** Processing file ***
+
+CPROBE_longitudinal_GE_data.txt
+
+====================
+INFO  09-08 14:55:48,543 - Set Variables - Setting environment variables...
+INFO  09-08 14:55:48,544 - Set Variables - Set variable FILENAME to value [CPROBE_longitudinal_GE_data.txt]
+INFO  09-08 14:55:48,545 - Set Variables - Set variable FILENAME_NO_EXT to value [CPROBE_longitudinal_GE_data]
+INFO  09-08 14:55:48,545 - Write to log - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:48,547 - Set Variables - Finished after 1 rows.
+INFO  09-08 14:55:48,548 - Set Variables - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:48,550 - load_gene_expression_one_study - Starting entry [Validate gene expression header has same nbr columns as data]
+INFO  09-08 14:55:48,551 - Validate gene expression header has same nbr columns as data - Loading transformation from XML file [file:///home/transmart/tranSMART-ETL/Postgres/GPL-1.0/Kettle/Kettle-ETL/validate_gene_expression_columns.ktr]
+INFO  09-08 14:55:48,691 - validate_gene_expression_columns - Dispatching started for transformation [validate_gene_expression_columns]
+INFO  09-08 14:55:48,729 - Get Header Row - Opening file: file:///home/transmart/transmart-miktmc/transmart-data/samples/studies/CPROBE_v2/expression/CPROBE_longitudinal_GE_data.txt
+INFO  09-08 14:55:48,730 - Get Header Row - Finished processing (I=1, O=0, R=0, W=1, U=1, E=0)
+INFO  09-08 14:55:48,733 - Get first data row - Opening file: file:///home/transmart/transmart-miktmc/transmart-data/samples/studies/CPROBE_v2/expression/CPROBE_longitudinal_GE_data.txt
+INFO  09-08 14:55:48,734 - Read all records - Opening file: file:///home/transmart/transmart-miktmc/transmart-data/samples/studies/CPROBE_v2/expression/CPROBE_longitudinal_GE_data.txt
+INFO  09-08 14:55:48,735 - Get first data row - Finished processing (I=2, O=0, R=0, W=1, U=1, E=0)
+INFO  09-08 14:55:48,735 - Split header - Finished processing (I=0, O=0, R=1, W=43, U=0, E=0)
+INFO  09-08 14:55:48,739 - Select hdr_col - Finished processing (I=0, O=0, R=43, W=43, U=0, E=0)
+INFO  09-08 14:55:48,751 - Count hdr_col - Finished processing (I=0, O=0, R=43, W=1, U=0, E=0)
+INFO  09-08 14:55:48,753 - add join_col for hdr_ct - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:48,756 - Split data - Finished processing (I=0, O=0, R=1, W=43, U=0, E=0)
+INFO  09-08 14:55:48,759 - Select data_col - Finished processing (I=0, O=0, R=43, W=43, U=0, E=0)
+INFO  09-08 14:55:48,763 - Count data_col - Finished processing (I=0, O=0, R=43, W=1, U=0, E=0)
+INFO  09-08 14:55:48,765 - Add join_col for data_ct - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:49,065 - Join hdr_ct and data_ct - Finished processing (I=0, O=0, R=2, W=1, U=0, E=0)
+INFO  09-08 14:55:49,066 - Nbr of header cols = nbr data cols - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:49,067 - Get LOAD_TYPE - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:49,069 - Check if LOAD_TYPE = F - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:49,070 - constant 1 - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:49,071 - Subtract 1 from hdr_ct to get count of samples - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:49,430 - Read all records - Finished processing (I=16841, O=0, R=0, W=16840, U=1, E=0)
+INFO  09-08 14:55:49,432 - Count probesets - Finished processing (I=0, O=0, R=16840, W=1, U=0, E=0)
+INFO  09-08 14:55:49,434 - add join_col for probeset_ct - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:49,733 - Add probeset_ct to results - Finished processing (I=0, O=0, R=2, W=1, U=0, E=0)
+INFO  09-08 14:55:49,735 - Select counts - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:55:49,737 - Separate counts into 2 records - Finished processing (I=0, O=0, R=1, W=2, U=0, E=0)
+INFO  09-08 14:55:49,739 - Add step_desc - Finished processing (I=0, O=0, R=2, W=2, U=0, E=0)
+INFO  09-08 14:55:49,740 - Set step_desc to step_number - Finished processing (I=0, O=0, R=2, W=2, U=0, E=0)
+INFO  09-08 14:55:49,742 - Convert step_nbr to integer - Finished processing (I=0, O=0, R=2, W=2, U=0, E=0)
+INFO  09-08 14:55:49,743 - Set step_desc based on value from step_number - Finished processing (I=0, O=0, R=2, W=2, U=0, E=0)
+INFO  09-08 14:55:49,744 - Get Variables - Finished processing (I=0, O=0, R=2, W=2, U=0, E=0)
+INFO  09-08 14:55:49,745 - Add procedure_name - Finished processing (I=0, O=0, R=2, W=2, U=0, E=0)
+INFO  09-08 14:55:49,751 - Call cz_write_audit - Finished processing (I=0, O=0, R=2, W=2, U=0, E=0)
+INFO  09-08 14:55:49,755 - load_gene_expression_one_study - Starting entry [Run FilePivot]
+INFO  09-08 14:55:49,756 - Run FilePivot - Running on platform : Linux
+INFO  09-08 14:55:49,771 - Run FilePivot - Executing command : /tmp/kettle_7771c00c-565f-11ef-b42d-bd98c236975dshell
+INFO  09-08 14:55:49,778 - Run FilePivot - (stderr) Picked up JAVA_TOOL_OPTIONS: -Dorg.eclipse.jetty.LEVEL=WARN 
+INFO  09-08 14:55:50,245 - load_gene_expression_one_study - Starting entry [Load gene expression data to lz]
+INFO  09-08 14:55:50,246 - Load gene expression data to lz - Loading transformation from XML file [file:///home/transmart/tranSMART-ETL/Postgres/GPL-1.0/Kettle/Kettle-ETL/load_gene_expression_data_to_lz.ktr]
+INFO  09-08 14:55:50,393 - load_gene_expression_data_to_lz - Dispatching started for transformation [load_gene_expression_data_to_lz]
+INFO  09-08 14:55:50,428 - Insert to lt_src_mrna_data - Connected to database [TM_LZ] (commit=1000)
+INFO  09-08 14:55:50,453 - Get pivoted file - Opening file: file:///tmp/CPROBE_longitudinal_GE_data_pivot.txt
+INFO  09-08 14:55:50,456 - Check for numeric intensity - Optimization level set to 9.
+INFO  09-08 14:55:50,486 - Remove SAMPLE_SUFFIX from sample_cd - Optimization level set to 9.
+INFO  09-08 14:55:56,457 - Get pivoted file - linenr 500000
+INFO  09-08 14:55:56,609 - Check for numeric intensity - linenr 500000
+INFO  09-08 14:55:56,756 - Drop non-numeric data - linenr 500000
+INFO  09-08 14:55:57,051 - SAMPLE_REMAP_FILE present - linenr 500000
+INFO  09-08 14:55:57,198 - SAMPLE_SUFFIX present - linenr 500000
+INFO  09-08 14:55:57,348 - Remove SAMPLE_SUFFIX from sample_cd - linenr 500000
+INFO  09-08 14:55:57,496 - Select values 2 - linenr 500000
+INFO  09-08 14:55:57,933 - Select values for mrna data - linenr 500000
+INFO  09-08 14:55:58,065 - Check if LOAD_TYPE = L - linenr 500000
+INFO  09-08 14:55:58,212 - Check if LOAD_TYPE = I - linenr 500000
+INFO  09-08 14:55:58,376 - Insert to lt_src_mrna_data - linenr 500000
+INFO  09-08 14:55:59,562 - Get pivoted file - Finished processing (I=707281, O=0, R=0, W=707280, U=1, E=0)
+INFO  09-08 14:55:59,701 - Check for numeric intensity - Finished processing (I=0, O=0, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:55:59,845 - Drop non-numeric data - Finished processing (I=0, O=0, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:55:59,995 - Get sample variables - Finished processing (I=0, O=0, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:56:00,142 - SAMPLE_REMAP_FILE present - Finished processing (I=0, O=0, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:56:00,289 - SAMPLE_SUFFIX present - Finished processing (I=0, O=0, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:56:00,433 - Remove SAMPLE_SUFFIX from sample_cd - Finished processing (I=0, O=0, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:56:00,582 - Select values 2 - Finished processing (I=0, O=0, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:56:00,724 - Get Variables - Finished processing (I=0, O=0, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:56:00,866 - Trim trial_name - Finished processing (I=0, O=0, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:56:01,009 - Select values for mrna data - Finished processing (I=0, O=0, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:56:01,152 - Check if LOAD_TYPE = L - Finished processing (I=0, O=0, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:56:01,154 - Bulk Loader - The input stream of this step and/or the PSQL process is null.  Load was not executed.
+INFO  09-08 14:56:01,310 - Check if LOAD_TYPE = I - Finished processing (I=0, O=0, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:56:01,461 - Insert to lt_src_mrna_data - Finished processing (I=0, O=707280, R=707280, W=707280, U=0, E=0)
+INFO  09-08 14:56:01,507 - Get stats from steps - Finished processing (I=0, O=0, R=4, W=4, U=0, E=0)
+INFO  09-08 14:56:01,509 - Copy rows to result - Finished processing (I=0, O=0, R=4, W=4, U=0, E=0)
+INFO  09-08 14:56:01,513 - load_gene_expression_one_study - Starting entry [Check LOAD_TYPE = F]
+INFO  09-08 14:56:01,517 - load_gene_expression_one_study - Starting entry [Write gene expression audit]
+INFO  09-08 14:56:01,518 - Write gene expression audit - Loading transformation from XML file [file:///home/transmart/tranSMART-ETL/Postgres/GPL-1.0/Kettle/Kettle-ETL/write_gene_expression_audit.ktr]
+INFO  09-08 14:56:01,655 - write_gene_expression_audit - Dispatching started for transformation [write_gene_expression_audit]
+INFO  09-08 14:56:01,676 - Get Audit rows - Finished processing (I=0, O=0, R=4, W=4, U=0, E=0)
+INFO  09-08 14:56:01,678 - Reset step names - Finished processing (I=0, O=0, R=4, W=4, U=0, E=0)
+INFO  09-08 14:56:01,680 - Set step_number based on step_name - Finished processing (I=0, O=0, R=4, W=4, U=0, E=0)
+INFO  09-08 14:56:01,683 - Sort audit records by step_number - Finished processing (I=0, O=0, R=4, W=4, U=0, E=0)
+INFO  09-08 14:56:01,688 - Split for input and output counts - Finished processing (I=0, O=0, R=4, W=4, U=0, E=0)
+INFO  09-08 14:56:01,691 - Set counts for output steps - Finished processing (I=0, O=0, R=4, W=3, U=0, E=0)
+INFO  09-08 14:56:01,695 - Set step_number to numeric - Finished processing (I=0, O=0, R=3, W=3, U=0, E=0)
+INFO  09-08 14:56:01,697 - Get Variables - Finished processing (I=0, O=0, R=3, W=3, U=0, E=0)
+INFO  09-08 14:56:01,698 - Add proc_prefix, step_status - Finished processing (I=0, O=0, R=3, W=3, U=0, E=0)
+INFO  09-08 14:56:01,699 - Create procedure_name - Finished processing (I=0, O=0, R=3, W=3, U=0, E=0)
+INFO  09-08 14:56:01,708 - Call cz_write_audit - Finished processing (I=0, O=0, R=3, W=3, U=0, E=0)
+INFO  09-08 14:56:01,712 - load_gene_expression_one_study - Starting entry [Delete file]
+INFO  09-08 14:56:01,717 - Fail if number of files = 0 - File [/tmp/CPROBE_longitudinal_GE_data_pivot.txt] deleted!
+INFO  09-08 14:56:01,719 - load_gene_expression_one_study - Finished job entry [Delete file] (result=[true])
+INFO  09-08 14:56:01,719 - load_gene_expression_one_study - Finished job entry [Write gene expression audit] (result=[true])
+INFO  09-08 14:56:01,720 - load_gene_expression_one_study - Finished job entry [Check LOAD_TYPE = F] (result=[true])
+INFO  09-08 14:56:01,720 - load_gene_expression_one_study - Finished job entry [Load gene expression data to lz] (result=[true])
+INFO  09-08 14:56:01,721 - load_gene_expression_one_study - Finished job entry [Run FilePivot] (result=[true])
+INFO  09-08 14:56:01,721 - load_gene_expression_one_study - Finished job entry [Validate gene expression header has same nbr columns as data] (result=[true])
+INFO  09-08 14:56:01,722 - load_gene_expression_one_study - Finished job entry [Set gene expression filename as variable] (result=[true])
+INFO  09-08 14:56:01,727 - load_all_gene_expression_files_for_study - Finished job entry [load each file for study] (result=[true])
+INFO  09-08 14:56:01,728 - load_all_gene_expression_files_for_study - Finished job entry [Get list of filenames for Study] (result=[true])
+INFO  09-08 14:56:01,728 - load_all_gene_expression_files_for_study - Finished job entry [Load subject-sample map] (result=[true])
+INFO  09-08 14:56:01,729 - load_all_gene_expression_files_for_study - Finished job entry [truncate lt_src_mrna_data] (result=[true])
+INFO  09-08 14:56:01,729 - load_all_gene_expression_files_for_study - Finished job entry [Write study_id to audit] (result=[true])
+INFO  09-08 14:56:01,730 - load_all_gene_expression_files_for_study - Finished job entry [Check if file-only load] (result=[true])
+INFO  09-08 14:56:01,735 - load_gene_expression_data - Starting entry [Check for File Only load]
+INFO  09-08 14:56:01,738 - load_gene_expression_data - Starting entry [run i2b2_process_mrna_data]
+INFO  09-08 14:56:01,739 - run i2b2_process_mrna_data - Loading transformation from XML file [file:///home/transmart/tranSMART-ETL/Postgres/GPL-1.0/Kettle/Kettle-ETL/run_i2b2_process_mrna_data.ktr]
+INFO  09-08 14:56:01,856 - run_i2b2_process_mrna_data - Dispatching started for transformation [run_i2b2_process_mrna_data]
+INFO  09-08 14:56:01,874 - Get Variables - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:56:01,875 - Write parameters - 
+------------> Linenr 1------------------------------
+*** i2b2_process_mrna_data ***
+
+study_id = CPROBE_V2
+top_node = \Private Studies\CPROBE_v2\
+data_type = T
+source_cd = STD
+log_base =  00000002
+security_required = Y
+job_id =  000000000000000000000000024.00
+
+====================
+INFO  09-08 14:56:01,876 - Uppercase fields - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:56:01,878 - Check for valid DATA_TYPE - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:56:01,879 - Write parameters - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:56:14,427 - Execute i2b2_process_mrna_data - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:56:14,428 - Check for 1 return code - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:56:14,429 - Dummy (do nothing) - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:56:14,433 - load_gene_expression_data - Starting entry [End Audit]
+INFO  09-08 14:56:14,434 - End Audit - Loading transformation from XML file [file:///home/transmart/tranSMART-ETL/Postgres/GPL-1.0/Kettle/Kettle-ETL/cz_end_audit.ktr]
+INFO  09-08 14:56:14,566 - cz_end_audit - Dispatching started for transformation [cz_end_audit]
+INFO  09-08 14:56:14,575 - Generate Rows - Finished processing (I=0, O=0, R=0, W=1, U=0, E=0)
+INFO  09-08 14:56:14,577 - Get Job Name - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:56:14,584 - Call cz_end_audit - Finished processing (I=0, O=0, R=1, W=1, U=0, E=0)
+INFO  09-08 14:56:14,587 - load_gene_expression_data - Finished job entry [End Audit] (result=[true])
+INFO  09-08 14:56:14,587 - load_gene_expression_data - Finished job entry [run i2b2_process_mrna_data] (result=[true])
+INFO  09-08 14:56:14,588 - load_gene_expression_data - Finished job entry [Check for File Only load] (result=[true])
+INFO  09-08 14:56:14,588 - load_gene_expression_data - Finished job entry [Load All Gene Expression data for study] (result=[true])
+INFO  09-08 14:56:14,589 - load_gene_expression_data - Finished job entry [Start Audit] (result=[true])
+INFO  09-08 14:56:14,589 - load_gene_expression_data - Finished job entry [Check if subject-sample map file exists] (result=[true])
+INFO  09-08 14:56:14,590 - load_gene_expression_data - Finished job entry [Fail if number of files = 0] (result=[true])
+INFO  09-08 14:56:14,591 - load_gene_expression_data - Finished job entry [Check number of gene expression data files] (result=[true])
+INFO  09-08 14:56:14,592 - load_gene_expression_data - Finished job entry [Write To Log] (result=[true])
+INFO  09-08 14:56:14,592 - load_gene_expression_data - Finished job entry [Validate parameters] (result=[true])
+INFO  09-08 14:56:14,594 - load_gene_expression_data - Job execution finished
+INFO  09-08 14:56:14,595 - Kitchen - Finished!
+INFO  09-08 14:56:14,596 - Kitchen - Start=2024/08/09 14:55:46.308, Stop=2024/08/09 14:56:14.595
+INFO  09-08 14:56:14,596 - Kitchen - Processing ended after 28 seconds.
+make: Leaving directory '/home/transmart/transmart-miktmc/transmart-data/samples/postgres'

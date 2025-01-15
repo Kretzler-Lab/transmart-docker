@@ -1,0 +1,13 @@
+make: Entering directory '/home/transmart/transmart-miktmc/transmart-data/samples/postgres'
+make -C ../studies Brain_array_alt_CDF_v10/annotation.params
+make[1]: Entering directory '/home/transmart/transmart-miktmc/transmart-data/samples/studies'
+make Brain_array_alt_CDF_v10/Brain_array_alt_CDF_v10_annotation.tar.xz
+make[2]: Entering directory '/home/transmart/transmart-miktmc/transmart-data/samples/studies'
+make[2]: *** No rule to make target 'Brain_array_alt_CDF_v10/Brain_array_alt_CDF_v10_annotation.tar.xz'.  Stop.
+make[2]: Leaving directory '/home/transmart/transmart-miktmc/transmart-data/samples/studies'
+Makefile:49: recipe for target 'Brain_array_alt_CDF_v10/annotation.params' failed
+make[1]: *** [Brain_array_alt_CDF_v10/annotation.params] Error 2
+make[1]: Leaving directory '/home/transmart/transmart-miktmc/transmart-data/samples/studies'
+../common/makefile.inc:83: recipe for target '../studies/Brain_array_alt_CDF_v10/annotation.params' failed
+make: *** [../studies/Brain_array_alt_CDF_v10/annotation.params] Error 2
+make: Leaving directory '/home/transmart/transmart-miktmc/transmart-data/samples/postgres'
