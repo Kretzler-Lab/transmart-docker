@@ -1,0 +1,16 @@
+DELETE FROM i2b2metadata.i2b2_tags WHERE path=
+  (SELECT c_fullname FROM i2b2metadata.i2b2
+  WHERE sourcesystem_cd='CUREGN_V26' ORDER BY c_hlevel ASC LIMIT 1);
+DELETE FROM i2b2demodata.concept_dimension WHERE sourcesystem_cd='CUREGN_V26';
+DELETE FROM i2b2metadata.tm_concept_counts WHERE concept_path IN
+  (SELECT c_fullname FROM i2b2metadata.i2b2 WHERE sourcesystem_cd='CUREGN_V26');
+DELETE FROM i2b2demodata.patient_dimension WHERE sourcesystem_cd LIKE 'CUREGN_V26:%';
+DELETE FROM i2b2demodata.observation_fact WHERE sourcesystem_cd='CUREGN_V26';
+DELETE FROM i2b2demodata.patient_trial WHERE trial='CUREGN_V26';
+DELETE FROM deapp.de_subject_microarray_data WHERE trial_name='CUREGN_V26';
+DELETE FROM deapp.de_subject_sample_mapping WHERE TRIAL_NAME='CUREGN_V26';
+DELETE FROM i2b2metadata.i2b2 WHERE sourcesystem_cd='CUREGN_V26';
+DELETE FROM i2b2metadata.i2b2_secure WHERE c_fullname='CUREGN_V26';
+DELETE FROM i2b2demodata.encounter_mapping WHERE project_id='CUREGN_V26';
+DELETE FROM deapp.de_subject_metabolomics_data WHERE trial_name='CUREGN_V26';
+DELETE FROM i2b2metadata.tm_trial_nodes WHERE trial='CUREGN_V26';

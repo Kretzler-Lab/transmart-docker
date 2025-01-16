@@ -1,0 +1,59 @@
+# WGCNA is in CRAN but depends on several packages not in cran (impute, GO.db,
+# AnnotationDbi), which is something that really should not happen with a sane
+# repository.
+# Anyway, that's why it is installed here
+required.packages <- c("WGCNA", "impute", "multtest",
+		       "CGHbase", "CGHtest", "CGHtestpar",
+		       "edgeR", "DESeq2", "limma",
+		       "snpStats", "preprocessCore", "GO.db",
+		       "AnnotationDbi", "QDNAseq");
+missing.packages <- function(required) {
+	return(required[
+		!(required %in% installed.packages()[,"Package"])]);
+}
+new.packages <- missing.packages(required.packages);
+if (!length(new.packages))
+	q();
+if (!requireNamespace("BiocManager", quietly = TRUE))
+    install.packages("BiocManager", repos=Sys.getenv("CRAN_MIRROR"))
+BiocManager::install()
+
+biocmanager.packages <-
+		intersect(new.packages, c("impute", "multtest", "CGHbase",
+					  "edgeR", "DESeq2", "limma",
+					  "snpStats", "preprocessCore", "GO.db",
+					  "AnnotationDbi", "QDNAseq"));
+if (length(biocmanager.packages)) {
+	BiocManager::install(biocmanager.packages);
+download.file(url="http://bioconductor.org/packages/release/bioc/src/contrib/QDNAseq_1.36.0.tar.gz",
+	      dest="/tmp/QDNAseq_1.36.0.tar.gz", method="curl");
+install.packages("/tmp/QDNAseq_1.36.0.tar.gz",
+		repos=NULL, type="source");
+}
+
+# Have to change method "internal" to "curl" or similar for latest BioConductor.
+
+if (length(intersect(new.packages, c("CGHtest")))) {
+	download.file(
+			url="http://files.thehyve.net/CGHtest_1.1.tar.gz",
+			dest="/tmp/CGHtest_1.1.tar.gz", method="curl");
+	install.packages("/tmp/CGHtest_1.1.tar.gz",
+			repos=NULL, type="source")
+}
+
+if (length(intersect(new.packages, c("CGHtestpar")))) {
+	download.file(
+			url="http://files.thehyve.net/CGHtestpar_0.0.tar.gz",
+			dest="/tmp/CGHtestpar_0.0.tar.gz", method="curl");
+	install.packages("/tmp/CGHtestpar_0.0.tar.gz",
+			repos=NULL, type="source")
+}
+
+if (length(intersect(new.packages, c("WGCNA")))) {
+	install.packages("WGCNA", repos=Sys.getenv("CRAN_MIRROR"));
+}
+
+if (length(missing.packages(required.packages))) {
+	warning('Some packages not installed');
+	quit(1);
+}

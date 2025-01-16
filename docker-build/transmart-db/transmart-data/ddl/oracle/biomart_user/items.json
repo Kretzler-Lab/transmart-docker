@@ -1,0 +1,437 @@
+{
+  "dependencies" : [ {
+    "child" : {
+      "type" : "FUNCTION",
+      "owner" : "BIOMART_USER",
+      "name" : "BIO_CONCEPT_CODE_UID"
+    },
+    "parents" : [ ]
+  }, {
+    "child" : {
+      "type" : "VIEW",
+      "owner" : "BIOMART_USER",
+      "name" : "BROWSE_ANALYSES_VIEW"
+    },
+    "parents" : [ {
+      "type" : "TABLE",
+      "owner" : "AMAPP",
+      "name" : "AM_TAG_ASSOCIATION"
+    }, {
+      "type" : "TABLE",
+      "owner" : "BIOMART",
+      "name" : "BIO_ASSAY_ANALYSIS"
+    }, {
+      "type" : "TABLE",
+      "owner" : "BIOMART",
+      "name" : "BIO_ASSAY_PLATFORM"
+    }, {
+      "type" : "TABLE",
+      "owner" : "BIOMART",
+      "name" : "BIO_DATA_UID"
+    }, {
+      "type" : "TABLE",
+      "owner" : "FMAPP",
+      "name" : "FM_DATA_UID"
+    }, {
+      "type" : "TABLE",
+      "owner" : "FMAPP",
+      "name" : "FM_FOLDER"
+    }, {
+      "type" : "TABLE",
+      "owner" : "FMAPP",
+      "name" : "FM_FOLDER_ASSOCIATION"
+    } ]
+  }, {
+    "child" : {
+      "type" : "VIEW",
+      "owner" : "BIOMART_USER",
+      "name" : "BROWSE_ASSAYS_VIEW"
+    },
+    "parents" : [ {
+      "type" : "TABLE",
+      "owner" : "AMAPP",
+      "name" : "AM_TAG_ASSOCIATION"
+    }, {
+      "type" : "TABLE",
+      "owner" : "AMAPP",
+      "name" : "AM_TAG_ITEM"
+    }, {
+      "type" : "TABLE",
+      "owner" : "BIOMART",
+      "name" : "BIO_ASSAY_PLATFORM"
+    }, {
+      "type" : "TABLE",
+      "owner" : "BIOMART",
+      "name" : "BIO_DATA_UID"
+    }, {
+      "type" : "TABLE",
+      "owner" : "FMAPP",
+      "name" : "FM_DATA_UID"
+    }, {
+      "type" : "TABLE",
+      "owner" : "FMAPP",
+      "name" : "FM_FOLDER"
+    } ]
+  }, {
+    "child" : {
+      "type" : "VIEW",
+      "owner" : "BIOMART_USER",
+      "name" : "BROWSE_FOLDERS_VIEW"
+    },
+    "parents" : [ {
+      "type" : "TABLE",
+      "owner" : "AMAPP",
+      "name" : "AM_TAG_ASSOCIATION"
+    }, {
+      "type" : "TABLE",
+      "owner" : "FMAPP",
+      "name" : "FM_DATA_UID"
+    }, {
+      "type" : "TABLE",
+      "owner" : "FMAPP",
+      "name" : "FM_FOLDER"
+    } ]
+  }, {
+    "child" : {
+      "type" : "VIEW",
+      "owner" : "BIOMART_USER",
+      "name" : "BROWSE_PROGRAMS_VIEW"
+    },
+    "parents" : [ {
+      "type" : "TABLE",
+      "owner" : "AMAPP",
+      "name" : "AM_TAG_ASSOCIATION"
+    }, {
+      "type" : "TABLE",
+      "owner" : "AMAPP",
+      "name" : "AM_TAG_ITEM"
+    }, {
+      "type" : "TABLE",
+      "owner" : "BIOMART",
+      "name" : "BIO_CONCEPT_CODE"
+    }, {
+      "type" : "TABLE",
+      "owner" : "BIOMART",
+      "name" : "BIO_DATA_UID"
+    }, {
+      "type" : "TABLE",
+      "owner" : "BIOMART",
+      "name" : "BIO_DISEASE"
+    }, {
+      "type" : "TABLE",
+      "owner" : "BIOMART",
+      "name" : "BIO_MARKER"
+    }, {
+      "type" : "TABLE",
+      "owner" : "BIOMART",
+      "name" : "BIO_OBSERVATION"
+    }, {
+      "type" : "TABLE",
+      "owner" : "FMAPP",
+      "name" : "FM_DATA_UID"
+    }, {
+      "type" : "TABLE",
+      "owner" : "FMAPP",
+      "name" : "FM_FOLDER"
+    } ]
+  }, {
+    "child" : {
+      "type" : "VIEW",
+      "owner" : "BIOMART_USER",
+      "name" : "BROWSE_STUDIES_VIEW"
+    },
+    "parents" : [ {
+      "type" : "TABLE",
+      "owner" : "AMAPP",
+      "name" : "AM_TAG_ASSOCIATION"
+    }, {
+      "type" : "TABLE",
+      "owner" : "AMAPP",
+      "name" : "AM_TAG_ITEM"
+    }, {
+      "type" : "TABLE",
+      "owner" : "BIOMART",
+      "name" : "BIO_DATA_UID"
+    }, {
+      "type" : "TABLE",
+      "owner" : "BIOMART",
+      "name" : "BIO_EXPERIMENT"
+    }, {
+      "type" : "TABLE",
+      "owner" : "FMAPP",
+      "name" : "FM_DATA_UID"
+    }, {
+      "type" : "TABLE",
+      "owner" : "FMAPP",
+      "name" : "FM_FOLDER"
+    }, {
+      "type" : "TABLE",
+      "owner" : "FMAPP",
+      "name" : "FM_FOLDER_ASSOCIATION"
+    } ]
+  }, {
+    "child" : {
+      "type" : "TYPE",
+      "owner" : "BIOMART_USER",
+      "name" : "CONCEPT_CD_TAB"
+    },
+    "parents" : [ ]
+  }, {
+    "child" : {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "APPLICATION_SETTINGS"
+    },
+    "parents" : [ ]
+  }, {
+    "child" : {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "CMS_FILE"
+    },
+    "parents" : [ ]
+  }, {
+    "child" : {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "CMS_SECTION"
+    },
+    "parents" : [ ]
+  }, {
+    "child" : {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "GENE_ONTOLOGY"
+    },
+    "parents" : [ ]
+  }, {
+    "child" : {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "GENE_ONTOLOGY_DATA"
+    },
+    "parents" : [ ]
+  }, {
+    "child" : {
+      "type" : "INDEX",
+      "owner" : "BIOMART_USER",
+      "name" : "IDX_GOD_ORGANISM"
+    },
+    "parents" : [ {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "GENE_ONTOLOGY_DATA"
+    } ]
+  }, {
+    "child" : {
+      "type" : "INDEX",
+      "owner" : "BIOMART_USER",
+      "name" : "IDX_GOD_SYMBOL"
+    },
+    "parents" : [ {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "GENE_ONTOLOGY_DATA"
+    } ]
+  }, {
+   "child" : {
+      "type" : "TYPE",
+      "owner" : "BIOMART_USER",
+      "name" : "PATIENTS_TAB"
+    },
+    "parents" : [ ]
+  }, {
+    "child" : {
+      "type" : "TRIGGER",
+      "owner" : "BIOMART_USER",
+      "name" : "TRG_APPLICATION_SETTINGS_ID"
+    },
+    "parents" : [ {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "APPLICATION_SETTINGS"
+    }, {
+      "type" : "SEQUENCE",
+      "owner" : "BIOMART_USER",
+      "name" : "APPLICATION_SETTINGS_ID_SEQ"
+    } ]
+  }, {
+    "child" : {
+      "type" : "TRIGGER",
+      "owner" : "BIOMART_USER",
+      "name" : "TRG_CMS_FILE_ID"
+    },
+    "parents" : [ {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "CMS_FILE"
+    }, {
+      "type" : "SEQUENCE",
+      "owner" : "BIOMART_USER",
+      "name" : "CMS_FILE_ID_SEQ"
+    } ]
+  }, {
+    "child" : {
+      "type" : "TRIGGER",
+      "owner" : "BIOMART_USER",
+      "name" : "TRG_CMS_SECTION_ID"
+    },
+    "parents" : [ {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "CMS_SECTION"
+    }, {
+      "type" : "SEQUENCE",
+      "owner" : "BIOMART_USER",
+      "name" : "CMS_SECTION_ID_SEQ"
+    } ]
+  } ],
+  "fileAssignments" : [ {
+    "item" : {
+      "type" : "FUNCTION",
+      "owner" : "BIOMART_USER",
+      "name" : "BIO_CONCEPT_CODE_UID"
+    },
+    "file" : "biomart_user/functions/bio_concept_code_uid.sql"
+  }, {
+    "item" : {
+      "type" : "VIEW",
+      "owner" : "BIOMART_USER",
+      "name" : "BROWSE_ANALYSES_VIEW"
+    },
+    "file" : "biomart_user/_cross.sql"
+  }, {
+    "item" : {
+      "type" : "VIEW",
+      "owner" : "BIOMART_USER",
+      "name" : "BROWSE_ASSAYS_VIEW"
+    },
+    "file" : "biomart_user/_cross.sql"
+  }, {
+    "item" : {
+      "type" : "VIEW",
+      "owner" : "BIOMART_USER",
+      "name" : "BROWSE_FOLDERS_VIEW"
+    },
+    "file" : "biomart_user/_cross.sql"
+  }, {
+    "item" : {
+      "type" : "VIEW",
+      "owner" : "BIOMART_USER",
+      "name" : "BROWSE_PROGRAMS_VIEW"
+    },
+    "file" : "biomart_user/_cross.sql"
+  }, {
+    "item" : {
+      "type" : "VIEW",
+      "owner" : "BIOMART_USER",
+      "name" : "BROWSE_STUDIES_VIEW"
+    },
+    "file" : "biomart_user/_cross.sql"
+  }, {
+    "item" : {
+      "type" : "TYPE",
+      "owner" : "BIOMART_USER",
+      "name" : "PATIENTS_TAB"
+    },
+    "file" : "biomart_user/_misc.sql"
+  }, {
+    "item" : {
+      "type" : "TYPE",
+      "owner" : "BIOMART_USER",
+      "name" : "CONCEPT_CD_TAB"
+    },
+    "file" : "biomart_user/_misc.sql"
+  }, {
+    "item" : {
+      "type" : "SEQUENCE",
+      "owner" : "BIOMART_USER",
+      "name" : "APPLICATION_SETTINGS_ID_SEQ"
+    },
+    "file" : "biomart_user/_misc.sql"
+  }, {
+    "item" : {
+      "type" : "SEQUENCE",
+      "owner" : "BIOMART_USER",
+      "name" : "CMS_FILE_ID_SEQ"
+    },
+    "file" : "biomart_user/_misc.sql"
+  }, {
+    "item" : {
+      "type" : "SEQUENCE",
+      "owner" : "BIOMART_USER",
+      "name" : "CMS_SECTION_ID_SEQ"
+    },
+    "file" : "biomart_user/_misc.sql"
+  }, {
+    "item" : {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "APPLICATION_SETTINGS"
+    },
+    "file" : "biomart_user/application_settings.sql"
+  }, {
+    "item" : {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "CMS_FILE"
+    },
+    "file" : "biomart_user/cms_file.sql"
+  }, {
+    "item" : {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "CMS_SECTION"
+    },
+    "file" : "biomart_user/cms_section.sql"
+  }, {
+    "item" : {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "GENE_ONTOLOGY"
+    },
+    "file" : "biomart_user/gene_ontology.sql"
+  }, {
+    "item" : {
+      "type" : "TABLE",
+      "owner" : "BIOMART_USER",
+      "name" : "GENE_ONTOLOGY_DATA"
+    },
+    "file" : "biomart_user/gene_ontology_data.sql"
+  }, {
+    "item" : {
+      "type" : "INDEX",
+      "owner" : "BIOMART_USER",
+      "name" : "IDX_GOD_ORGANISM"
+    },
+    "file" : "biomart_user/gene_ontology_data.sql"
+  }, {
+    "item" : {
+      "type" : "INDEX",
+      "owner" : "BIOMART_USER",
+      "name" : "IDX_GOD_SYMBOL"
+    },
+    "file" : "biomart_user/gene_ontology_data.sql"
+  }, {
+    "item" : {
+      "type" : "TRIGGER",
+      "owner" : "BIOMART_USER",
+      "name" : "TRG_APPLICATION_SETTINGS_ID"
+    },
+    "file" : "biomart_user/application_settings.sql"
+  }, {
+    "item" : {
+      "type" : "TRIGGER",
+      "owner" : "BIOMART_USER",
+      "name" : "TRG_CMS_FILE_ID"
+    },
+    "file" : "biomart_user/cms_file.sql"
+  }, {
+    "item" : {
+      "type" : "TRIGGER",
+      "owner" : "BIOMART_USER",
+      "name" : "TRG_CMS_SECTION_ID"
+    },
+    "file" : "biomart_user/cms_section.sql"
+  } ]
+}

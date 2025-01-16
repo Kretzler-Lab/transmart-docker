@@ -1,0 +1,484 @@
+0    [main] INFO  org.eclipse.jetty.server.Server  – jetty-8.1.10.v20130312
+20   [main] INFO  org.eclipse.jetty.deploy.providers.ScanningAppProvider  – Deployment monitor /home/transmart/transmart-miktmc/transmart-data/solr/contexts at interval 0
+25   [main] INFO  org.eclipse.jetty.deploy.DeploymentManager  – Deployable added: /home/transmart/transmart-miktmc/transmart-data/solr/contexts/solr-jetty-context.xml
+63   [main] INFO  org.eclipse.jetty.webapp.WebInfConfiguration  – Extract jar:file:/home/transmart/transmart-miktmc/transmart-data/solr/webapps/solr.war!/ to /home/transmart/transmart-miktmc/transmart-data/solr/solr-webapp/webapp
+1093 [main] INFO  org.eclipse.jetty.webapp.StandardDescriptorProcessor  – NO JSP Support for /solr, did not find org.apache.jasper.servlet.JspServlet
+1122 [main] INFO  org.apache.solr.servlet.SolrDispatchFilter  – SolrDispatchFilter.init()
+1166 [main] INFO  org.apache.solr.core.SolrResourceLoader  – JNDI not configured for solr (NoInitialContextEx)
+1166 [main] INFO  org.apache.solr.core.SolrResourceLoader  – using system property solr.solr.home: solr
+1167 [main] INFO  org.apache.solr.core.SolrResourceLoader  – new SolrResourceLoader for directory: 'solr/'
+1257 [main] INFO  org.apache.solr.core.ConfigSolr  – Loading container configuration from /home/transmart/transmart-miktmc/transmart-data/solr/solr/solr.xml
+1326 [main] INFO  org.apache.solr.core.ConfigSolrXml  – Config-defined core root directory: 
+1331 [main] INFO  org.apache.solr.core.CoreContainer  – New CoreContainer 375074687
+1332 [main] INFO  org.apache.solr.core.CoreContainer  – Loading cores into CoreContainer [instanceDir=solr/]
+1342 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting socketTimeout to: 0
+1342 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting urlScheme to: http://
+1342 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting connTimeout to: 0
+1344 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting maxConnectionsPerHost to: 20
+1344 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting corePoolSize to: 0
+1344 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting maximumPoolSize to: 2147483647
+1344 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting maxThreadIdleTime to: 5
+1345 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting sizeOfQueue to: -1
+1345 [main] INFO  org.apache.solr.handler.component.HttpShardHandlerFactory  – Setting fairnessPolicy to: false
+1349 [main] INFO  org.apache.solr.client.solrj.impl.HttpClientUtil  – Creating new http client, config:maxConnectionsPerHost=20&maxConnections=10000&socketTimeout=0&connTimeout=0&retry=false
+1494 [main] INFO  org.apache.solr.logging.LogWatcher  – SLF4J impl is org.slf4j.impl.Log4jLoggerFactory
+1495 [main] INFO  org.apache.solr.logging.LogWatcher  – Registering Log Listener [Log4j (org.slf4j.impl.Log4jLoggerFactory)]
+1552 [main] INFO  org.apache.solr.core.CoresLocator  – Looking for core definitions underneath /home/transmart/transmart-miktmc/transmart-data/solr/solr
+1564 [main] INFO  org.apache.solr.core.CoresLocator  – Found core browse in /home/transmart/transmart-miktmc/transmart-data/solr/solr/browse/
+1565 [main] INFO  org.apache.solr.core.CoresLocator  – Found core sample in /home/transmart/transmart-miktmc/transmart-data/solr/solr/sample/
+1566 [main] INFO  org.apache.solr.core.CoresLocator  – Found core rwg in /home/transmart/transmart-miktmc/transmart-data/solr/solr/rwg/
+1566 [main] INFO  org.apache.solr.core.CoresLocator  – Found 3 core definitions
+1568 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.CoreContainer  – Creating SolrCore 'browse' using instanceDir: /home/transmart/transmart-miktmc/transmart-data/solr/solr/browse
+1569 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.CoreContainer  – Creating SolrCore 'rwg' using instanceDir: /home/transmart/transmart-miktmc/transmart-data/solr/solr/rwg
+1568 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.CoreContainer  – Creating SolrCore 'sample' using instanceDir: /home/transmart/transmart-miktmc/transmart-data/solr/solr/sample
+1571 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – new SolrResourceLoader for directory: '/home/transmart/transmart-miktmc/transmart-data/solr/solr/rwg/'
+1571 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – new SolrResourceLoader for directory: '/home/transmart/transmart-miktmc/transmart-data/solr/solr/browse/'
+1572 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – new SolrResourceLoader for directory: '/home/transmart/transmart-miktmc/transmart-data/solr/solr/sample/'
+1657 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrConfig  – Adding specified lib dirs to ClassLoader
+1657 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrConfig  – Adding specified lib dirs to ClassLoader
+1657 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrConfig  – Adding specified lib dirs to ClassLoader
+1659 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/juniversalchardet-1.0.3.jar' to classloader
+1659 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/juniversalchardet-1.0.3.jar' to classloader
+1659 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/juniversalchardet-1.0.3.jar' to classloader
+1659 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/poi-ooxml-schemas-3.9.jar' to classloader
+1659 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/poi-ooxml-schemas-3.9.jar' to classloader
+1660 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/fontbox-1.8.1.jar' to classloader
+1659 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/poi-ooxml-schemas-3.9.jar' to classloader
+1660 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/jempbox-1.8.1.jar' to classloader
+1660 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/fontbox-1.8.1.jar' to classloader
+1660 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/netcdf-4.2-min.jar' to classloader
+1660 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/fontbox-1.8.1.jar' to classloader
+1661 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/commons-compress-1.4.1.jar' to classloader
+1661 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/jempbox-1.8.1.jar' to classloader
+1661 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/tika-parsers-1.4.jar' to classloader
+1661 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/jempbox-1.8.1.jar' to classloader
+1662 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/poi-scratchpad-3.9.jar' to classloader
+1661 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/netcdf-4.2-min.jar' to classloader
+1662 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/bcprov-jdk15-1.45.jar' to classloader
+1662 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/netcdf-4.2-min.jar' to classloader
+1662 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/xz-1.0.jar' to classloader
+1662 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/commons-compress-1.4.1.jar' to classloader
+1663 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/poi-3.9.jar' to classloader
+1663 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/commons-compress-1.4.1.jar' to classloader
+1663 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/tagsoup-1.2.1.jar' to classloader
+1663 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/tika-parsers-1.4.jar' to classloader
+1664 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/rome-0.9.jar' to classloader
+1664 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/tika-parsers-1.4.jar' to classloader
+1664 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/boilerpipe-1.1.0.jar' to classloader
+1664 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/poi-scratchpad-3.9.jar' to classloader
+1665 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/xmlbeans-2.3.0.jar' to classloader
+1664 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/poi-scratchpad-3.9.jar' to classloader
+1665 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/pdfbox-1.8.1.jar' to classloader
+1665 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/bcprov-jdk15-1.45.jar' to classloader
+1665 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/jdom-1.0.jar' to classloader
+1665 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/bcprov-jdk15-1.45.jar' to classloader
+1666 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/apache-mime4j-dom-0.7.2.jar' to classloader
+1666 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/xz-1.0.jar' to classloader
+1666 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/dom4j-1.6.1.jar' to classloader
+1666 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/xz-1.0.jar' to classloader
+1667 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/icu4j-49.1.jar' to classloader
+1667 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/poi-3.9.jar' to classloader
+1667 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/apache-mime4j-core-0.7.2.jar' to classloader
+1667 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/poi-3.9.jar' to classloader
+1668 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/poi-ooxml-3.9.jar' to classloader
+1667 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/tagsoup-1.2.1.jar' to classloader
+1668 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/vorbis-java-core-0.1.jar' to classloader
+1668 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/tagsoup-1.2.1.jar' to classloader
+1668 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/metadata-extractor-2.6.2.jar' to classloader
+1668 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/rome-0.9.jar' to classloader
+1669 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/isoparser-1.0-RC-1.jar' to classloader
+1669 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/rome-0.9.jar' to classloader
+1669 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/bcmail-jdk15-1.45.jar' to classloader
+1669 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/boilerpipe-1.1.0.jar' to classloader
+1670 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/tika-core-1.4.jar' to classloader
+1670 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/boilerpipe-1.1.0.jar' to classloader
+1670 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/xercesImpl-2.9.1.jar' to classloader
+1670 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/xmlbeans-2.3.0.jar' to classloader
+1671 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/vorbis-java-tika-0.1.jar' to classloader
+1670 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/xmlbeans-2.3.0.jar' to classloader
+1671 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/pdfbox-1.8.1.jar' to classloader
+1671 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/pdfbox-1.8.1.jar' to classloader
+1671 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/jdom-1.0.jar' to classloader
+1672 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/jdom-1.0.jar' to classloader
+1672 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/apache-mime4j-dom-0.7.2.jar' to classloader
+1672 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/dist/solr-cell-4.5.0.jar' to classloader
+1672 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/apache-mime4j-dom-0.7.2.jar' to classloader
+1672 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/dom4j-1.6.1.jar' to classloader
+1673 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/velocity/lib/commons-beanutils-1.7.0.jar' to classloader
+1673 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/dom4j-1.6.1.jar' to classloader
+1673 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/velocity/lib/velocity-1.7.jar' to classloader
+1673 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/icu4j-49.1.jar' to classloader
+1673 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/velocity/lib/commons-collections-3.2.1.jar' to classloader
+1673 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/icu4j-49.1.jar' to classloader
+1674 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/velocity/lib/velocity-tools-2.0.jar' to classloader
+1674 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/apache-mime4j-core-0.7.2.jar' to classloader
+1674 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/apache-mime4j-core-0.7.2.jar' to classloader
+1675 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/dist/solr-velocity-4.5.0.jar' to classloader
+1675 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/poi-ooxml-3.9.jar' to classloader
+1675 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/poi-ooxml-3.9.jar' to classloader
+1675 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/dataimporthandler/lib/activation-1.1.jar' to classloader
+1675 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/vorbis-java-core-0.1.jar' to classloader
+1676 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/dataimporthandler/lib/postgresql-42.3.3.jar' to classloader
+1675 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/vorbis-java-core-0.1.jar' to classloader
+1676 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/dataimporthandler/lib/mail-1.4.1.jar' to classloader
+1676 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/metadata-extractor-2.6.2.jar' to classloader
+1676 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/metadata-extractor-2.6.2.jar' to classloader
+1677 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/dist/solr-dataimporthandler-4.5.0.jar' to classloader
+1677 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/isoparser-1.0-RC-1.jar' to classloader
+1677 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/isoparser-1.0-RC-1.jar' to classloader
+1677 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/bcmail-jdk15-1.45.jar' to classloader
+1678 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/bcmail-jdk15-1.45.jar' to classloader
+1678 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/tika-core-1.4.jar' to classloader
+1678 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/tika-core-1.4.jar' to classloader
+1679 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/xercesImpl-2.9.1.jar' to classloader
+1679 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/xercesImpl-2.9.1.jar' to classloader
+1679 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/vorbis-java-tika-0.1.jar' to classloader
+1679 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/extraction/lib/vorbis-java-tika-0.1.jar' to classloader
+1680 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/dist/solr-cell-4.5.0.jar' to classloader
+1680 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/dist/solr-cell-4.5.0.jar' to classloader
+1680 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/velocity/lib/commons-beanutils-1.7.0.jar' to classloader
+1680 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/velocity/lib/velocity-1.7.jar' to classloader
+1680 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/velocity/lib/commons-beanutils-1.7.0.jar' to classloader
+1681 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/velocity/lib/commons-collections-3.2.1.jar' to classloader
+1681 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/velocity/lib/velocity-1.7.jar' to classloader
+1681 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/velocity/lib/velocity-tools-2.0.jar' to classloader
+1681 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/velocity/lib/commons-collections-3.2.1.jar' to classloader
+1682 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/velocity/lib/velocity-tools-2.0.jar' to classloader
+1682 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/dist/solr-velocity-4.5.0.jar' to classloader
+1682 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/dist/solr-velocity-4.5.0.jar' to classloader
+1682 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/dataimporthandler/lib/activation-1.1.jar' to classloader
+1683 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/dataimporthandler/lib/postgresql-42.3.3.jar' to classloader
+1683 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/dataimporthandler/lib/activation-1.1.jar' to classloader
+1683 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/dataimporthandler/lib/mail-1.4.1.jar' to classloader
+1683 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/dataimporthandler/lib/postgresql-42.3.3.jar' to classloader
+1683 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/contrib/dataimporthandler/lib/mail-1.4.1.jar' to classloader
+1684 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/dist/solr-dataimporthandler-4.5.0.jar' to classloader
+1684 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrResourceLoader  – Adding 'file:/home/transmart/transmart-miktmc/transmart-data/solr/dist/solr-dataimporthandler-4.5.0.jar' to classloader
+1768 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.update.SolrIndexConfig  – IndexWriter infoStream solr logging is enabled
+1775 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrConfig  – Using Lucene MatchVersion: LUCENE_45
+1777 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.update.SolrIndexConfig  – IndexWriter infoStream solr logging is enabled
+1782 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrConfig  – Using Lucene MatchVersion: LUCENE_45
+1782 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.update.SolrIndexConfig  – IndexWriter infoStream solr logging is enabled
+1787 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrConfig  – Using Lucene MatchVersion: LUCENE_45
+1890 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.Config  – Loaded SolrConfig: solrconfig.xml
+1890 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.Config  – Loaded SolrConfig: solrconfig.xml
+1890 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.Config  – Loaded SolrConfig: solrconfig.xml
+1898 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.schema.IndexSchema  – Reading Solr Schema from schema.xml
+1899 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.schema.IndexSchema  – Reading Solr Schema from schema.xml
+1898 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.schema.IndexSchema  – Reading Solr Schema from schema.xml
+1909 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.schema.IndexSchema  – [sample] Schema name=tranSMART
+1909 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.schema.IndexSchema  – [rwg] Schema name=faceted_search
+1911 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.schema.IndexSchema  – [browse] Schema name=tranSMART
+1946 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.schema.IndexSchema  – default search field in schema is STUDY
+1947 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.schema.IndexSchema  – query parser default operator is OR
+1947 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.schema.IndexSchema  – unique key field: ANALYSIS_ID
+1967 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – solr.NRTCachingDirectoryFactory
+1970 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.schema.IndexSchema  – default search field in schema is barcode
+1970 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.schema.IndexSchema  – query parser default operator is OR
+1970 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.schema.IndexSchema  – unique key field: id
+1971 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.schema.IndexSchema  – default search field in schema is text
+1972 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.schema.IndexSchema  – unique key field: id
+1975 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – [rwg] Opening new SolrCore at /home/transmart/transmart-miktmc/transmart-data/solr/solr/rwg/, dataDir=/home/transmart/transmart-miktmc/transmart-data/solr/solr/rwg/data/
+1977 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.JmxMonitoredMap  – No JMX servers found, not exposing Solr information with JMX.
+1985 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – [rwg] Added SolrEventListener for newSearcher: org.apache.solr.core.QuerySenderListener{queries=[]}
+1985 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – [rwg] Added SolrEventListener for firstSearcher: org.apache.solr.core.QuerySenderListener{queries=[{q=static firstSearcher warming in solrconfig.xml}]}
+2003 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.CachingDirectoryFactory  – return new directory for /home/transmart/transmart-miktmc/transmart-data/solr/solr/rwg/data
+2003 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – New index directory detected: old=null new=/home/transmart/transmart-miktmc/transmart-data/solr/solr/rwg/data/index/
+2003 [coreLoadExecutor-3-thread-3] WARN  org.apache.solr.core.SolrCore  – [rwg] Solr index directory '/home/transmart/transmart-miktmc/transmart-data/solr/solr/rwg/data/index' doesn't exist. Creating new index...
+2009 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.CachingDirectoryFactory  – return new directory for /home/transmart/transmart-miktmc/transmart-data/solr/solr/rwg/data/index
+2071 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – solr.NRTCachingDirectoryFactory
+2071 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – solr.NRTCachingDirectoryFactory
+2072 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – [sample] Opening new SolrCore at /home/transmart/transmart-miktmc/transmart-data/solr/solr/sample/, dataDir=/home/transmart/transmart-miktmc/transmart-data/solr/solr/sample/data/
+2072 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – [browse] Opening new SolrCore at /home/transmart/transmart-miktmc/transmart-data/solr/solr/browse/, dataDir=/home/transmart/transmart-miktmc/transmart-data/solr/solr/browse/data/
+2073 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.JmxMonitoredMap  – No JMX servers found, not exposing Solr information with JMX.
+2072 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.JmxMonitoredMap  – No JMX servers found, not exposing Solr information with JMX.
+2073 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – [browse] Added SolrEventListener for newSearcher: org.apache.solr.core.QuerySenderListener{queries=[]}
+2073 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – SolrDeletionPolicy.onCommit: commits: num=1
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/home/transmart/transmart-miktmc/transmart-data/solr/solr/rwg/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@4614675e; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2074 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – [browse] Added SolrEventListener for firstSearcher: org.apache.solr.core.QuerySenderListener{queries=[{q=static firstSearcher warming in solrconfig.xml}]}
+2073 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – [sample] Added SolrEventListener for newSearcher: org.apache.solr.core.QuerySenderListener{queries=[]}
+2074 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – newest commit generation = 1
+2074 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – [sample] Added SolrEventListener for firstSearcher: org.apache.solr.core.QuerySenderListener{queries=[{q=static firstSearcher warming in solrconfig.xml}]}
+2074 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.CachingDirectoryFactory  – return new directory for /home/transmart/transmart-miktmc/transmart-data/solr/solr/browse/data
+2075 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.CachingDirectoryFactory  – return new directory for /home/transmart/transmart-miktmc/transmart-data/solr/solr/sample/data
+2075 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – New index directory detected: old=null new=/home/transmart/transmart-miktmc/transmart-data/solr/solr/sample/data/index/
+2075 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – New index directory detected: old=null new=/home/transmart/transmart-miktmc/transmart-data/solr/solr/browse/data/index/
+2076 [coreLoadExecutor-3-thread-2] WARN  org.apache.solr.core.SolrCore  – [sample] Solr index directory '/home/transmart/transmart-miktmc/transmart-data/solr/solr/sample/data/index' doesn't exist. Creating new index...
+2076 [coreLoadExecutor-3-thread-1] WARN  org.apache.solr.core.SolrCore  – [browse] Solr index directory '/home/transmart/transmart-miktmc/transmart-data/solr/solr/browse/data/index' doesn't exist. Creating new index...
+2076 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.CachingDirectoryFactory  – return new directory for /home/transmart/transmart-miktmc/transmart-data/solr/solr/sample/data/index
+2076 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.CachingDirectoryFactory  – return new directory for /home/transmart/transmart-miktmc/transmart-data/solr/solr/browse/data/index
+2077 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – created json: solr.JSONResponseWriter
+2077 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – adding lazy queryResponseWriter: solr.VelocityResponseWriter
+2078 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – created velocity: solr.VelocityResponseWriter
+2080 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – created xslt: solr.XSLTResponseWriter
+2080 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.response.XSLTResponseWriter  – xsltCacheLifetimeSeconds=5
+2085 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – SolrDeletionPolicy.onCommit: commits: num=1
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/home/transmart/transmart-miktmc/transmart-data/solr/solr/browse/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@2c7a9ed6; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2085 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – SolrDeletionPolicy.onCommit: commits: num=1
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/home/transmart/transmart-miktmc/transmart-data/solr/solr/sample/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@67a83272; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2085 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – newest commit generation = 1
+2085 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – newest commit generation = 1
+2086 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – created json: solr.JSONResponseWriter
+2086 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – adding lazy queryResponseWriter: solr.VelocityResponseWriter
+2086 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – created velocity: solr.VelocityResponseWriter
+2086 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – created json: solr.JSONResponseWriter
+2086 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – adding lazy queryResponseWriter: solr.VelocityResponseWriter
+2086 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – created velocity: solr.VelocityResponseWriter
+2086 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – created xslt: solr.XSLTResponseWriter
+2087 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – created xslt: solr.XSLTResponseWriter
+2087 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.response.XSLTResponseWriter  – xsltCacheLifetimeSeconds=5
+2087 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.response.XSLTResponseWriter  – xsltCacheLifetimeSeconds=5
+2157 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – no updateRequestProcessorChain defined as default, creating implicit default
+2157 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – no updateRequestProcessorChain defined as default, creating implicit default
+2157 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – no updateRequestProcessorChain defined as default, creating implicit default
+2172 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /select: solr.SearchHandler
+2172 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /query: solr.SearchHandler
+2173 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /select: solr.SearchHandler
+2173 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /select: solr.SearchHandler
+2173 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /query: solr.SearchHandler
+2173 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /query: solr.SearchHandler
+2174 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /get: solr.RealTimeGetHandler
+2174 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /get: solr.RealTimeGetHandler
+2174 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /browse: solr.SearchHandler
+2174 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /get: solr.RealTimeGetHandler
+2174 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /browse: solr.SearchHandler
+2174 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /browse: solr.SearchHandler
+2177 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /update: solr.UpdateRequestHandler
+2177 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /update: solr.UpdateRequestHandler
+2177 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /update: solr.UpdateRequestHandler
+2178 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /update/json: solr.JsonUpdateRequestHandler
+2179 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /update/json: solr.JsonUpdateRequestHandler
+2179 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /update/json: solr.JsonUpdateRequestHandler
+2180 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /update/csv: solr.CSVRequestHandler
+2180 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /update/csv: solr.CSVRequestHandler
+2180 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.extraction.ExtractingRequestHandler
+2180 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /update/csv: solr.CSVRequestHandler
+2181 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.extraction.ExtractingRequestHandler
+2180 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.extraction.ExtractingRequestHandler
+2181 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /update/extract: solr.extraction.ExtractingRequestHandler
+2181 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.FieldAnalysisRequestHandler
+2182 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /analysis/field: solr.FieldAnalysisRequestHandler
+2182 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.DocumentAnalysisRequestHandler
+2181 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /update/extract: solr.extraction.ExtractingRequestHandler
+2182 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.FieldAnalysisRequestHandler
+2182 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /analysis/document: solr.DocumentAnalysisRequestHandler
+2181 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /update/extract: solr.extraction.ExtractingRequestHandler
+2183 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.FieldAnalysisRequestHandler
+2182 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /analysis/field: solr.FieldAnalysisRequestHandler
+2183 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.DocumentAnalysisRequestHandler
+2183 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /analysis/field: solr.FieldAnalysisRequestHandler
+2183 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.DocumentAnalysisRequestHandler
+2183 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /analysis/document: solr.DocumentAnalysisRequestHandler
+2184 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /analysis/document: solr.DocumentAnalysisRequestHandler
+2184 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /admin/: solr.admin.AdminHandlers
+2184 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /admin/: solr.admin.AdminHandlers
+2184 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /admin/: solr.admin.AdminHandlers
+2186 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /admin/ping: solr.PingRequestHandler
+2186 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /admin/ping: solr.PingRequestHandler
+2186 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /admin/ping: solr.PingRequestHandler
+2188 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /debug/dump: solr.DumpRequestHandler
+2188 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /debug/dump: solr.DumpRequestHandler
+2188 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /debug/dump: solr.DumpRequestHandler
+2195 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /replication: solr.ReplicationHandler
+2195 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.SearchHandler
+2195 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /replication: solr.ReplicationHandler
+2196 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.SearchHandler
+2195 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /replication: solr.ReplicationHandler
+2196 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.SearchHandler
+2196 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /spell: solr.SearchHandler
+2196 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.SearchHandler
+2196 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /spell: solr.SearchHandler
+2197 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /tvrh: solr.SearchHandler
+2197 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: org.apache.solr.handler.js.JavaScriptRequestHandler
+2196 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /spell: solr.SearchHandler
+2197 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.SearchHandler
+2197 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /js: org.apache.solr.handler.js.JavaScriptRequestHandler
+2198 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.SearchHandler
+2197 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.SearchHandler
+2198 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /tvrh: solr.SearchHandler
+2198 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: org.apache.solr.handler.js.JavaScriptRequestHandler
+2198 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /terms: solr.SearchHandler
+2198 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.SearchHandler
+2197 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /tvrh: solr.SearchHandler
+2199 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: org.apache.solr.handler.js.JavaScriptRequestHandler
+2199 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /js: org.apache.solr.handler.js.JavaScriptRequestHandler
+2199 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.SearchHandler
+2199 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /terms: solr.SearchHandler
+2199 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.SearchHandler
+2199 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /elevate: solr.SearchHandler
+2199 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /elevate: solr.SearchHandler
+2198 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /js: org.apache.solr.handler.js.JavaScriptRequestHandler
+2200 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.SearchHandler
+2200 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /terms: solr.SearchHandler
+2200 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – adding lazy requestHandler: solr.SearchHandler
+2200 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /elevate: solr.SearchHandler
+2204 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.RequestHandlers  – created /dataimport: org.apache.solr.handler.dataimport.DataImportHandler
+2204 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.RequestHandlers  – created /dataimport: org.apache.solr.handler.dataimport.DataImportHandler
+2204 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.RequestHandlers  – created /dataimport: org.apache.solr.handler.dataimport.DataImportHandler
+2220 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.handler.loader.XMLLoader  – xsltCacheLifetimeSeconds=60
+2220 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.handler.loader.XMLLoader  – xsltCacheLifetimeSeconds=60
+2220 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.handler.loader.XMLLoader  – xsltCacheLifetimeSeconds=60
+2223 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.handler.loader.XMLLoader  – xsltCacheLifetimeSeconds=60
+2223 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.handler.loader.XMLLoader  – xsltCacheLifetimeSeconds=60
+2223 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.handler.loader.XMLLoader  – xsltCacheLifetimeSeconds=60
+2224 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.handler.loader.XMLLoader  – xsltCacheLifetimeSeconds=60
+2224 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.handler.loader.XMLLoader  – xsltCacheLifetimeSeconds=60
+2224 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.handler.loader.XMLLoader  – xsltCacheLifetimeSeconds=60
+2237 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – Hard AutoCommit: if uncommited for 15000ms; 
+2237 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – Hard AutoCommit: if uncommited for 15000ms; 
+2237 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – Hard AutoCommit: if uncommited for 15000ms; 
+2237 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – Soft AutoCommit: disabled
+2237 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – Soft AutoCommit: disabled
+2238 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – Soft AutoCommit: disabled
+2240 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/home/transmart/transmart-miktmc/transmart-data/solr/solr/browse/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@2c7a9ed6; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2240 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.SolrCore  – newest commit generation = 1
+2240 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/home/transmart/transmart-miktmc/transmart-data/solr/solr/rwg/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@4614675e; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2240 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.SolrCore  – newest commit generation = 1
+2240 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – SolrDeletionPolicy.onInit: commits: num=1
+	commit{dir=NRTCachingDirectory(org.apache.lucene.store.NIOFSDirectory@/home/transmart/transmart-miktmc/transmart-data/solr/solr/sample/data/index lockFactory=org.apache.lucene.store.NativeFSLockFactory@67a83272; maxCacheMB=48.0 maxMergeSizeMB=4.0),segFN=segments_1,generation=1}
+2240 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.SolrCore  – newest commit generation = 1
+2246 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.search.SolrIndexSearcher  – Opening Searcher@77ad7948 main
+2246 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.search.SolrIndexSearcher  – Opening Searcher@299e6ee2 main
+2246 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.search.SolrIndexSearcher  – Opening Searcher@228abb45 main
+2251 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Initializing spell checkers
+2251 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Initializing spell checkers
+2251 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Initializing spell checkers
+2258 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.spelling.DirectSolrSpellChecker  – init: {name=default,field=text,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2258 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.spelling.DirectSolrSpellChecker  – init: {name=default,field=text,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2258 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.spelling.DirectSolrSpellChecker  – init: {name=default,field=text,classname=solr.DirectSolrSpellChecker,distanceMeasure=internal,accuracy=0.5,maxEdits=2,minPrefix=1,maxInspections=5,minQueryLength=4,maxQueryFrequency=0.01}
+2265 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – No queryConverter defined, using default converter
+2265 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.handler.component.SpellCheckComponent  – No queryConverter defined, using default converter
+2265 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.handler.component.SpellCheckComponent  – No queryConverter defined, using default converter
+2267 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.handler.component.QueryElevationComponent  – Loading QueryElevation from: /home/transmart/transmart-miktmc/transmart-data/solr/solr/browse/conf/elevate.xml
+2267 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.handler.component.QueryElevationComponent  – Loading QueryElevation from: /home/transmart/transmart-miktmc/transmart-data/solr/solr/sample/conf/elevate.xml
+2267 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.handler.component.QueryElevationComponent  – Loading QueryElevation from: /home/transmart/transmart-miktmc/transmart-data/solr/solr/rwg/conf/elevate.xml
+2291 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.handler.ReplicationHandler  – Commits will be reserved for  10000
+2291 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.handler.ReplicationHandler  – Commits will be reserved for  10000
+2291 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.handler.ReplicationHandler  – Commits will be reserved for  10000
+2297 [searcherExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – QuerySenderListener sending requests to Searcher@228abb45 main{StandardDirectoryReader(segments_1:1:nrt)}
+2297 [searcherExecutor-4-thread-1] INFO  org.apache.solr.core.SolrCore  – QuerySenderListener sending requests to Searcher@77ad7948 main{StandardDirectoryReader(segments_1:1:nrt)}
+2297 [coreLoadExecutor-3-thread-3] INFO  org.apache.solr.core.CoreContainer  – registering core: rwg
+2297 [coreLoadExecutor-3-thread-2] INFO  org.apache.solr.core.CoreContainer  – registering core: sample
+2297 [coreLoadExecutor-3-thread-1] INFO  org.apache.solr.core.CoreContainer  – registering core: browse
+2297 [searcherExecutor-6-thread-1] INFO  org.apache.solr.core.SolrCore  – QuerySenderListener sending requests to Searcher@299e6ee2 main{StandardDirectoryReader(segments_1:1:nrt)}
+2300 [main] INFO  org.apache.solr.servlet.SolrDispatchFilter  – user.dir=/home/transmart/transmart-miktmc/transmart-data/solr
+2300 [main] INFO  org.apache.solr.servlet.SolrDispatchFilter  – SolrDispatchFilter.init() done
+2322 [main] INFO  org.eclipse.jetty.server.AbstractConnector  – Started SocketConnector@0.0.0.0:8983
+2330 [searcherExecutor-4-thread-1] INFO  org.apache.solr.core.SolrCore  – [rwg] webapp=null path=null params={q=static+firstSearcher+warming+in+solrconfig.xml&distrib=false&event=firstSearcher} hits=0 status=0 QTime=32 
+2330 [searcherExecutor-6-thread-1] INFO  org.apache.solr.core.SolrCore  – [sample] webapp=null path=null params={q=static+firstSearcher+warming+in+solrconfig.xml&distrib=false&event=firstSearcher} hits=0 status=0 QTime=32 
+2330 [searcherExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=null path=null params={q=static+firstSearcher+warming+in+solrconfig.xml&distrib=false&event=firstSearcher} hits=0 status=0 QTime=32 
+2330 [searcherExecutor-4-thread-1] INFO  org.apache.solr.core.SolrCore  – QuerySenderListener done.
+2330 [searcherExecutor-6-thread-1] INFO  org.apache.solr.core.SolrCore  – QuerySenderListener done.
+2331 [searcherExecutor-6-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Loading spell index for spellchecker: default
+2331 [searcherExecutor-4-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Loading spell index for spellchecker: default
+2331 [searcherExecutor-4-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Loading spell index for spellchecker: wordbreak
+2331 [searcherExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – QuerySenderListener done.
+2331 [searcherExecutor-5-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Loading spell index for spellchecker: default
+2331 [searcherExecutor-5-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Loading spell index for spellchecker: wordbreak
+2331 [searcherExecutor-4-thread-1] INFO  org.apache.solr.core.SolrCore  – [rwg] Registered new searcher Searcher@77ad7948 main{StandardDirectoryReader(segments_1:1:nrt)}
+2331 [searcherExecutor-6-thread-1] INFO  org.apache.solr.handler.component.SpellCheckComponent  – Loading spell index for spellchecker: wordbreak
+2332 [searcherExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – [browse] Registered new searcher Searcher@228abb45 main{StandardDirectoryReader(segments_1:1:nrt)}
+2332 [searcherExecutor-6-thread-1] INFO  org.apache.solr.core.SolrCore  – [sample] Registered new searcher Searcher@299e6ee2 main{StandardDirectoryReader(segments_1:1:nrt)}
+24129 [qtp1819776360-15] INFO  org.apache.solr.handler.dataimport.DataImporter  – Loading DIH Configuration: data-config.xml
+24139 [qtp1819776360-15] INFO  org.apache.solr.handler.dataimport.DataImporter  – Data Configuration loaded successfully
+24144 [Thread-14] INFO  org.apache.solr.handler.dataimport.DataImporter  – Starting Full Import
+24145 [qtp1819776360-15] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/dataimport params={clean=true&command=full-import} status=0 QTime=18 
+24158 [Thread-14] WARN  org.apache.solr.handler.dataimport.SimplePropertiesWriter  – Unable to read: dataimport.properties
+24172 [qtp1819776360-16] INFO  org.apache.solr.handler.dataimport.DataImporter  – Loading DIH Configuration: data-config.xml
+24180 [qtp1819776360-16] INFO  org.apache.solr.handler.dataimport.DataImporter  – Data Configuration loaded successfully
+24181 [Thread-15] INFO  org.apache.solr.handler.dataimport.DataImporter  – Starting Full Import
+24181 [qtp1819776360-16] INFO  org.apache.solr.core.SolrCore  – [rwg] webapp=/solr path=/dataimport params={clean=true&command=full-import} status=0 QTime=11 
+24204 [qtp1819776360-17] INFO  org.apache.solr.handler.dataimport.DataImporter  – Loading DIH Configuration: data-config.xml
+24205 [Thread-15] WARN  org.apache.solr.handler.dataimport.SimplePropertiesWriter  – Unable to read: dataimport.properties
+24218 [qtp1819776360-17] INFO  org.apache.solr.handler.dataimport.DataImporter  – Data Configuration loaded successfully
+24222 [Thread-16] INFO  org.apache.solr.handler.dataimport.DataImporter  – Starting Full Import
+24222 [qtp1819776360-17] INFO  org.apache.solr.core.SolrCore  – [sample] webapp=/solr path=/dataimport params={clean=true&command=full-import} status=0 QTime=22 
+24238 [Thread-16] WARN  org.apache.solr.handler.dataimport.SimplePropertiesWriter  – Unable to read: dataimport.properties
+24257 [Thread-14] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Creating a connection for entity I2B2 with URL: jdbc:postgresql://localhost:5432/transmart
+24257 [Thread-15] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Creating a connection for entity analysis with URL: jdbc:postgresql://localhost:5432/transmart
+24262 [Thread-16] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Creating a connection for entity Samples with URL: jdbc:postgresql://localhost:5432/transmart
+24531 [Thread-15] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Time taken for getConnection(): 273
+24532 [Thread-14] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Time taken for getConnection(): 275
+24532 [Thread-16] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Time taken for getConnection(): 270
+24544 [Thread-16] INFO  org.apache.solr.handler.dataimport.DocBuilder  – Import completed successfully
+24544 [Thread-16] INFO  org.apache.solr.update.UpdateHandler  – start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+24544 [Thread-16] INFO  org.apache.solr.update.UpdateHandler  – No uncommitted changes. Skipping IW.commit.
+24545 [Thread-14] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Creating a connection for entity PROGRAM with URL: jdbc:postgresql://localhost:5432/transmart
+24546 [Thread-16] INFO  org.apache.solr.search.SolrIndexSearcher  – Opening Searcher@26326a33 main
+24547 [searcherExecutor-6-thread-1] INFO  org.apache.solr.core.SolrCore  – QuerySenderListener sending requests to Searcher@26326a33 main{StandardDirectoryReader(segments_1:1:nrt)}
+24547 [searcherExecutor-6-thread-1] INFO  org.apache.solr.core.SolrCore  – QuerySenderListener done.
+24547 [Thread-16] INFO  org.apache.solr.update.UpdateHandler  – end_commit_flush
+24548 [searcherExecutor-6-thread-1] INFO  org.apache.solr.core.SolrCore  – [sample] Registered new searcher Searcher@26326a33 main{StandardDirectoryReader(segments_1:1:nrt)}
+24548 [Thread-16] WARN  org.apache.solr.handler.dataimport.SimplePropertiesWriter  – Unable to read: dataimport.properties
+24550 [Thread-15] INFO  org.apache.solr.handler.dataimport.DocBuilder  – Import completed successfully
+24550 [Thread-15] INFO  org.apache.solr.update.UpdateHandler  – start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+24551 [Thread-15] INFO  org.apache.solr.update.UpdateHandler  – No uncommitted changes. Skipping IW.commit.
+24552 [Thread-15] INFO  org.apache.solr.search.SolrIndexSearcher  – Opening Searcher@9d19bcb main
+24552 [Thread-15] INFO  org.apache.solr.update.UpdateHandler  – end_commit_flush
+24553 [searcherExecutor-4-thread-1] INFO  org.apache.solr.core.SolrCore  – QuerySenderListener sending requests to Searcher@9d19bcb main{StandardDirectoryReader(segments_1:1:nrt)}
+24553 [searcherExecutor-4-thread-1] INFO  org.apache.solr.core.SolrCore  – QuerySenderListener done.
+24553 [searcherExecutor-4-thread-1] INFO  org.apache.solr.core.SolrCore  – [rwg] Registered new searcher Searcher@9d19bcb main{StandardDirectoryReader(segments_1:1:nrt)}
+24553 [Thread-15] WARN  org.apache.solr.handler.dataimport.SimplePropertiesWriter  – Unable to read: dataimport.properties
+24556 [Thread-16] INFO  org.apache.solr.handler.dataimport.SimplePropertiesWriter  – Wrote last indexed time to dataimport.properties
+24556 [Thread-15] INFO  org.apache.solr.handler.dataimport.SimplePropertiesWriter  – Wrote last indexed time to dataimport.properties
+24556 [Thread-16] INFO  org.apache.solr.handler.dataimport.DocBuilder  – Time taken = 0:0:0.318
+24556 [Thread-15] INFO  org.apache.solr.handler.dataimport.DocBuilder  – Time taken = 0:0:0.350
+24556 [Thread-16] INFO  org.apache.solr.update.processor.LogUpdateProcessor  – [sample] webapp=/solr path=/dataimport params={clean=true&command=full-import} status=0 QTime=22 {deleteByQuery=*:* (-1738178635683069952),commit=} 0 22
+24556 [Thread-15] INFO  org.apache.solr.update.processor.LogUpdateProcessor  – [rwg] webapp=/solr path=/dataimport params={clean=true&command=full-import} status=0 QTime=11 {deleteByQuery=*:* (-1738178635653709824),commit=} 0 11
+24576 [Thread-14] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Time taken for getConnection(): 30
+24594 [Thread-14] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Creating a connection for entity STUDY with URL: jdbc:postgresql://localhost:5432/transmart
+24615 [Thread-14] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Time taken for getConnection(): 21
+24626 [Thread-14] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Creating a connection for entity ASSAY with URL: jdbc:postgresql://localhost:5432/transmart
+24646 [Thread-14] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Time taken for getConnection(): 20
+24656 [Thread-14] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Creating a connection for entity ANALYSIS with URL: jdbc:postgresql://localhost:5432/transmart
+24678 [Thread-14] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Time taken for getConnection(): 21
+24685 [Thread-14] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Creating a connection for entity FOLDER with URL: jdbc:postgresql://localhost:5432/transmart
+24704 [Thread-14] INFO  org.apache.solr.handler.dataimport.JdbcDataSource  – Time taken for getConnection(): 19
+24707 [Thread-14] INFO  org.apache.solr.handler.dataimport.DocBuilder  – Import completed successfully
+24708 [Thread-14] INFO  org.apache.solr.update.UpdateHandler  – start commit{,optimize=false,openSearcher=true,waitSearcher=true,expungeDeletes=false,softCommit=false,prepareCommit=false}
+24708 [Thread-14] INFO  org.apache.solr.update.UpdateHandler  – No uncommitted changes. Skipping IW.commit.
+24708 [Thread-14] INFO  org.apache.solr.search.SolrIndexSearcher  – Opening Searcher@6f7340f7 main
+24709 [Thread-14] INFO  org.apache.solr.update.UpdateHandler  – end_commit_flush
+24709 [searcherExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – QuerySenderListener sending requests to Searcher@6f7340f7 main{StandardDirectoryReader(segments_1:1:nrt)}
+24710 [searcherExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – QuerySenderListener done.
+24710 [searcherExecutor-5-thread-1] INFO  org.apache.solr.core.SolrCore  – [browse] Registered new searcher Searcher@6f7340f7 main{StandardDirectoryReader(segments_1:1:nrt)}
+24710 [Thread-14] WARN  org.apache.solr.handler.dataimport.SimplePropertiesWriter  – Unable to read: dataimport.properties
+24711 [Thread-14] INFO  org.apache.solr.handler.dataimport.SimplePropertiesWriter  – Wrote last indexed time to dataimport.properties
+24711 [Thread-14] INFO  org.apache.solr.handler.dataimport.DocBuilder  – Time taken = 0:0:0.553
+24711 [Thread-14] INFO  org.apache.solr.update.processor.LogUpdateProcessor  – [browse] webapp=/solr path=/dataimport params={clean=true&command=full-import} status=0 QTime=18 {deleteByQuery=*:* (-1738178635628544000),commit=} 0 18
+299120 [qtp1819776360-18] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*kidney*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=25 
+64463133 [qtp1819776360-15] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*nih*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=8 
+64480898 [qtp1819776360-23] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*mca*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=4 
+64809796 [qtp1819776360-16] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*mca*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=3 
+6539549472 [qtp1819776360-16] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*egfr*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=253 
+6559282211 [qtp1819776360-16] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*egfr*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=4 
+6559402552 [qtp1819776360-16] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*egfr*+OR+text:"heart+rate")&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=7 
+6559424265 [qtp1819776360-15] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*egfr*+OR+text:"heart+rate")&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=3 
+6559435109 [qtp1819776360-23] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:"heart+rate")&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=1 
+6559459960 [qtp1819776360-18] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*pulse*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=3 
+6559593655 [qtp1819776360-17] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*pulse*+OR+text:*egfr*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=5 
+6559721595 [qtp1819776360-17] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*pulse*+OR+text:*egfr*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=5 
+6559833729 [qtp1819776360-17] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*pulse*+OR+text:*egfr*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=4 
+6559950731 [qtp1819776360-16] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*egfr*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=2 
+6560015825 [qtp1819776360-16] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*bmi*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=2 
+6560765085 [qtp1819776360-23] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*remote*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=2 
+11499793136 [qtp1819776360-23] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*statin*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=206 
+11500775448 [qtp1819776360-18] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*statin*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=2 
+12857987425 [qtp1819776360-18] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*a1c*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=49 
+20739873033 [qtp1819776360-15] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*age*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=335 
+20739876727 [qtp1819776360-15] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*sadness*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=3 
+20739893863 [qtp1819776360-20] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*age*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=2 
+20739915180 [qtp1819776360-17] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*age*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=1 
+20739957835 [qtp1819776360-22] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*age*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=3 
+20739957880 [qtp1819776360-22] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(GENE:("GENE:1650"))&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=1 
+20739960134 [qtp1819776360-22] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(GENE:("GENE:1650"))&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=0 
+20808502808 [qtp1819776360-16] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*age*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=3 
+20809197955 [qtp1819776360-21] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*heart*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=2 
+21762188732 [qtp1819776360-21] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(GENE:("GENE:23780"))&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=35 
+23572061859 [qtp1819776360-15] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(GENE:("GENE:29974"))&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=72 
+23572067693 [qtp1819776360-23] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*a1v*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=2 
+23572073449 [qtp1819776360-23] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*a1c*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=2 
+23572184737 [qtp1819776360-15] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*bmi*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=1 
+23673452487 [qtp1819776360-16] INFO  org.apache.solr.core.SolrCore  – [browse] webapp=/solr path=/select/ params={q=(text:*complete*)&fl=id,folder&rows=1000&facet=false} hits=0 status=0 QTime=5 

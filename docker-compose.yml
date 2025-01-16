@@ -41,7 +41,7 @@ services:
       - "appwebapps:/usr/local/tomcat/webapps"
       - "appweblogs:/usr/local/tomcat/logs"
   tmdb:
-    image: transmartfoundation/transmart-db:latest
+    image: kretzlerdevs/transmart-db:1.0
     restart: unless-stopped
     expose:
       - 5432
