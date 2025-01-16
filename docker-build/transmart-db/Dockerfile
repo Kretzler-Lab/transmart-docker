@@ -37,6 +37,11 @@ RUN /etc/init.d/postgresql start && \
 #### Load transmart db
 
 USER root
+#RUN unzip -q transmart-data.zip && \
+#    rm transmart-data.zip 
+ADD tunepgsql.sh /usr/bin/tunepgsql.sh
+RUN chmod +x /usr/bin/tunepgsql.sh && \
+    /usr/bin/tunepgsql.sh
 
 RUN cd transmart-data && make -C env /var/lib/postgresql/tablespaces ../vars groovy && \
     . ./vars && \
