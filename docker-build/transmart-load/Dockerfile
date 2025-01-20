@@ -1,5 +1,5 @@
 FROM ubuntu:18.04
-MAINTAINER Peter Rice <peter.rice@i2b2transmart.org>
+MAINTAINER MiKTMC Developers <miktmc-devs@umich.edu>
 
 RUN apt-get update && \
      DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get install -y --no-install-recommends curl unzip make ca-certificates postgresql-client openjdk-8-jdk \
@@ -26,9 +26,9 @@ USER tmload
 
 ADD kettle.properties /home/tmload/.kettle/kettle.properties
 
-RUN curl --location --silent --show-error --insecure http://library.transmartfoundation.org/beta/beta19_1_0_artifacts/transmart-data-release-19.1.zip --output transmart-data.zip && \
-    unzip -q transmart-data.zip && \
-    mv transmart-data-release-19.1 transmart-data && \
+ADD transmart-data.zip transmart-data.zip
+
+RUN unzip -q transmart-data.zip && \
     rm transmart-data.zip && \
     mv transmart-data/env /home/tmload/env && \
     mv transmart-data/samples /home/tmload/samples && \
@@ -43,19 +43,14 @@ RUN curl --location --silent --show-error --insecure http://library.transmartfou
     mv /home/tmload/Makefile transmart-data/ && \
     mv /home/tmload/makefile.inc transmart-data/
 
-# install groovy - replace with transmart-data download
-# install Pentaho Data Integration (Kettle)
-
 WORKDIR /home/tmload/transmart-data
+ADD transmart-etl.zip transmart-etl.zip
+ADD data-integration.zip env/data-integration.zip
+RUN unzip -q env/data-integration.zip && \
+    rm env/data-integration.zip 
 
-RUN make -C env groovy data-integration && \
-    make -C samples/postgres jdbcdriver && \
-    cd env && \
-    curl --location --silent --show-error http://library.transmartfoundation.org/beta/beta19_1_0_artifacts/transmart-etl-release-19.1.zip --output transmart-etl.zip && \
-    unzip -q transmart-etl.zip && \
-    mv transmart-etl-release-19.1 transmart-etl && \
+RUN unzip -q transmart-etl.zip && \
+    mv tranSMART-ETL transmart-etl && \
     rm transmart-etl.zip
-
-RUN make update_datasets
 
 CMD ["echo","Use the make commands provided by samples/postgres to load data. E.g. run\ndocker-compose run --rm tmload make -C samples/postgres load_clinical_ElevadaGSE14468\nFor more information go to https://wiki.transmartfoundation.org/display/transmartwiki/Curated+Data."]

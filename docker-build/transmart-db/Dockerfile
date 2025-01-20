@@ -1,5 +1,5 @@
 FROM ubuntu:22.04
-MAINTAINER Zach Wright <zwright@umich.edu>
+MAINTAINER MiKTMC Developers <miktmc-devs@umich.edu>
 
 ENV LANG en_US.utf8
 
