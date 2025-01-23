@@ -43,11 +43,11 @@ RUN unzip -q transmart-data.zip && \
     mv /home/tmload/Makefile transmart-data/ && \
     mv /home/tmload/makefile.inc transmart-data/
 
-WORKDIR /home/tmload/transmart-data
+WORKDIR /home/tmload/transmart-data/env
 ADD transmart-etl.zip transmart-etl.zip
-ADD data-integration.zip env/data-integration.zip
-RUN unzip -q env/data-integration.zip && \
-    rm env/data-integration.zip 
+ADD data-integration.zip data-integration.zip
+RUN unzip -q data-integration.zip && \
+    rm data-integration.zip 
 
 RUN unzip -q transmart-etl.zip && \
     mv tranSMART-ETL transmart-etl && \
