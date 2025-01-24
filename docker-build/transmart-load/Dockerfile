@@ -25,12 +25,14 @@ WORKDIR /home/tmload
 USER tmload
 
 #ADD kettle.properties /home/tmload/.kettle/kettle.properties
-ADD kettle.properties /home/tmload/transmart-data/samples/postgres/kettle-home/.kettle/kettle.properties
+#ADD kettle.properties /home/tmload/transmart-data/samples/postgres/kettle-home/.kettle/kettle.properties
 
 ADD transmart-data.zip transmart-data.zip
 
 RUN unzip -q transmart-data.zip && \
     rm transmart-data.zip
+
+ADD kettle.properties /home/tmload/transmart-data/samples/postgres/kettle-home/.kettle/kettle.properties
 
 ADD vars transmart-data/vars
 #    rm transmart-data.zip && \
