@@ -1,3 +1,5 @@
+CREATE INDEX wrk_cd_idx ON tm_wz.wrk_clinical_data USING btree
+(data_type, data_value, visit_name, data_label, category_cd, usubjid);
 CREATE SEQUENCE searchapp.data_attestation_id_seq;
 CREATE TABLE searchapp.data_attestation (data_attestation_id int8 NOT NULL DEFAULT nextval('searchapp.data_attestation_id_seq'::regclass), auth_user_id int8 NULL, last_date_agreed timestamp NULL);
 GRANT ALL ON TABLE searchapp.data_attestation to biomart_user;
