@@ -83,6 +83,7 @@ services:
       - ${ENV_FILE}
     volumes:
       - "apptmp:/tmp"
+      - "./transmart-app/Rscripts:/tmp/Rscripts"
     networks:
       - transmart
   
