@@ -207,50 +207,33 @@ server!
 
 Loading your own studies
 ------------------------
+1. Start a screen session
+2. Put the study folder in /studies
+3. Start the load container with the study directory mounted inside and attach:
+   `docker run -ti --rm --network transmart-docker_transmart -v /app/transmart/transmart-docker/studies/[STUDY_DIR]:/home/tmload/transmart-data/samples/studies/[STUDY_DIR] -e JAVAMAXMEM='4096' kretzlerdevs/transmart-load:1.0 /bin/bash`
+For example:
+   `docker run -ti --rm --network transmart-docker_transmart -v /app/transmart/transmart-docker/studies/NEPTUNE_v36:/home/tmload/transmart-data/samples/studies/Neptune_V36 -e JAVAMAXMEM='4096' kretzlerdevs/transmart-load:1.0 /bin/bash`
+4. Once inside the container, navigate to transmart-data directory and run the usual load script, but as sudo, e.g. 
+   `sudo bash -c "source ./vars && make -C samples/postgres load_clinical_Neptune_V36"`
 
-If you have a study prepared in a suitable format you can use the
-`tmload` container to load this as well. There is a manual describing
-the file formats available on the [eTRIKS Portal](https://portal.etriks.org/Portal/),
-under the 'Downloadable documents' section. The following tutorial
-will show you how to load clinical data.
 
-Place all relevant files together in a directory, for instance at
-`$HOME/my_study`. Create a file `load_clinical.sh` and edit it so it
-contains the following:
-```
-set -x
-$KITCHEN -norep=Y -file=/home/tmload/transmart-data/env/transmart-etl/Kettle/postgres/Kettle-ETL/create_clinical_data.kjb  \
--param:COLUMN_MAP_FILE=columns.txt \
--param:DATA_LOCATION=/my_study/ \
--param:HIGHLIGHT_STUDY=N \
--param:SQLLDR_PATH=/usr/bin/psql \
--param:LOAD_TYPE=I \
--param:RECORD_EXCLUSION_FILE=x \
--param:SECURITY_REQUIRED=Y \
--param:SORT_DIR=$HOME \
--param:STUDY_ID=MY_STUDY \
--param:WORD_MAP_FILE=x \
--param:TOP_NODE='\Public Studies\My Study\'
-```
-Edit the parameters to match your specific case. Notice we specified
-the `DATA_LOCATION` to be `/my_study/`, so we will need to mount our
-study directory to that location in the container. We will also need
-to connect the container to the network where our database is
-connected, by default this network will be called
-`transmartdocker_default`. The default Java heap size is 512MB, for
-large datasets it may be required to increase this. This can be done
-with the `JAVAMAXMEM` environment variable. The following command
-accomplishes all of these things, and runs the shell script we just
-created.
-```
-docker run -t --rm              \
-  --network transmartdocker_default \
-  -v $HOME/my_study:/my_study    \
-  -e JAVAMAXMEM='4096'           \
-  tmdocker/transmart-load:latest bash /my_study/load_clinical.sh
-```
-Docker will start a new container based on the `tmload` image, mount
-your data into it, run the load command and remove the container upon
-exit. In a different terminal, you can run the following command to
-keep an eye on the workload of your containers:
-`docker stats $(docker ps --format={{.Names}})`.
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
