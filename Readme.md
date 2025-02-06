@@ -208,7 +208,7 @@ server!
 Loading your own studies
 ------------------------
 1. Start a screen session
-2. Put the study folder in /studies
+2. Put the study folder in [transmart-docker]/studies
 3. Start the load container with the study directory mounted inside and attach:
 ```sh
 docker run -ti --rm --network transmart-docker_transmart -v /app/transmart/transmart-docker/studies/[STUDY_DIR]:/home/tmload/transmart-data/samples/studies/[STUDY_DIR] -e JAVAMAXMEM='4096' kretzlerdevs/transmart-load:1.0 /bin/bash
