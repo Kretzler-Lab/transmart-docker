@@ -221,6 +221,10 @@ docker run -ti --rm --network transmart-docker_transmart -v /app/transmart/trans
 ```sh
    sudo bash -c "source ./vars && make -C samples/postgres load_clinical_Neptune_V36"
 ```
+6. If the above command doesn't work, you will need to increase the memory that Java has access to. 
+```
+sudo bash -c "export PENTAHO_DI_JAVA_OPTIONS="-Xmx2g" && export _JAVA_OPTIONS=-Xmx8G && source ./vars && make -C samples/postgres load_clinical_Neptune_V36"
+```
 
 
  
