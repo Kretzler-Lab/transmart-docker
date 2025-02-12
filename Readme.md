@@ -226,24 +226,29 @@ docker run -ti --rm --network transmart-docker_transmart -v /app/transmart/trans
 sudo bash -c "export PENTAHO_DI_JAVA_OPTIONS="-Xmx2g" && export _JAVA_OPTIONS=-Xmx8G && source ./vars && make -C samples/postgres load_clinical_Neptune_V36"
 ```
 
+## Loading tooltips
+1. Copy the tooltip file from the study directory into the transmart database container
+```
+sudo docker cp ./Neptune_vXX/Node_data_definitions_vXX.csv transmart-docker-tmdb-1:/
+```
 
- 
+2. Step inside of the container
+```
+docker exec -it transmart-docker-tmdb-1 bash
+```
 
+3. Open transmart database
+```
+psql transmart
+```
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+4. Run add_tooltips function
+```
+SELECT i2b2metadata.add_tooltips('/Node_data_definitions_vXX.csv', FALSE, FALSE);
+```
+5. Verify 0 rows were affected
+```
+ add_tooltips 
+--------------
+(0 rows)
+```
