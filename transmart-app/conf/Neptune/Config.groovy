@@ -8,7 +8,7 @@
  * production environment when running grails run-app are scenarios that have
  * NOT been tested.
  */
-quickStartURL = "../../files/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
+quickStartURL = "./usr/local/tomcat/files/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
 dataAttestationText = """
         <p>
             It is the responsibility of all users to protect the privacy of individuals who are subjects in the data;
@@ -183,7 +183,7 @@ com.recomdata.adminEmail = "NeptuneTMSupport@umich.edu"
 com.recomdata.appTitle = "Neptune tranSMART"
 
 //Quick Start Guide URL
-quickStartURL = "../../files/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
+quickStartURL = "/usr/local/tomcat/files/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
 scatterPlotURL = "../../files/NEPTUNE_scatterplot.pdf"
 boxPlotURL = "../../files/NEPTUNE_boxplot.pdf"
 diffexURL = "../../files/NEPTUNE_diffex.pdf"
