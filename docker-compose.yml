@@ -38,6 +38,7 @@ services:
       - "${DOCKER_APP_CONFIG_FILE}/Config.groovy:/usr/local/tomcat/.grails/transmartConfig/Config.groovy"
       - "./transmart-app/DataSource.groovy:/usr/local/tomcat/.grails/transmartConfig/DataSource.groovy"
       - "./transmart-app/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
+      - "${DOCKER_APP_DOCS_FILE}:/usr/local/tomcat/files/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
       - "appdata:/root/.grails"
       - "apptmp:/tmp"
       - "appwebapps:/usr/local/tomcat/webapps"
