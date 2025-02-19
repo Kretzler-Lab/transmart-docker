@@ -35,7 +35,8 @@ services:
         aliases:
           - tmapp
     volumes:
-      - "./transmart-app/Config.groovy:/usr/local/tomcat/.grails/transmartConfig/Config.groovy"
+      - "${DOCKER_APP_CONFIG_DIR}/Config.groovy:/usr/local/tomcat/.grails/transmartConfig/Config.groovy"
+      - "${DOCKER_APP_DOCS_DIR}/NEPTUNE_tranSMART_Quick_Start_Guide.pdf:/usr/local/tomcat/files/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
       - "./transmart-app/DataSource.groovy:/usr/local/tomcat/.grails/transmartConfig/DataSource.groovy"
       - "./transmart-app/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
       - "appdata:/root/.grails"
