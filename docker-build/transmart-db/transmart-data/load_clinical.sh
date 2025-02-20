@@ -22,7 +22,7 @@ result=$?
 echo "Log file available at $studyName.clinical.out"
 
 if [ $result = 0 ]; then
-	RESULT=`psql -d transmart -c "SELECT i2b2metadata.add_tooltips('/home/transmart/transmart/transmart-data/samples/studies/$studyName/$toolTips', FALSE, FALSE);"`
+	RESULT=`psql -d transmart -c "SELECT i2b2metadata.add_tooltips('/home/tmload/transmart-data/samples/studies/$studyName/$toolTips', FALSE, FALSE);"`
 	echo $RESULT
 else
 	echo "Clinical load failed.  Check log file $studyName.clinical.out"
