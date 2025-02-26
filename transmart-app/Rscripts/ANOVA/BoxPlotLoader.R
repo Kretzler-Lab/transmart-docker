@@ -19,6 +19,8 @@
 #This will load our input files into variables so we can run the box plot with ANOVA.
 ###########################################################################
 
+#input.filename = "../admin-BoxPlot-201/workingDirectory/outputfile.txt"
+
 BoxPlot.loader <- function(
   input.filename,
   output.file="BoxPlot",
@@ -53,7 +55,19 @@ BoxPlot.loader <- function(
 
 	#Make sure we always use the x column as a column of factors.
 	line.data$X <- as.factor(line.data$X)
+
+	#================================================
+	## Determine if this data is Somascan data 
+	is_somascan = FALSE
+	if(any(grep("seq.\\d+\\d+.\\D+", line.data$GROUP))) is_somascan <- TRUE
 	
+	if(is_somascan) {
+		somascan_type = ifelse(any(grepl("Plasma", concept.dependent)), "plasma", "urine")
+		line.data <- line.data[ grep(somascan_type, line.data$GROUP), ]
+	}
+	#================================================
+
+
 	#Make sure the group columns are regarded as factors.
 	if("GROUP" %in% colnames(line.data)) line.data$GROUP <- as.factor(line.data$GROUP)
 	if("GROUP.1" %in% colnames(line.data)) line.data$GROUP.1 <- as.factor(line.data$GROUP.1)	
@@ -291,7 +305,7 @@ graphSubset <- function(currentGroup,
 		
 		#Flip the image.
 		tmp <- tmp + coord_flip()
-		
+
 		#Set the font size for the legend.
 		tmp <- tmp + theme(legend.text = element_text(size = 9,hjust=0))
 		
