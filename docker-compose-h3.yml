@@ -1,0 +1,90 @@
+version: '3.5'
+
+services:
+
+  tmapp-h3:
+    image: kretzlerdevs/transmart-app:1.0
+    restart: unless-stopped
+    ports:
+      - 8080
+    env_file:
+      - ${ENV_FILE}
+    depends_on:
+      - tmdb
+      - tmsolr
+      - tmrserve
+    networks:
+      transmart:
+        aliases:
+          - tmapp-h3
+    volumes:
+      - "${DOCKER_APP_CONFIG_DIR_H3}/Config.groovy:/usr/local/tomcat/.grails/transmartConfig/Config.groovy"
+      - "${DOCKER_APP_CONFIG_DIR_H3}/NEPTUNE_tranSMART_Quick_Start_Guide.pdf:/usr/local/tomcat/files/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
+      - "./transmart-app/DataSource.groovy:/usr/local/tomcat/.grails/transmartConfig/DataSource.groovy"
+      - "./transmart-app/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
+      - "appdata-h3:/root/.grails"
+      - "apptmp-h3:/tmp"
+      - "appwebapps-h3:/usr/local/tomcat/webapps"
+      - "appweblogs-h3:/usr/local/tomcat/logs"
+
+  tmdb-h3:
+    image: kretzlerdevs/transmart-db:1.0
+    restart: unless-stopped
+    expose:
+      - 5432
+    ports:
+      - ${DOCKER_DB_PORT:-5432}:5432
+    env_file:
+      - ${ENV_FILE}
+    networks:
+      transmart:
+        aliases:
+          - tmdb-h3
+    volumes:
+      - "postgresdata-h3:/var/lib/postgresql"
+      - "postgreslogs-h3:/var/log/postgresql"
+
+  tmsolr-h3:
+    image: transmartfoundation/transmart-solr:latest
+    restart: unless-stopped
+    expose:
+      - 8983
+    ports:
+      - ${DOCKER_SOLR_PORT:-8983}:8983
+    env_file:
+      - ${ENV_FILE}
+    networks:
+      transmart:
+        aliases:
+          - tmsolr-h3
+      
+
+  tmrserve-h3:
+    image: transmartfoundation/transmart-rserve:latest
+    restart: unless-stopped
+    expose:
+      - 6311
+    ports:
+      - ${DOCKER_RSERVE_PORT:-6311}:6311
+    env_file:
+      - ${ENV_FILE}
+    volumes:
+      - "apptmp-h3:/tmp"
+      - "./transmart-app/Rscripts:/tmp/Rscripts"
+    networks:
+      transmart:
+        aliases:
+          - tmrserve-h3:
+      
+
+volumes:
+  appdata-h3:
+  apptmp-h3:
+  appwebapps-h3:
+  appweblogs-h3:
+  postgresdata-h3:
+  postgreslogs-h3:
+
+networks:
+  transmart:
+    external: true
