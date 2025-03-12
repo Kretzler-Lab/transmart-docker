@@ -73,7 +73,9 @@ services:
     env_file:
       - ${ENV_FILE}
     networks:
-      - local
+      local:
+        aliases:
+          - tmsolr
 
   tmrserve:
     image: transmartfoundation/transmart-rserve:latest
@@ -88,7 +90,10 @@ services:
       - "apptmp:/tmp"
       - "./transmart-app/Rscripts:/tmp/Rscripts"
     networks:
-      - local
+      local:
+        aliases:
+          - tmrserve
+      
   
   tmload:
     image: transmartfoundation/transmart-load:latest
@@ -97,7 +102,9 @@ services:
     env_file:
       - ${ENV_FILE}
     networks:
-      - local
+      local:
+        aliases:
+          - tmload
 
 volumes:
   appdata:
