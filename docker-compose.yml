@@ -108,4 +108,5 @@ volumes:
   postgreslogs:
 
 networks:
-  transmart:
+  local:
+    transmart:
