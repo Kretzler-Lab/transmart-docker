@@ -14,7 +14,7 @@ services:
       - tmsolr-h3
       - tmrserve-h3
     networks:
-      transmart:
+      default:
         aliases:
           - tmapp-h3
     volumes:
@@ -37,7 +37,7 @@ services:
     env_file:
       - ${ENV_FILE}
     networks:
-      transmart:
+      default:
         aliases:
           - tmdb-h3
     volumes:
@@ -54,7 +54,7 @@ services:
     env_file:
       - ${ENV_FILE}
     networks:
-      transmart:
+      default:
         aliases:
           - tmsolr-h3
       
@@ -72,7 +72,7 @@ services:
       - "apptmp-h3:/tmp"
       - "./transmart-app/Rscripts:/tmp/Rscripts"
     networks:
-      transmart:
+      default:
         aliases:
           - tmrserve-h3
       
@@ -86,5 +86,6 @@ volumes:
   postgreslogs-h3:
 
 networks:
-  transmart:
+  default: 
+    name: transmart    
     external: true
