@@ -10,9 +10,9 @@ services:
     env_file:
       - ${ENV_FILE}
     depends_on:
-      - tmdb
-      - tmsolr
-      - tmrserve
+      - tmdb-h3
+      - tmsolr-h3
+      - tmrserve-h3
     networks:
       transmart:
         aliases:
