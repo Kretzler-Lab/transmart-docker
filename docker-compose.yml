@@ -109,4 +109,4 @@ volumes:
 
 networks:
   local:
-    transmart:
+    name: transmart
