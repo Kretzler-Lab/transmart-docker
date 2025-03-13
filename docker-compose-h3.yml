@@ -5,7 +5,7 @@ services:
   tmapp-h3:
     image: kretzlerdevs/transmart-app:1.0
     restart: unless-stopped
-    ports:
+    expose:
       - 8080
     env_file:
       - ${ENV_FILE}
@@ -30,10 +30,10 @@ services:
   tmdb-h3:
     image: kretzlerdevs/transmart-db:1.0
     restart: unless-stopped
+    ports:
+      - ${DOCKER_DB_PORT_H3:-5432}:5432   
     expose:
       - 5432
-    ports:
-      - ${DOCKER_DB_PORT:-5432}:5432
     env_file:
       - ${ENV_FILE}
     networks:
@@ -49,8 +49,6 @@ services:
     restart: unless-stopped
     expose:
       - 8983
-    ports:
-      - ${DOCKER_SOLR_PORT:-8983}:8983
     env_file:
       - ${ENV_FILE}
     networks:
@@ -64,8 +62,6 @@ services:
     restart: unless-stopped
     expose:
       - 6311
-    ports:
-      - ${DOCKER_RSERVE_PORT:-6311}:6311
     env_file:
       - ${ENV_FILE}
     volumes:
