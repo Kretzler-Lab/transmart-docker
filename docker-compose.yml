@@ -17,7 +17,7 @@ services:
       - "${DOCKER_APP_DOCS_DIR}:/usr/local/apache2/htdocs/files"
       - "./transmart-web/certs:/etc/apache2/certs" 
     networks:
-      transmart:
+      default:
         aliases:
           - tmweb
 
@@ -33,8 +33,8 @@ services:
       - tmsolr
       - tmrserve
     networks:
-      transmart:
-        aliases:
+      default:
+         aliases:
           - tmapp
     volumes:
       - "${DOCKER_APP_CONFIG_DIR}/Config.groovy:/usr/local/tomcat/.grails/transmartConfig/Config.groovy"
@@ -56,8 +56,8 @@ services:
     env_file:
       - ${ENV_FILE}
     networks:
-      transmart:
-        aliases:
+      default:
+         aliases:
           - tmdb
     volumes:
       - "postgresdata:/var/lib/postgresql"
@@ -73,7 +73,9 @@ services:
     env_file:
       - ${ENV_FILE}
     networks:
-      - transmart
+      default:
+         aliases:
+          - tmsolr
 
   tmrserve:
     image: transmartfoundation/transmart-rserve:latest
@@ -88,7 +90,10 @@ services:
       - "apptmp:/tmp"
       - "./transmart-app/Rscripts:/tmp/Rscripts"
     networks:
-      - transmart
+      default:
+         aliases:
+          - tmrserve
+      
   
   tmload:
     image: transmartfoundation/transmart-load:latest
@@ -97,7 +102,9 @@ services:
     env_file:
       - ${ENV_FILE}
     networks:
-      - transmart
+      default:
+         aliases:
+          - tmload
 
 volumes:
   appdata:
@@ -108,4 +115,5 @@ volumes:
   postgreslogs:
 
 networks:
-  transmart:
+  default: 
+    name: transmart

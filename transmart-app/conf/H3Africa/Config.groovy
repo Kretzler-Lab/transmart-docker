@@ -8,26 +8,19 @@
  * production environment when running grails run-app are scenarios that have
  * NOT been tested.
  */
-quickStartURL = "../../files/Neptune/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
+quickStartURL = "../../files/H3Africa/H3Africa_tranSMART_Quick_Start_Guide.pdf"
 dataAttestationText = """
-        <p>
-            It is the responsibility of all users to protect the privacy of individuals who are subjects in the data;
-            to not use or disclose the data other than as permitted; and to appropriately secure the data.
-        </p>
-        <p>
-            By clicking “I agree” below, users agree to the following:
-            <ul style="list-style-type: square; list-style-position: outside; padding-left: 18px;">
-                <li>No attempt shall be made to link subject data to a NEPTUNE participant.</li>
-                <li>Any disclosure of data, analysis, or results  from tranSMART must be in accordance
-                    with appropriate NEPTUNE policies and procedures.</li>
-                <li>Further data analysis on hypotheses generated via tranSMART will be done via
-                    existing NEPTUNE policies and procedures.</li>
-                <li>Data may not be disclosed, downloaded, or shared unless appropriate
-                    Material Transfer Agreements are in place.</li>
-                <li>As NEPTUNE data are still being collected and cleaned, there will be periodic,
-                    announced updates to the data in tranSMART, with resulting possible changes in analysis results.</li>
-            </ul>
-        </p>
+<p>
+It is the responsibility of all users to protect the privacy of individuals who are subjects in the data; to not use or disclose the data other than as permitted; and to appropriately secure the data.
+<p>
+By clicking “I agree” below, users agree to the following:
+<ul style="list-style-type: square; list-style-position: outside; padding-left: 18px;">
+<li>No attempt shall be made to link subject data to a H3 Africa participant.</li>
+<li>Any disclosure of data, analysis, or results from tranSMART must be in accordance with appropriate H3 Africa policies and procedures.</li>
+<li>Further data analysis on hypotheses generated via tranSMART will be done via existing H3 Africa policies and procedures.</li>
+<li>As H3 Africa data are still being collected and cleaned, there will be periodic, announced updates to the data in tranSMART, which may result in changes to analysis results.</li>
+</ul>
+</p>
 """
 
 // if running as a WAR, we need these
@@ -47,14 +40,13 @@ motd {
     motd_title = "<center>Welcome<center>"
     motd_text = """\
 <center>
-<br/>
-You are about to enter the data sharing center of the NEPTUNE project.<br />
-<br />
-Upon login, new users will be asked to agree to the data usage and <br />
-attribution policy of the site.  Renewal of that agreement will be <br />
-requested every 90 days.  <br />
-<br/>
-Contact <a href="mailto:neptunetmsupport@umich.edu" style="color: #0000EE; text-decoration: underline">support</a> if you have forgotten your username and/or password.
+Welcome to the H3 Africa instance of tranSMART.<br />
+ <br />
+Upon log in, new users will be asked to agree to the data usage and <br>
+attribution policy of the site. Renewal of that agreement will be <br>
+requested every 90 days.<br>
+<br>
+<a href="${quickStartURL}" target="_blank">Click here for H3 Africa-specific help on using tranSMART.</a>
 </center>
 """
 }
@@ -80,7 +72,7 @@ ui {
             // Currently, it is only used in special cases
             analysisJobs.show = false
             workspace.hide = false
-    	    rawDataExport.enabled = false
+	    rawDataExport.enabled = false
         }
     }
     jirareport.hide = true
@@ -150,10 +142,10 @@ log4j = {
 /* {{{ Faceted Search Configuration */
 environments {
     development {                                                                                                                                                    com.rwg.solr.scheme = 'http'
-        com.rwg.solr.host   = 'tmsolr:8983'                                                                                                                          com.rwg.solr.path   = '/solr/rwg/select/'
+        com.rwg.solr.host   = 'tmsolr-h3:8983'                                                                                                                          com.rwg.solr.path   = '/solr/rwg/select/'
     }                                                                                                                                                        
     production {                                                                                                                                                     com.rwg.solr.scheme = 'http'
-        com.rwg.solr.host   = 'tmsolr:' + solrPort
+        com.rwg.solr.host   = 'tmsolr-h3:' + solrPort
         com.rwg.solr.path   = '/solr/rwg/select/'
     }
 }
@@ -168,26 +160,26 @@ com.recomdata.dataUpload.adminEmail = 'No data upload adminEmail value set - con
 
 /* {{{ Personalization */
 // application logo to be used in the login page
-com.recomdata.largeLogo = "Neptune_Logo_Big.png"
+com.recomdata.largeLogo = "H3-logo.png"
 
 // application logo to be used in the search page
-com.recomdata.smallLogo="Neptune_Logo_Small.png"
+com.recomdata.smallLogo="no_graphic.png"
 
 // contact email address
-com.recomdata.contactUs = "NeptuneTMSupport@umich.edu"
+com.recomdata.contactUs = "H3AfricaTMSupport@umich.edu"
 
 // site administrator contact email address
-com.recomdata.adminEmail = "NeptuneTMSupport@umich.edu"
+com.recomdata.adminEmail = "H3AfricaTMSupport@umich.edu"
 
 // application title
-com.recomdata.appTitle = "Neptune tranSMART"
+com.recomdata.appTitle = "H3 Africa tranSMART"
 
 //Quick Start Guide URL
-quickStartURL = "../../files/Neptune/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
-scatterPlotURL = "../../files/Neptune/NEPTUNE_scatterplot.pdf"
-boxPlotURL = "../../files/Neptune/NEPTUNE_boxplot.pdf"
-diffexURL = "../../files/Neptune/NEPTUNE_diffex.pdf"
-proteinsURL = "../../files/Neptune/Proteins_in_NEPTUNE_tranSMART.xlsx"
+quickStartURL = "../../files/H3Africa/H3Africa_tranSMART_Quick_Start_Guide.pdf"
+scatterPlotURL = "../../files/H3Africa/H3Africa_scatterplot.pdf"
+boxPlotURL = "../../files/H3Africa/H3Africa_boxplot.pdf"
+diffexURL = ""
+proteinsURL = ""
 
 // Location of the help pages. Should be an absolute URL.
 com.recomdata.adminHelpURL = "http://transmart-app.readthedocs.io/en/latest/index.html"
@@ -292,7 +284,7 @@ com.recomdata.plugins.resultSize = 5000
 /* {{{ RModules & Data Export Configuration */
 environments {
     // This is to target a remove Rserv. Bear in mind the need for shared network storage
-    RModules.host = "tmrserve"
+    RModules.host = "tmrserve-h3"
     RModules.port = 6311
 
     // This is not used in recent versions; the URL is always /analysisFiles/
