@@ -24,6 +24,7 @@ services:
       - "./transmart-app/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
       - "appdata-h3:/root/.grails"
       - "apptmp-h3:/tmp"
+       - "./transmart-app/Rscripts:/Rscripts"     
       - "appwebapps-h3:/usr/local/tomcat/webapps"
       - "appweblogs-h3:/usr/local/tomcat/logs"
 
@@ -66,7 +67,7 @@ services:
       - ${ENV_FILE_H3}
     volumes:
       - "apptmp-h3:/tmp"
-      - "./transmart-app/Rscripts:/tmp/Rscripts"
+      - "./transmart-app/Rscripts:/Rscripts"
     networks:
       default:
         aliases:

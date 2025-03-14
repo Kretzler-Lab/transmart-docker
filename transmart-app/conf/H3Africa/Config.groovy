@@ -294,7 +294,7 @@ environments {
         // The working directory for R scripts, where the jobs get created and
         // output files get generated
         RModules.tempFolderDirectory = jobsDirectory
-        RModules.deployment.rscripts = "/tmp/Rscripts"
+        RModules.deployment.rscripts = "/Rscripts"
         RModules.deployment.dataexportRscripts = "/tmp/dataexportRscripts"
     }
     development {
