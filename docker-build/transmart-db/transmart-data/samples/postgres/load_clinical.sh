@@ -116,4 +116,8 @@ _END
 
 fi
 
+    $PGSQL_BIN/psql <<_END
+        select i2b2metadata.add_tooltips('/home/tmload/transmart-data/samples/studies/${STUDY_ID}/$tooltips', FALSE, FALSE);
+_END
+
 echo "All done."
