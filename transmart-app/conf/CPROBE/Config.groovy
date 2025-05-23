@@ -8,6 +8,27 @@
  * production environment when running grails run-app are scenarios that have
  * NOT been tested.
  */
+quickStartURL = "../../files/CPROBE_tranSMART_Quick_Start_Guide.pdf"
+dataAttestationText = """
+        <p>
+            It is the responsibility of all users to protect the privacy of individuals who are subjects in the data;
+            to not use or disclose the data other than as permitted; and to appropriately secure the data.
+        </p>
+        <p>
+            By clicking “I agree” below, users agree to the following:
+            <ul style="list-style-type: square; list-style-position: outside; padding-left: 18px;">
+                <li>No attempt shall be made to link subject data to a C-PROBE participant.</li>
+                <li>Any disclosure of data, analysis, or results  from tranSMART must be in accordance
+                    with appropriate C-PROBE policies and procedures.</li>
+                <li>Further data C-PROBE on hypotheses generated via tranSMART will be done via
+                    existing C-PROBE policies and procedures.</li>
+                <li>Data may not be disclosed, downloaded, or shared unless appropriate
+                    Material Transfer Agreements are in place.</li>
+                <li>As C-PROBE data are still being collected and cleaned, there will be periodic,
+                    announced updates to the data in tranSMART, with resulting possible changes in analysis results.</li>
+            </ul>
+        </p>
+"""
 
 // if running as a WAR, we need these
 def catalinaBase      = System.getProperty('catalina.base') ?: '.'
@@ -33,39 +54,16 @@ Upon login, new users will be asked to agree to the data usage and <br />
 attribution policy of the site.  Renewal of that agreement will be <br />
 requested every 90 days.  <br />
 <br/>
-Contact <a href="mailto:CPROBEtmSupport@umich.edu" style="color: #0000EE; text-decoration: underline">support</a> if you have forgotten your username and/or password.
+Contact <a href="mailto:CPROBEtmsupport@umich.edu" style="color: #0000EE; text-decoration: underline">support</a> if you have forgotten your username and/or password.
 </center>
 """
 }
-
-dataAttestationText = """
-<p>
-It is the responsibility of all users to protect the privacy of individuals who are subjects in the data; to not use or disclose the data other than as permitted; and to appropriately secure the data.</p>
-<p>
-By clicking “I agree” below, users agree to the following:
-<ul style="list-style-type: square; list-style-position: outside; padding-left: 18px;">
-<li>No attempt shall be made to link subject data to a C-PROBE participant.</li>
-<li>Any disclosure of data, analysis, or results from tranSMART must be in accordance with appropriate C-PROBE policies and procedures.</li>
-<li>Further data analysis on hypotheses generated via tranSMART will be done via existing C-PROBE policies and procedures.</li>
-<li>Data may not be disclosed, downloaded, or shared unless appropriate Material Transfer Agreements are in place.</li>
-<li>As C-PROBE data are still being collected and cleaned, there will be periodic, announced updates to the data in tranSMART, with resulting possible changes in analysis results.</li>
-</ul>
-</p>
-"""
-
 
 org.transmartproject.enableAcrossTrials = false
 
 //Disabling/Enabling UI tabs
 ui {
     tabs {
-        datasetExplorer {
-            gridView.hide = true
-            dataExport.hide = true
-            hideAcrossTrialsPanel = true
-            dataExportJobs.hide = true
-            analysisJobs.show = true
-        }
         //Search was not part of 1.2. It's not working properly. You need to set `show` to `true` to see it on UI
         search.show = false
         browse.hide = true
@@ -74,10 +72,19 @@ ui {
         geneSignature.hide = false
         gwas.hide = true
         uploadData.hide = true
+        datasetExplorer {
+            gridView.hide = true
+            dataExport.hide = true
+            dataExportJobs.hide = true
+            // Note: by default the analysisJobs panel is NOT shown
+            // Currently, it is only used in special cases
+            analysisJobs.show = false
+            workspace.hide = false
+    	    rawDataExport.enabled = false
+        }
     }
     jirareport.hide = true
 }
-
 
 // I001 – Insertion point 'post-WAR-variables'
 
@@ -165,32 +172,30 @@ com.recomdata.dataUpload.adminEmail = 'No data upload adminEmail value set - con
 
 /* {{{ Personalization */
 // application logo to be used in the login page
-com.recomdata.largeLogo = "cprobeLogo.png"
+com.recomdata.largeLogo = "Cprobe_Logo_Big.png"
 
 // application logo to be used in the search page
-com.recomdata.searchtool.smallLogo="cprobeLogo.png"
+com.recomdata.smallLogo="Cprobe_Logo_Small.png"
 
 // contact email address
-com.recomdata.contactUs = "mailto:CPROBEtmSupport@umich.edu"
-com.recomdata.searchtool.contactUs = "mailto:CPROBEtmSupport@umich.edu"
+com.recomdata.contactUs = "CprobeTMSupport@umich.edu"
 
 // site administrator contact email address
-com.recomdata.adminEmail = "CPROBEtmSupport@umich.edu"
+com.recomdata.adminEmail = "CPROBETMSupport@umich.edu"
 
 // application title
-com.recomdata.appTitle = "C-Probe tranSMART" // v + org.transmart.originalConfigBinding.appVersion +  " (GPL, PostgresSQL)"
+com.recomdata.appTitle = " tranSMART"
 
 //Quick Start Guide URL
 quickStartURL = "../../files/CPROBE_tranSMART_Quick_Start_Guide.pdf"
 scatterPlotURL = "../../files/CPROBE_scatterplot.pdf"
 boxPlotURL = "../../files/CPROBE_boxplot.pdf"
 diffexURL = "../../files/CPROBE_diffex.pdf"
-metabolitesURL = "../../files/Metabolites_in_tranSMART.xlsx"
 proteinsURL = "../../files/Proteins_in_tranSMART.xlsx"
 
 // Location of the help pages. Should be an absolute URL.
 com.recomdata.adminHelpURL = "http://transmart-app.readthedocs.io/en/latest/index.html"
-	
+
 environments { development {
     com.recomdata.bugreportURL = 'https://jira.transmartfoundation.org'
 } }
@@ -301,6 +306,8 @@ environments {
         // The working directory for R scripts, where the jobs get created and
         // output files get generated
         RModules.tempFolderDirectory = jobsDirectory
+        RModules.deployment.rscripts = "/tmp/Rscripts"
+        RModules.deployment.dataexportRscripts = "/tmp/dataexportRscripts"
     }
     development {
         RModules.tempFolderDirectory = "/tmp"
