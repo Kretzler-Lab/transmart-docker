@@ -32,7 +32,7 @@ services:
     image: kretzlerdevs/transmart-db:1.0
     restart: unless-stopped
     ports:
-      - ${DOCKER_DB_PORT_app2:-5432}:5432   
+      - ${DOCKER_DB_PORT_APP2:-5432}:5432   
     expose:
       - 5432
     env_file:
