@@ -10,7 +10,7 @@ services:
       - "80:80"
       - "443:443"
     env_file:
-      - ${ENV_FILE}
+      - ./.env
     volumes:
       - "./transmart-web/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf"
       - "./transmart-web/httpd.conf:/usr/local/apache2/conf/httpd.conf"
