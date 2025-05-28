@@ -21,7 +21,7 @@ services:
       - "${DOCKER_APP_CONFIG_DIR_APP2}/Config.groovy:/usr/local/tomcat/.grails/transmartConfig/Config.groovy"
       - "${DOCKER_APP_DOCS_DIR_APP2}:/usr/local/tomcat/files"
       - "./transmart-app/DataSource.groovy:/usr/local/tomcat/.grails/transmartConfig/DataSource.groovy"
-      - "./transmart-app/images/${APP2}:/usr/local/tomcat/webapps/transmart/images"
+      - "${DOCKER_APP_LOGO_DIR_APP2}:/usr/local/tomcat/webapps/transmart/images"
       - "./transmart-app/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
       - "appdata-app2:/root/.grails"
       - "apptmp-app2:/tmp"
