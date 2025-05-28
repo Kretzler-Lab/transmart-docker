@@ -165,10 +165,10 @@ com.recomdata.dataUpload.adminEmail = 'No data upload adminEmail value set - con
 
 /* {{{ Personalization */
 // application logo to be used in the login page
-com.recomdata.largeLogo = "cprobeLogo.png"
+com.recomdata.largeLogo = "CPROBE/cprobeLogo.png"
 
 // application logo to be used in the search page
-com.recomdata.searchtool.smallLogo="cprobeLogo.png"
+com.recomdata.searchtool.smallLogo="CPROBE/cprobeLogo.png"
 
 // contact email address
 com.recomdata.contactUs = "mailto:CPROBEtmSupport@umich.edu"
