@@ -19,9 +19,9 @@ services:
           - tmapp-app2
     volumes:
       - "${DOCKER_APP_CONFIG_DIR_APP2}/Config.groovy:/usr/local/tomcat/.grails/transmartConfig/Config.groovy"
-      - "${DOCKER_APP_CONFIG_DIR_APP2}/NEPTUNE_tranSMART_Quick_Start_Guide.pdf:/usr/local/tomcat/files/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
+      - "${DOCKER_APP_DOCS_DIR_APP2}/CPROBE_tranSMART_Quick_Start_Guide.pdf:/usr/local/tomcat/files/CPROBE_tranSMART_Quick_Start_Guide.pdf"
       - "./transmart-app/DataSource.groovy:/usr/local/tomcat/.grails/transmartConfig/DataSource.groovy"
-      - "./transmart-app/images/${APP2_LOGO}:/usr/local/tomcat/webapps/transmart/images/${APP2_LOGO}"
+      - "./transmart-app/images/CPROBE/${APP2_LOGO}:/usr/local/tomcat/webapps/transmart/images/${APP2_LOGO}"
       - "./transmart-app/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
       - "appdata-app2:/root/.grails"
       - "apptmp-app2:/tmp"
