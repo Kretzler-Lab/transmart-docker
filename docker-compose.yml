@@ -10,12 +10,9 @@ services:
       - "80:80"
       - "443:443"
     env_file:
-      - ${ENV_FILE}
-    environment:
-      - ${SERVER_NAME}
-      - ${SERVER_NAME_APP2}  
+      - ./.env
     volumes:
-      - "./transmart-web/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf"
+      - "./transmart-web/${V_HOSTS_FILE}:/usr/local/apache2/conf/extra/httpd-vhosts.conf"
       - "./transmart-web/httpd.conf:/usr/local/apache2/conf/httpd.conf"
       - "${DOCKER_APP_DOCS_DIR}:/usr/local/apache2/htdocs/files"
       - "./transmart-web/certs:/etc/apache2/certs" 

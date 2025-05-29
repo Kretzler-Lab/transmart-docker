@@ -157,13 +157,13 @@ log4j = {
 environments {
     development {
         com.rwg.solr.scheme = 'http'
-        com.rwg.solr.host   = 'localhost:8983'
+        com.rwg.solr.host   = 'transmart-docker-tmsolr-1:8983'
         com.rwg.solr.path   = '/solr/rwg/select/'
     }
 
     production {
         com.rwg.solr.scheme = 'http'
-        com.rwg.solr.host   = 'localhost:' + solrPort
+        com.rwg.solr.host   = 'transmart-docker-tmsolr-1:' + solrPort
         com.rwg.solr.path   = '/solr/rwg/select/'
     }
 }
@@ -308,7 +308,7 @@ com.recomdata.plugins.resultSize = 5000
 /* {{{ RModules & Data Export Configuration */
 environments {
     // This is to target a remove Rserv. Bear in mind the need for shared network storage
-    RModules.host = "127.0.0.1"
+    RModules.host = "transmart-docker-tmrserve-1"
     RModules.port = 6311
 
     // This is not used in recent versions; the URL is always /analysisFiles/
