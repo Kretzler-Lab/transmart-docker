@@ -16,7 +16,7 @@ def explodedWarDir    = catalinaBase + '/webapps/transmart'
 def solrPort          = 8983 //port of appserver where solr runs (under ctx path /solr)
 def searchIndex       = catalinaBase + '/searchIndex' //create this directory
 // for running transmart as WAR, create this directory and then create an alias
-def jobsDirectory     = "/var/tmp/jobs/"
+def jobsDirectory     = "/tmp"
 def oauthEnabled      = true
 def samlEnabled       = false
 def gwavaEnabled      = false
@@ -298,9 +298,10 @@ environments {
     RModules.imageURL = "/tempImages/" //must end and start with /
 
     production {
-        // The working directory for R scripts, where the jobs get created and
-        // output files get generated
-        RModules.tempFolderDirectory = jobsDirectory
+        // The working directory for R scripts, where the jobs get created and                                                  // output files get generated
+        RModules.tempFolderDirectory = jobsDirectory             
+        RModules.deployment.rscripts = "/tmp/Rscripts"
+        RModules.deployment.dataexportRscripts = "/tmp/dataexportRscripts"
     }
     development {
         RModules.tempFolderDirectory = "/tmp"
