@@ -8,40 +8,26 @@
  * production environment when running grails run-app are scenarios that have
  * NOT been tested.
  */
+
 quickStartURL = "../../files/CureGN_tranSMART_Quick_Start_Guide.pdf"
+scatterPlotURL = "../../files/CureGN_scatterplot.pdf"
+boxPlotURL = "../../files/CureGN_boxplot.pdf"
+diffexURL = ""
+metabolitesURL = ""
+selectingDataURL = ""
 dataAttestationText = """
-        <p>
-            It is the responsibility of all users to protect the privacy of individuals who are subjects in the data;
-            to not use or disclose the data other than as permitted; and to appropriately secure the data.
-        </p>
-        <p>
-            By clicking “I agree” below, users agree to the following:
-            <ul style="list-style-type: square; list-style-position: outside; padding-left: 18px;">
-                <li>No attempt shall be made to link subject data to a CureGN participant.</li>
-                <li>Any disclosure of data, analysis, or results  from tranSMART must be in accordance
-                    with appropriate CureGN policies and procedures.</li>
-                <li>Further data analysis on hypotheses generated via tranSMART will be done via
-                    existing CureGN policies and procedures.</li>
-                <li>Data may not be disclosed, downloaded, or shared unless appropriate
-                    Material Transfer Agreements are in place.</li>
-                <li>As CureGN data are still being collected and cleaned, there will be periodic,
-                    announced updates to the data in tranSMART, with resulting possible changes in analysis results.</li>
-            </ul>
-        </p>
+<p>
+It is the responsibility of all users to protect the privacy of individuals who are subjects in the data; to not use or disclose the data other than as permitted; and to appropriately secure the data.
+<p>
+By clicking “I agree” below, users agree to the following:
+<ul style="list-style-type: square; list-style-position: outside; padding-left: 18px;">
+<li>No attempt shall be made to link subject data to a CureGN participant.</li>
+<li>Any disclosure of data, analysis, or results from tranSMART must be in accordance with appropriate CureGN policies and procedures.</li>
+<li>Further data analysis on hypotheses generated via tranSMART will be done via existing CureGN policies and procedures.</li>
+<li>As CureGN data are still being collected and cleaned, there will be periodic, announced updates to the data in tranSMART, which may result in changes to analysis results.</li>
+</ul>
+</p>
 """
-
-// if running as a WAR, we need these
-def catalinaBase      = System.getProperty('catalina.base') ?: '.'
-
-def explodedWarDir    = catalinaBase + '/webapps/transmart'
-def solrPort          = 8983 //port of appserver where solr runs (under ctx path /solr)
-def searchIndex       = catalinaBase + '/searchIndex' //create this directory
-// for running transmart as WAR, create this directory and then create an alias
-def jobsDirectory     = "/var/tmp/jobs/"
-def oauthEnabled      = true
-def samlEnabled       = false
-def gwavaEnabled      = false
-def transmartURL      = "http://localhost:${System.getProperty('server.port', '8080')}/transmart"
 
 motd {
     motd_title = "<center>Welcome<center>"
@@ -54,10 +40,23 @@ Upon login, new users will be asked to agree to the data usage and <br />
 attribution policy of the site.  Renewal of that agreement will be <br />
 requested every 90 days.  <br />
 <br/>
-Contact <a href="mailto:curegntmsupport@umich.edu" style="color: #0000EE; text-decoration: underline">support</a> if you have forgotten your username and/or password.
+Contact <a href="mailto:CureGNtmSupport@umich.edu" style="color: #0000EE; text-decoration: underline">support</a> if you have forgotten your username and/or password.
 </center>
 """
 }
+
+// if running as a WAR, we need these
+def catalinaBase      = System.getProperty('catalina.base') ?: '.'
+
+def explodedWarDir    = catalinaBase + '/webapps/transmart'
+def solrPort          = 8983 //port of appserver where solr runs (under ctx path /solr)
+def searchIndex       = catalinaBase + '/searchIndex' //create this directory
+// for running transmart as WAR, create this directory and then create an alias
+def jobsDirectory     = "/tmp"
+def oauthEnabled      = true
+def samlEnabled       = false
+def gwavaEnabled      = false
+def transmartURL      = "http://localhost:${System.getProperty('server.port', '8080')}/transmart"
 
 org.transmartproject.enableAcrossTrials = false
 
@@ -80,13 +79,20 @@ ui {
             // Currently, it is only used in special cases
             analysisJobs.show = false
             workspace.hide = false
-    	    rawDataExport.enabled = false
+            rawDataExport.enabled = false
         }
     }
-    jirareport.hide = true
 }
 
+com.recomdata.category.hide.gene = true
+com.recomdata.category.hide.organism = true
+
 // I001 – Insertion point 'post-WAR-variables'
+
+//transmartURL      = 'http://example.com/transmart/'
+//oauthEnabled      = true
+//samlEnabled       = false
+//gwavaEnabled      = false
 
 /* Other things you may want to change:
  * – Log4j configuration
@@ -96,9 +102,9 @@ ui {
  */
 
 /* If you want to be able to regenerate this file easily, instead of editing
- * the generated file directly, create a Config-extra.groovy file in the root of
- * the transmart-data checkout. That file will be appended to this one whenever
- * the Config.groovy target is run */
+ * the generated file directly, create a Config-extra.php file in the config
+ * directory of the transmart-data checkout. That file will be appended to
+ * this one whenever the Config.groovy target is run */
 
 environments { production {
     if (transmartURL.startsWith('http://localhost:')) {
@@ -151,13 +157,13 @@ log4j = {
 environments {
     development {
         com.rwg.solr.scheme = 'http'
-        com.rwg.solr.host   = 'localhost:8983'
+        com.rwg.solr.host   = 'transmart-docker-tmsolr-1:8983'
         com.rwg.solr.path   = '/solr/rwg/select/'
     }
 
     production {
         com.rwg.solr.scheme = 'http'
-        com.rwg.solr.host   = 'localhost:' + solrPort
+        com.rwg.solr.host   = 'transmart-docker-tmsolr-1:' + solrPort
         com.rwg.solr.path   = '/solr/rwg/select/'
     }
 }
@@ -167,41 +173,53 @@ environments {
 // This is the value that will appear in the To: entry of the e-mail popup 
 // that is displayed when the user clicks the Email administrator button,
 // on the GWAS plugin Data Upload page
-com.recomdata.dataUpload.adminEmail = 'No data upload adminEmail value set - contact site administrator'
+com.recomdata.dataUpload.adminEmail = "CureGNtmSupport@umich.edu"
 /* }}} */
 
 /* {{{ Personalization */
 // application logo to be used in the login page
-com.recomdata.largeLogo = "CureGN_Logo_Big.png"
-
+com.recomdata.largeLogo = "CureGNLogo.jpg"
+com.recomdata.searchtool.smallLogo="CureGNLogo.jpg"
 // application logo to be used in the search page
-com.recomdata.smallLogo="CureGN_Logo_Small.png"
+com.recomdata.smallLogo="CureGNLogo.jpg"
 
 // contact email address
-com.recomdata.contactUs = "CureGNTMSupport@umich.edu"
+com.recomdata.contactUs = "CureGNtmSupport@umich.edu"
 
 // site administrator contact email address
-com.recomdata.adminEmail = "CureGNTMSupport@umich.edu"
+com.recomdata.adminEmail = "CureGNtmSupport@umich.edu"
 
 // application title
 com.recomdata.appTitle = "CureGN tranSMART"
 
-//Quick Start Guide URL
-quickStartURL = "../../files/CureGN_tranSMART_Quick_Start_Guide.pdf"
-scatterPlotURL = "../../files/CureGN_scatterplot.pdf"
-boxPlotURL = "../../files/CureGN_boxplot.pdf"
-
 // Location of the help pages. Should be an absolute URL.
-com.recomdata.adminHelpURL = "http://transmart-app.readthedocs.io/en/latest/index.html"
+// Currently, these are distribution with transmart,
+// so it can also point to that location copy.
+def tmurl       = new URL(transmartURL)
+//com.recomdata.adminHelpURL = "$tmurl.protocol://$tmurl.host${tmurl.port != -1 ? ":$tmurl.port" : ''}/transmartmanual/"
+com.recomdata.adminHelpURL = "https://wiki.transmartfoundation.org/"
+
+org { transmartproject { helpUrls {
+ 	geneSignatureList = false
+	rsIdSignatureList = false
+}}}
+
 
 environments { development {
     com.recomdata.bugreportURL = 'https://jira.transmartfoundation.org'
 } }
 
 // Keys without defaults (see Config-extra.php.sample):
-// com.recomdata.projectName
-// com.recomdata.providerName
-// com.recomdata.providerURL
+// name and URL of the supporter entity shown on the welcome page
+// com.recomdata.providerName = "tranSMART Foundation"
+// com.recomdata.providerURL = "http://www.transmartfoundation.org"
+com.recomdata.providerLogo = ""
+
+// name and URL and logo of the project
+// shown on the login page
+// com.recomdata.projectName = "My project"
+// com.recomdata.projectURL = "http://myproject.org/"
+com.recomdata.projectLogo = ""
 /* }}} */
 
 /* {{{ Login */
@@ -259,10 +277,6 @@ sampleExplorer {
     idfield = 'id'
 }
 
-edu.harvard.transmart.sampleBreakdownMap = [
-    "id":"Aliquots in Cohort"
-]
-
 // Solr configuration for the Sample Explorer
 com { recomdata { solr {
     maxNewsStories = 10
@@ -273,8 +287,8 @@ com { recomdata { solr {
 
 /* {{{ Dataset Explorer configuration */
 com { recomdata { datasetExplorer {
-    // set to 'true' (quotes included) to enable gene pattern integration
-    genePatternEnabled = 'false'
+    // set to true (no quotes to enable gene pattern integration
+    genePatternEnabled = false
     // The tomcat URL that gene pattern is deployed within -usually it's proxyed through apache
     genePatternURL = 'http://23.23.185.167'
     // Gene Pattern real URL with port number
@@ -294,7 +308,7 @@ com.recomdata.plugins.resultSize = 5000
 /* {{{ RModules & Data Export Configuration */
 environments {
     // This is to target a remove Rserv. Bear in mind the need for shared network storage
-    RModules.host = "127.0.0.1"
+    RModules.host = "tmrserve"
     RModules.port = 6311
 
     // This is not used in recent versions; the URL is always /analysisFiles/
@@ -304,8 +318,8 @@ environments {
         // The working directory for R scripts, where the jobs get created and
         // output files get generated
         RModules.tempFolderDirectory = jobsDirectory
-        RModules.deployment.rscripts = "/tmp/Rscripts"
-        RModules.deployment.dataexportRscripts = "/tmp/dataexportRscripts"
+	RModules.deployment.rscripts = "/tmp/Rscripts"
+	RModules.deployment.dataexportRscripts = "/tmp/dataexportRscripts"
     }
     development {
         RModules.tempFolderDirectory = "/tmp"
@@ -316,6 +330,32 @@ environments {
     // Used to access R jobs parent directory outside RModules (e.g. data export)
     com.recomdata.plugins.tempFolderDirectory = RModules.tempFolderDirectory
 }
+ /* }}} */
+
+/* {{{ SmartR Configuration */
+
+// absolute path directory to copy scripts - with server URL appended to allow for multiple servers
+smartR.remoteScriptDirectory = "/tmp/smart_r_scripts"
+smartR.remoteScriptDirectory += transmartURL.replaceAll("\\W+","")
+
+environments {
+    production {
+	smartR.baseDir = "/tmp/heim-production"
+    }
+    development {
+	smartR.baseDir = "/tmp/heim-dev"
+    }
+}
+def smartrBaseDirectory = new File(smartR.baseDir)
+def smartrRemoteScriptDirectory = new File(smartR.remoteScriptDirectory)
+
+[smartR.baseDir,smartR.remoteScriptDirectory].each {
+    File useDir = new File(it)
+    if(useDir.exists()) {
+	useDir.mkdir()
+    }
+}
+
 /* }}} */
 
 /* {{{ GWAS Configuration */
@@ -324,13 +364,13 @@ com.recomdata.dataUpload.appTitle="Upload data to tranSMART"
 com.recomdata.dataUpload.stageScript="run_analysis_stage"
 
 // Directory path of com.recomdata.dataUpload.stageScript
-def gwasEtlDirectory = new File(System.getenv('HOME'), '.grails/transmart-gwasetl')
+def gwasEtlDirectory = new File(System.getProperty("user.home"), '.grails/transmart-gwasetl')
 
 // Directory to hold GWAS file uploads
-def gwasUploadsDirectory = new File(System.getenv('HOME'), '.grails/transmart-datauploads')
+def gwasUploadsDirectory = new File(System.getProperty("user.home"), '.grails/transmart-datauploads')
 
 // Directory to preload with template files with names <type>-template.txt
-def gwasTemplatesDirectory = new File(System.getenv('HOME'), '.grails/transmart-templates')
+def gwasTemplatesDirectory = new File(System.getProperty("user.home"), '.grails/transmart-templates')
 
 com.recomdata.dataUpload.templates.dir = gwasTemplatesDirectory.absolutePath
 com.recomdata.dataUpload.uploads.dir = gwasUploadsDirectory.absolutePath
@@ -341,6 +381,13 @@ com.recomdata.dataUpload.etl.dir = gwasEtlDirectory.absolutePath
         it.mkdir()
     }
 }
+
+/* }}} */
+
+/* {{{ GWAS plink */
+
+grails.plugin.transmartGwasPlink.enabled=false
+grails.plugin.transmartGwasPlink.plinkPath="/usr/lib/plink.plink"
 
 /* }}} */
 
@@ -383,7 +430,7 @@ grails { plugin { springsecurity {
     requestMap.className = 'org.transmart.searchapp.Requestmap'
     // requestmap in db
     securityConfigType = grails.plugin.springsecurity.SecurityConfigType.Requestmap
-    // url to redirect after login in
+    // url to redirect after login
     // just_rest branch provides alternative default via org.transmart.defaultLoginRedirect
     successHandler.defaultTargetUrl = org.transmart.defaultLoginRedirect ?: '/userLanding'
     // logout url
@@ -415,13 +462,12 @@ grails { plugin { springsecurity {
             '/css/**'                     : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/js/**'                      : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/grails-errorhandler'        : ['IS_AUTHENTICATED_ANONYMOUSLY'],
-            '/images/analysisFiles/**'    : ['IS_AUTHENTICATED_REMEMBERED'],
+            '/analysisFiles/**'           : ['IS_AUTHENTICATED_REMEMBERED'],
             '/images/**'                  : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/static/**'                  : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/search/loadAJAX**'          : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/analysis/getGenePatternFile': ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/analysis/getTestFile'       : ['IS_AUTHENTICATED_ANONYMOUSLY'],
-            '/monitor'                    : ['IS_AUTHENTICATED_ANONYMOUSLY'],
             '/requestmap/**'              : ['ROLE_ADMIN'],
             '/role/**'                    : ['ROLE_ADMIN'],
             '/authUser/**'                : ['ROLE_ADMIN'],
@@ -432,6 +478,9 @@ grails { plugin { springsecurity {
             '/userGroup/**'               : ['ROLE_ADMIN'],
             '/secureObjectAccess/**'      : ['ROLE_ADMIN'],
             '/oauthAdmin/**'              : ['ROLE_ADMIN'],
+//            '/buildInfo/**'               : ['ROLE_ADMIN'],
+            '/configInfo/**'              : ['ROLE_ADMIN'],
+//            '/statusInfo/**'              : ['ROLE_ADMIN'],
             *                             : (oauthEnabled ?  oauthEndpoints : [:]),
             *                             : (gwavaEnabled ?  gwavaMappings : [:]),
             '/**'                         : ['IS_AUTHENTICATED_REMEMBERED'], // must be last
@@ -475,6 +524,7 @@ grails { plugin { springsecurity {
                 '/observations/**': securedResourcesFilters,
                 '/patient_sets/**': securedResourcesFilters,
                 '/oauth/inspectToken': securedResourcesFilters,
+                '/transmart-rest-api-version': 'none',
                 '/**': [
                         'JOINED_FILTERS',
                         '-statelessSecurityContextPersistenceFilter',
@@ -550,7 +600,7 @@ if (samlEnabled) {
                 // ID of the Service Provider
                 id = "gustavo-transmart"
 
-                // URL of the service provider. This should be autodected, but it isn't
+                // URL of the service provider. This should be autodetected, but it isn't
                 url = "http://localhost:8080/transmart"
 
                 // Alias of the Service Provider
@@ -636,17 +686,21 @@ if (samlEnabled) {
 /* {{{ gwava */
 if (gwavaEnabled) {
     // assume deployment alongside transmart
-    com { recomdata { rwg { webstart {
-        def url       = new URL(transmartURL)
-        codebase      = "$url.protocol://$url.host${url.port != -1 ? ":$url.port" : ''}/gwava"
-        jar           = './ManhattanViz2.1g.jar'
-        mainClass     = 'com.pfizer.mrbt.genomics.Driver'
-        gwavaInstance = 'transmartstg'
-        transmart.url = transmartURL - ~'\\/$'
-   } } } }
-   com { recomdata { rwg { qqplots {
-       cacheImages = new File(jobsDirectory, 'cachedQQplotImages').toString()
-   } } } }
+    com { recomdata { rwg {
+        webstart {
+            def url       = new URL(transmartURL)
+            codebase      = "$url.protocol://$url.host${url.port != -1 ? ":$url.port" : ''}/gwava"
+            jar           = './ManhattanViz2.1g.jar'
+            mainClass     = 'com.pfizer.mrbt.genomics.Driver'
+            gwavaInstance = 'transmartstg'
+            transmart.url = transmartURL - ~'\\/$'
+        }
+        qqplots {
+            cacheImages = new File(jobsDirectory, 'cachedQQplotImages').toString()
+        }
+        manhattanplots {
+            cacheImages = new File(jobsDirectory, 'cachedManhattanplotImages').toString()
+    } } } }
 }
 /* }}} */
 
@@ -665,7 +719,7 @@ com.rwg.solr.update.path = '/solr/browse/dataimport/'
 com.recomdata.solr.baseURL = "${com.rwg.solr.scheme}://${com.rwg.solr.host}" +
                              "${new File(com.rwg.solr.browse.path).parent}"
 
-def fileStoreDirectory = new File(System.getenv('HOME'), '.grails/transmart-filestore')
+def fileStoreDirectory = new File(System.getProperty("user.home"), '.grails/transmart-filestore')
 def fileImportDirectory = new File(System.getProperty("java.io.tmpdir"), 'transmart-fileimport')
 com.recomdata.FmFolderService.filestoreDirectory = fileStoreDirectory.absolutePath
 com.recomdata.FmFolderService.importDirectory = fileImportDirectory.absolutePath
@@ -711,10 +765,160 @@ com { recomdata { solr {
     maxRows = 10000
 }}}
 
-org.transmart.configFine = true
+/* }}} */
+
+/* {{{ Metacore analytics */
+
+com.thomsonreuters.transmart.metacoreAnalyticsEnable = false
+/* with no other settings defined, these URLs are used.
+ The demoEnrichmentURL default in the 16.1 metacore plugin code
+ is obsolete so the correct URL must be defined here. */
+com.thomsonreuters.transmart.demoEnrichmentURL = "http://pathwaymaps.com"
+com.thomsonreuters.transmart.demoMapBaseURL = "http://pathwaymaps.com/maps/"
+
+/* this value is defined automatically to 'demo', 'system' or 'user' */
+//com.thomsonreuters.transmart.metacoreSettingsMode = "demo"
+
+/* these settings are used to override the demo settings */
+//com.thomsonreuters.transmart.metacoreURL = "http://localhost/"
+//com.thomsonreuters.transmart.metacoreDefaultLogin = ""
+//com.thomsonreuters.transmart.metacoreDefaultPassword = ""
+//com.thomsonreuters.transmart.metacoreLogin = ""
+//com.thomsonreuters.transmart.metacorePassword = ""
+
+/* }}} */
+
+/* {{{ galaxy export plugin */
+
+com.galaxy.export.galaxyEnabled = false
+com.galaxy.export.galaxyURL = "http://usegalaxy.org/"
 
 /* }}} */
 
 // I002 – Insertion point 'end'
+
+
+// {{{ Personalization
+// Project name shown on the welcome page
+//com.recomdata.projectName = "MyProject"
+
+// name and URL of the supporter entity shown on the welcome page
+//com.recomdata.providerName = "tranSMART Foundation"
+//com.recomdata.providerURL = "http://www.transmartfoundation.org"
+
+// image location by default under /transmart/static e.g. images/project_logo.png
+//com.recomdata.providerLogo = "/etriksbanner.png"
+//com.recomdata.projectLogo = "/sshtunnel.png"
+
+// Contact e-mail
+com.recomdata.contactUs = "CureGNtmSupport@umich.edu"
+com.recomdata.adminEmail = "CureGNtmSupport@umich.edu"
+// }}}
+
+// Password strength criteria, please change description accordingly
+//com.recomdata.passwordstrength.pattern = ~/^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[\d])(?=.*[\W]).*$/
+
+// Password strength regex that is used to test user's passwords that are entered by themselves.
+// Take care to change org.transmartproject.app.user.ChangePasswordCommand.newPassword.lowPasswordStrength
+// variable inside messages.properties file of web app.
+/*
+user.password.strength.regex = '''(?x)
+^
+(?=.*[A-Z])      #Ensure string has an uppercase letter.
+(?=.*[!@\#$&*]) #Ensure string has one special case letter.
+(?=.*[0-9])      #Ensure string has a digit.
+.{8,}            #Ensure string length is not less then 8.
+$'''
+*/
+
+//Alternative color scheme for aCGH BED tracks.
+//Current colors are captured from cghCall R package.
+//Although do not correspond exactly.
+/*
+dataExport {
+    bed {
+        acgh {
+            rgbColorScheme {
+                //white
+                invalid       = [255, 255, 255]
+                //red
+                loss          = [205,   0,   0]
+                //dark
+                normal        = [ 10,  10,  10]
+                //green
+                gain          = [  0, 255,   0]
+                //dark green
+                amplification = [  0, 100,   0]
+            }
+        }
+    }
+}
+*/
+
+// Password strength description, please change according to pattern
+//com.recomdata.passwordstrength.description =
+//    'It should contain a minimum of 8 characters including at least ' +
+//    '1 upper and 1 lower case letter, 1 digit and 1 special character.'
+
+// Plugins to be enabled
+
+/* {{{ Metacore analytics */
+
+//com.thomsonreuters.transmart.metacoreAnalyticsEnable = true
+//com.thomsonreuters.transmart.demoEnrichmentURL = "http://pathwaymaps.com"
+//com.thomsonreuters.transmart.demoMapBaseURL = "http://pathwaymaps.com/maps/"
+
+/* }}} */
+
+/* {{{ galaxy export plugin */
+
+//com.galaxy.export.galaxyEnabled = true
+//com.galaxy.export.galaxyURL = "http://usegalaxy.org/"
+
+/* }}} */
+
+/* {{{ GWAS PLINK Configuration */
+
+//// need the local path to the plink executable
+//grails.plugin.transmartGwasPlink.enabled=true
+//grails.plugin.transmartGwasPlink.plinkPath= '/usr/bin/plink/plink'
+
+/* }}} */
+
+/* {{{ XNAT viewer Configuration */
+
+//// create a test user at central.xnat.org and use the user/password
+//// to access public data, or set up a private xnat server and provide
+//// the access credentials
+//org.xnat.domain = 'central.xnat.org'
+//org.xnat.username = 'xnatuser'
+//org.xnat.password = 'xnatpassword'
+
+/* }}} */
+
+/* {{{ XNATimport plugin Configuration */
+
+//// username and password are prompted for by the plugin
+//// here we need the directory to use for ETL
+//org.transmart.data.location = "/path/to/transmart-data"
+//org.transmart.importxnatplugin.location = "/home/transmart/transmart-xnat-importer-plugin/scripts"
+//org.transmart.xnatImporterEnable = true
+
+/* }}} */
+
+
+/* {{{ I2B2 joint platform configuration */
+
+// If true, tranSMART will accept data loaded by I2B2 as study 'I2B2'
+//org.transmart.i2b2.view,enable = false
+
+/* }}} */
+
+
+
+// You MUST leave this at the end
+// Do not move it up, otherwise syntax errors may not be detected
+
+org.transmart.configFine = true
 
 // vim: set fdm=marker et ts=4 sw=4 filetype=groovy ai:

@@ -211,13 +211,15 @@ Loading your own studies
 2. Put the study folder in [transmart-docker]/studies
 3. Start the load container with the study directory mounted inside and attach:
 ```sh
-docker run -ti --rm --network transmart-docker_transmart -v /app/transmart/transmart-docker/studies/[STUDY_DIR]:/home/tmload/transmart-data/samples/studies/[STUDY_DIR] -e JAVAMAXMEM='4096' kretzlerdevs/transmart-load:1.0 /bin/bash
+docker run -ti --rm --network transmart -v /app/transmart/transmart-docker/studies/[STUDY_DIR]:/home/tmload/transmart-data/samples/studies/[STUDY_DIR] -e JAVAMAXMEM='4096' kretzlerdevs/transmart-load:1.0 /bin/bash
 ```
 For example:
 ```sh
-docker run -ti --rm --network transmart-docker_transmart -v /app/transmart/transmart-docker/studies/NEPTUNE_v36:/home/tmload/transmart-data/samples/studies/Neptune_V36 -e JAVAMAXMEM='4096' kretzlerdevs/transmart-load:1.0 /bin/bash
+docker run -ti --rm --network transmart -v /app/transmart/transmart-docker/studies/NEPTUNE_v36:/home/tmload/transmart-data/samples/studies/Neptune_V36 -e JAVAMAXMEM='4096' kretzlerdevs/transmart-load:1.0 /bin/bash
 ```
-5. Once inside the container, navigate to transmart-data directory and run the usual load script, but as sudo, e.g. 
+5. IMPORTANT: For some reason, Kettle does NOT use the PGHOST set in the vars file as the database host, so you'll need to edit the COMMON_DB_SERVER variable in `/home/tmload/transmart-data/samples/postgres/kettle-home/.kettle/kettle.properties`
+if you are loading to a different database container than the default. You may also need to change the PGHOST in the vars file in the transmart-data directory `/home/tmload/transmart-data/vars` to point at the correct container
+Once inside the container, navigate to transmart-data directory and run the usual load script, but as sudo, e.g. 
 ```sh
    sudo bash -c "source ./vars && make -C samples/postgres load_clinical_Neptune_V36"
 ```
