@@ -8,6 +8,13 @@
  * production environment when running grails run-app are scenarios that have
  * NOT been tested.
  */
+
+environments {
+    production {
+        grails.assets.url = "http://h3africa-transmart.med.umich.edu/transmart/assets/"
+    }
+}
+
 quickStartURL = "../../files/H3Africa/H3Africa_tranSMART_Quick_Start_Guide.pdf"
 dataAttestationText = """
 <p>
@@ -34,7 +41,7 @@ def jobsDirectory     = "/tmp"
 def oauthEnabled      = true
 def samlEnabled       = false
 def gwavaEnabled      = false
-def transmartURL      = "http://localhost/transmart"
+def transmartURL      = "http://localhost:${System.getProperty('server.port', '8080')}/transmart"
 
 motd {
     motd_title = "<center>Welcome<center>"

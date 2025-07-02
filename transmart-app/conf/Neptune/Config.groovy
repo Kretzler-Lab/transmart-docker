@@ -8,6 +8,13 @@
  * production environment when running grails run-app are scenarios that have
  * NOT been tested.
  */
+
+environments {
+    production {
+        grails.assets.url = "http://neptune-transmart.med.umich.edu/transmart/assets/"
+    }
+}
+
 quickStartURL = "../../files/Neptune/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
 dataAttestationText = """
         <p>
