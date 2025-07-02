@@ -181,12 +181,12 @@ com.recomdata.adminEmail = "CPROBEtmSupport@umich.edu"
 com.recomdata.appTitle = "C-Probe tranSMART" // v + org.transmart.originalConfigBinding.appVersion +  " (GPL, PostgresSQL)"
 
 //Quick Start Guide URL
-quickStartURL = "/usr/local/tomcat/files/CPROBE_tranSMART_Quick_Start_Guide.pdf"
-scatterPlotURL = "/usr/local/tomcat/files/CPROBE_scatterplot.pdf"
-boxPlotURL = "/usr/local/tomcat/files/CPROBE_boxplot.pdf"
-diffexURL = "/usr/local/tomcat/files/CPROBE_diffex.pdf"
-metabolitesURL = "/usr/local/tomcat/files/Metabolites_in_tranSMART.xlsx"
-proteinsURL = "/usr/local/tomcat/files/Proteins_in_tranSMART.xlsx"
+quickStartURL = "../../files/CPROBE_tranSMART_Quick_Start_Guide.pdf"
+scatterPlotURL = "../../files/CPROBE_scatterplot.pdf"
+boxPlotURL = "../../files/CPROBE_boxplot.pdf"
+diffexURL = "../../iles/CPROBE_diffex.pdf"
+metabolitesURL = "/../../files/Metabolites_in_tranSMART.xlsx"
+proteinsURL = "../../files/Proteins_in_tranSMART.xlsx"
 
 // Location of the help pages. Should be an absolute URL.
 com.recomdata.adminHelpURL = "http://transmart-app.readthedocs.io/en/latest/index.html"
