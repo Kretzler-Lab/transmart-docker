@@ -11,7 +11,7 @@
 
 environments {
     production {
-        grails.assets.url = "http://h3africa-transmart.med.umich.edu/transmart/assets/"
+        grails.assets.url = "https://h3africa-transmart.med.umich.edu/transmart/assets/"
     }
 }
 
