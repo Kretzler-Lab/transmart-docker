@@ -22,7 +22,7 @@ services:
           - tmweb
 
   tmapp:
-    image: kretzlerdevs/transmart-app:1.0
+    image: kretzlerdevs/transmart-app:survival
     restart: unless-stopped
     ports:
       - 8080
