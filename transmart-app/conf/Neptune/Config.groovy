@@ -190,11 +190,11 @@ com.recomdata.adminEmail = "NeptuneTMSupport@umich.edu"
 com.recomdata.appTitle = "Neptune tranSMART"
 
 //Quick Start Guide URL
-quickStartURL = "../../files/Neptune/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
-scatterPlotURL = "../../files/Neptune/NEPTUNE_scatterplot.pdf"
-boxPlotURL = "../../files/Neptune/NEPTUNE_boxplot.pdf"
-diffexURL = "../../files/Neptune/NEPTUNE_diffex.pdf"
-proteinsURL = "../../files/Neptune/Proteins_in_NEPTUNE_tranSMART.xlsx"
+quickStartURL = "../../files/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
+scatterPlotURL = "../../files/NEPTUNE_scatterplot.pdf"
+boxPlotURL = "../../files/NEPTUNE_boxplot.pdf"
+diffexURL = "../../files/NEPTUNE_diffex.pdf"
+proteinsURL = "../../files/Proteins_in_NEPTUNE_tranSMART.xlsx"
 
 // Location of the help pages. Should be an absolute URL.
 com.recomdata.adminHelpURL = "http://transmart-app.readthedocs.io/en/latest/index.html"

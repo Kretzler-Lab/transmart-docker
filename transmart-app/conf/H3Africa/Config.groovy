@@ -182,9 +182,9 @@ com.recomdata.adminEmail = "H3AfricaTMSupport@umich.edu"
 com.recomdata.appTitle = "H3 Africa tranSMART"
 
 //Quick Start Guide URL
-quickStartURL = "../../files/H3Africa/H3Africa_tranSMART_Quick_Start_Guide.pdf"
-scatterPlotURL = "../../files/H3Africa/H3Africa_scatterplot.pdf"
-boxPlotURL = "../../files/H3Africa/H3Africa_boxplot.pdf"
+quickStartURL = "../../files/H3Africa_tranSMART_Quick_Start_Guide.pdf"
+scatterPlotURL = "../../files/H3Africa_scatterplot.pdf"
+boxPlotURL = "../../files/H3Africa_boxplot.pdf"
 diffexURL = ""
 proteinsURL = ""
 
