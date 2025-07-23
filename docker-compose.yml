@@ -10,14 +10,12 @@ services:
       - "80:80"
       - "443:443"
     env_file:
-      - ./.env
+      - ${ENV_FILE}
     volumes:
-      - "./transmart-web/${V_HOSTS_FILE}:/usr/local/apache2/conf/extra/httpd-vhosts.conf"
+      - "./transmart-web/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf"
       - "./transmart-web/httpd.conf:/usr/local/apache2/conf/httpd.conf"
-      - "${DOCKER_APP_DOCS_DIR}:/usr/local/apache2/htdocs/files"
-      - "./transmart-web/certs:/etc/apache2/certs" 
     networks:
-      default:
+      transmart:
         aliases:
           - tmweb
 
@@ -33,12 +31,12 @@ services:
       - tmsolr
       - tmrserve
     networks:
-      default:
-         aliases:
+      transmart:
+        aliases:
           - tmapp
     volumes:
       - "${DOCKER_APP_CONFIG_DIR}/Config.groovy:/usr/local/tomcat/.grails/transmartConfig/Config.groovy"
-      - "${DOCKER_APP_DOCS_DIR}/:/usr/local/tomcat/webapps/files/"
+      - "${DOCKER_APP_DOCS_DIR}/NEPTUNE_tranSMART_Quick_Start_Guide.pdf:/usr/local/tomcat/files/NEPTUNE_tranSMART_Quick_Start_Guide.pdf"
       - "./transmart-app/DataSource.groovy:/usr/local/tomcat/.grails/transmartConfig/DataSource.groovy"
       - "./transmart-app/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
       - "appdata:/root/.grails"
@@ -56,8 +54,8 @@ services:
     env_file:
       - ${ENV_FILE}
     networks:
-      default:
-         aliases:
+      transmart:
+        aliases:
           - tmdb
     volumes:
       - "postgresdata:/var/lib/postgresql"
@@ -73,9 +71,7 @@ services:
     env_file:
       - ${ENV_FILE}
     networks:
-      default:
-         aliases:
-          - tmsolr
+      - transmart
 
   tmrserve:
     image: transmartfoundation/transmart-rserve:latest
@@ -90,10 +86,7 @@ services:
       - "apptmp:/tmp"
       - "./transmart-app/Rscripts:/tmp/Rscripts"
     networks:
-      default:
-         aliases:
-          - tmrserve
-      
+      - transmart
   
   tmload:
     image: transmartfoundation/transmart-load:latest
@@ -102,9 +95,7 @@ services:
     env_file:
       - ${ENV_FILE}
     networks:
-      default:
-         aliases:
-          - tmload
+      - transmart
 
 volumes:
   appdata:
@@ -115,5 +106,4 @@ volumes:
   postgreslogs:
 
 networks:
-  default: 
-    name: transmart
+  transmart:

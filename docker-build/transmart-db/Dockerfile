@@ -2,9 +2,8 @@ FROM ubuntu:22.04
 MAINTAINER MiKTMC Developers <miktmc-devs@umich.edu>
 
 ENV LANG en_US.utf8
-ENV TZ=America/New_York
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
+COPY ./transmart-data /transmart-data
 COPY miktmc_custom.sql /miktmc_custom.sql
 
 RUN printf '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
@@ -12,7 +11,7 @@ RUN apt-get update && \
     apt-get install -y software-properties-common && \
     add-apt-repository ppa:ondrej/php && \
     apt-get update && \
-    apt-get install -y --no-install-recommends curl unzip make git ssh ca-certificates gnupg apt-utils php7.2-cli php7.2-json sudo  openjdk-8-jdk openjdk-8-jre locales && \
+    apt-get install -y --no-install-recommends curl unzip make ca-certificates gnupg apt-utils php7.2-cli php7.2-json sudo  openjdk-8-jdk openjdk-8-jre locales && \
     rm -rf /var/lib/apt/lists/* && \
     localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8 && \
     echo "deb http://apt.postgresql.org/pub/repos/apt/ jammy-pgdg main" > /etc/apt/sources.list.d/pgdg.list && \
@@ -21,9 +20,6 @@ RUN apt-get update && \
     apt install -y postgresql-common && \
     yes '' | /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh && \
     DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get install -y --no-install-recommends iproute2 iptables net-tools postgresql-15 postgresql-client-15 postgresql-contrib-15
-
-RUN git clone --sparse https://github.com/Kretzler-Lab/transmart.git && cd transmart && git sparse-checkout set /transmart-data && \
-    cd .. && ln -s transmart/transmart-data transmart-data
 
 USER postgres
 
@@ -53,8 +49,7 @@ RUN cd transmart-data && make -C env /var/lib/postgresql/tablespaces ../vars gro
     make postgres && \
     cat /miktmc_custom.sql | psql && \
     /etc/init.d/postgresql stop && \
-    cd .. && \
-    rm -fR transmart && \
+    rm -fR transmart-data && \
     apt-get purge -y --auto-remove curl unzip make php7.2-cli php7.2-json ca-certificates
 
 EXPOSE 5432

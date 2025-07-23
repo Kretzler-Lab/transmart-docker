@@ -41,7 +41,7 @@ def jobsDirectory     = "/tmp"
 def oauthEnabled      = true
 def samlEnabled       = false
 def gwavaEnabled      = false
-def transmartURL      = "http://localhost:${System.getProperty('server.port', '8080')}/transmart"
+def transmartURL      = "http://localhost/transmart"
 
 motd {
     motd_title = "<center>Welcome<center>"
@@ -182,15 +182,9 @@ com.recomdata.adminEmail = "H3AfricaTMSupport@umich.edu"
 com.recomdata.appTitle = "H3 Africa tranSMART"
 
 //Quick Start Guide URL
-<<<<<<< HEAD
 quickStartURL = "../../files/H3Africa/H3Africa_tranSMART_Quick_Start_Guide.pdf"
 scatterPlotURL = "../../files/H3Africa/H3Africa_scatterplot.pdf"
 boxPlotURL = "../../files/H3Africa/H3Africa_boxplot.pdf"
-=======
-quickStartURL = "../../files/H3Africa_tranSMART_Quick_Start_Guide.pdf"
-scatterPlotURL = "../../files/H3Africa_scatterplot.pdf"
-boxPlotURL = "../../files/H3Africa_boxplot.pdf"
->>>>>>> e4c990d5351a6b039827adfbebd97f101bd87e5f
 diffexURL = ""
 proteinsURL = ""
 
