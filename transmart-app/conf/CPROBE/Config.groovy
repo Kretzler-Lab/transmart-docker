@@ -60,7 +60,7 @@ org.transmartproject.enableAcrossTrials = false
 ui {
     tabs {
         datasetExplorer {
-            gridView.hide = true
+            gridView.hide = false
             dataExport.hide = true
             hideAcrossTrialsPanel = true
             dataExportJobs.hide = true
