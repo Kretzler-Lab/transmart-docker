@@ -21,6 +21,7 @@ services:
         aliases:
           - tmweb
 
+
   tmapp:
     image: kretzlerdevs/transmart-app:1.0
     restart: unless-stopped
