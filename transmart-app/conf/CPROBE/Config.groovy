@@ -184,7 +184,7 @@ com.recomdata.appTitle = "C-Probe tranSMART" // v + org.transmart.originalConfig
 quickStartURL = "../../files/CPROBE_tranSMART_Quick_Start_Guide.pdf"
 scatterPlotURL = "../../files/CPROBE_scatterplot.pdf"
 boxPlotURL = "../../files/CPROBE_boxplot.pdf"
-diffexURL = "../../iles/CPROBE_diffex.pdf"
+diffexURL = "../../files/CPROBE_diffex.pdf"
 metabolitesURL = "/../../files/Metabolites_in_tranSMART.xlsx"
 proteinsURL = "../../files/Proteins_in_tranSMART.xlsx"
 
