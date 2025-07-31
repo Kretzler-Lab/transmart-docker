@@ -175,10 +175,10 @@ com.recomdata.dataUpload.adminEmail = 'No data upload adminEmail value set - con
 
 /* {{{ Personalization */
 // application logo to be used in the login page
-com.recomdata.largeLogo = "Neptune_Logo_Big.png"
+com.recomdata.largeLogo = "logo_JDRF-COE.svg"
 
 // application logo to be used in the search page
-com.recomdata.smallLogo="Neptune_Logo_Small.png"
+com.recomdata.smallLogo="logo_JDRF-COE.svg"
 
 // contact email address
 com.recomdata.contactUs = "jdrfTMSupport@umich.edu"
