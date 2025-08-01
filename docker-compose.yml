@@ -15,7 +15,7 @@ services:
       - "./transmart-web/${V_HOSTS_FILE}:/usr/local/apache2/conf/extra/httpd-vhosts.conf"
       - "./transmart-web/httpd.conf:/usr/local/apache2/conf/httpd.conf"
       - "${DOCKER_APP_DOCS_DIR}:/usr/local/apache2/htdocs/files"
-      - "./transmart-web/certs:/etc/apache2/certs" 
+      - "./transmart-web/certs:/etc/apache2/certs"
     networks:
       default:
         aliases:
@@ -42,6 +42,7 @@ services:
       - "${DOCKER_APP_DOCS_DIR}/:/usr/local/tomcat/webapps/files/"
       - "./transmart-app/DataSource.groovy:/usr/local/tomcat/.grails/transmartConfig/DataSource.groovy"
       - "./transmart-app/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
+      - "${DOCKER_APP_LOGO_DIR}:/usr/local/tomcat/webapps/transmart/assets/"
       - "appdata:/root/.grails"
       - "apptmp:/tmp"
       - "appwebapps:/usr/local/tomcat/webapps"
@@ -94,8 +95,8 @@ services:
       default:
          aliases:
           - tmrserve
-      
-  
+
+
   tmload:
     image: transmartfoundation/transmart-load:latest
     depends_on:
@@ -116,5 +117,5 @@ volumes:
   postgreslogs:
 
 networks:
-  default: 
+  default:
     name: transmart
