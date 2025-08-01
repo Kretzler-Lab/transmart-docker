@@ -193,6 +193,8 @@ com.recomdata.appTitle = "JDRF tranSMART"
 quickStartURL = "../../files/JDRF_tranSMART_Quick_Start_Guide.pdf"
 boxPlotURL = "../../files/JDRF_boxplot.pdf"
 selectingDataURL = "../../files/JDRF_selectingdata.pdf"
+metabolitesURL = "../../files/Metabolites_in_tranSMART.xlsx"
+proteinsURL = "../../files/Proteins_in_RPC2_tranSMART.xlsx"
 
 // Location of the help pages. Should be an absolute URL.
 com.recomdata.adminHelpURL = "http://transmart-app.readthedocs.io/en/latest/index.html"
