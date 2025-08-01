@@ -15,7 +15,7 @@ services:
       - "./transmart-web/${V_HOSTS_FILE}:/usr/local/apache2/conf/extra/httpd-vhosts.conf"
       - "./transmart-web/httpd.conf:/usr/local/apache2/conf/httpd.conf"
       - "${DOCKER_APP_DOCS_DIR}:/usr/local/apache2/htdocs/files"
-      - "./transmart-web/certs:/etc/apache2/certs" 
+      - "./transmart-web/certs:/etc/apache2/certs"
     networks:
       default:
         aliases:
@@ -94,8 +94,8 @@ services:
       default:
          aliases:
           - tmrserve
-      
-  
+
+
   tmload:
     image: transmartfoundation/transmart-load:latest
     depends_on:
@@ -116,5 +116,5 @@ volumes:
   postgreslogs:
 
 networks:
-  default: 
+  default:
     name: transmart
