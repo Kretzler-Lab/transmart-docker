@@ -2,7 +2,7 @@ version: '3.5'
 
 services:
   tmweb:
-    image: httpd:2.4-alpine
+    image: httpd:alpine
     restart: unless-stopped
     depends_on:
       - tmapp
