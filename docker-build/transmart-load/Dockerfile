@@ -3,7 +3,7 @@ MAINTAINER MiKTMC Developers <miktmc-devs@umich.edu>
 
 RUN apt-get update && \
      DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get install -y --no-install-recommends curl unzip make ca-certificates postgresql-client openjdk-8-jdk \
-    	    php7.2-cli php7.2-json xz-utils zip perl iproute2 iptables net-tools telnet vim sudo && \
+    	    php7.2-cli php7.2-json xz-utils zip perl iproute2 iptables dos2unix net-tools telnet vim sudo && \
     useradd --user-group --no-log-init --create-home --home-dir /home/tmload --shell /bin/bash --password $(perl -e 'print crypt($ARGV[0], "password")' 'tmpassword') tmload && \
     adduser tmload sudo
 
