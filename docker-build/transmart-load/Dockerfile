@@ -1,9 +1,9 @@
-FROM ubuntu:18.04
-MAINTAINER MiKTMC Developers <miktmc-devs@umich.edu>
+FROM ubuntu:20.04
+LABEL maintainer="MiKTMC Developers <miktmc-devs@umich.edu>"
 
 RUN apt-get update && \
-     DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get install -y --no-install-recommends curl unzip make ca-certificates postgresql-client openjdk-8-jdk \
-    	    php7.2-cli php7.2-json xz-utils zip perl iproute2 iptables dos2unix net-tools telnet vim sudo && \
+     DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get install -y --no-install-recommends curl git unzip make ca-certificates postgresql-client openjdk-8-jdk \
+    	    php7.4-cli php7.4-json xz-utils zip perl iproute2 iptables dos2unix net-tools telnet vim sudo && \
     useradd --user-group --no-log-init --create-home --home-dir /home/tmload --shell /bin/bash --password $(perl -e 'print crypt($ARGV[0], "password")' 'tmpassword') tmload && \
     adduser tmload sudo
 
@@ -21,25 +21,23 @@ ENV TABLESPACES=dummy \
     PGPASSWORD=transmart \
     PGSQL_BIN=/usr/bin
 
-WORKDIR /home/tmload
-
 USER tmload
 
-ADD transmart-data.zip transmart-data.zip
+RUN git init transmart && \
+    cd transmart && \
+    git remote add origin https://github.com/Kretzler-Lab/transmart.git && \
+    git sparse-checkout init --cone && \
+    git sparse-checkout set transmart-data transmart-etl && \
+    git pull --depth=1 origin master && \
+    cd .. && \
+    ln -s transmart/transmart-data transmart-data && \
+    ln -s transmart/transmart-etl transmart-etl
 
-RUN unzip -q transmart-data.zip && \
-    rm transmart-data.zip
+ADD data-integration.zip data-integration.zip
+RUN unzip -q data-integration.zip && rm data-integration.zip
 
 ADD kettle.properties /home/tmload/transmart-data/samples/postgres/kettle-home/.kettle/kettle.properties
 
 ADD vars transmart-data/vars
-ADD transmart-etl.zip transmart-etl.zip
-ADD data-integration.zip data-integration.zip
-RUN unzip -q data-integration.zip && \
-    rm data-integration.zip 
-
-RUN unzip -q transmart-etl.zip && \
-    mv tranSMART-ETL transmart-etl && \
-    rm transmart-etl.zip
 
 CMD ["echo","Use the make commands provided by samples/postgres to load data. E.g. run\ndocker-compose run --rm tmload make -C samples/postgres load_clinical_ElevadaGSE14468\nFor more information go to https://wiki.transmartfoundation.org/display/transmartwiki/Curated+Data."]
