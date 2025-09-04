@@ -28,7 +28,7 @@ RUN git init transmart && \
     git remote add origin https://github.com/Kretzler-Lab/transmart.git && \
     git sparse-checkout init --cone && \
     git sparse-checkout set transmart-data transmart-etl && \
-    git pull --depth=1 origin master && \
+    git pull --depth=1 origin develop && \
     cd .. && \
     ln -s transmart/transmart-data transmart-data && \
     ln -s transmart/transmart-etl transmart-etl
