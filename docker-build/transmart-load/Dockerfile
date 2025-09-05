@@ -33,7 +33,7 @@ RUN git init transmart && \
     ln -s transmart/transmart-data transmart-data && \
     ln -s transmart/transmart-etl transmart-etl
 
-ADD data-integration.zip data-integration.zip
+RUN curl -O https://miktmc-artifact-repository-public.s3.us-east-2.amazonaws.com/data-integration.zip
 RUN unzip -q data-integration.zip && rm data-integration.zip
 
 ADD kettle.properties /home/tmload/transmart-data/samples/postgres/kettle-home/.kettle/kettle.properties
