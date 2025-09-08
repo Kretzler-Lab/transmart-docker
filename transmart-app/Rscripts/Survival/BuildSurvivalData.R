@@ -59,10 +59,12 @@ snptype.category = ''
 	splitData <- split(dataFile,dataFile$CONCEPT_PATH);
 	
 	#Create a matrix with unique patient_nums.
-	finalData <- matrix(unique(dataFile$PATIENT_NUM));
+	# finalData <- matrix(unique(dataFile$PATIENT_NUM));
 	
 	#Name the column.
-	colnames(finalData) <- c("PATIENT_NUM")
+	# colnames(finalData) <- c("PATIENT_NUM")
+
+    finalData <- data.frame(PATIENT_NUM = as.integer(unique(dataFile$PATIENT_NUM)))
 	
 	#Add the value for the time to the final data.
 	finalData<-merge(finalData,splitData[[concept.time]][c('PATIENT_NUM','VALUE')],by="PATIENT_NUM")
