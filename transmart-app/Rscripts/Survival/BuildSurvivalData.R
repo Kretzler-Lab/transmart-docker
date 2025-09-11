@@ -74,7 +74,7 @@ snptype.category = ''
 	#If no event was selected, we consider everyone to have had the event.
 	if(concept.eventYes=="")
 	{
-		finalData<-cbind(finalData,1)
+		finalData<-as.data.frame(cbind(finalData,1))
 	}
 	else
 	{
@@ -85,7 +85,7 @@ snptype.category = ''
 	#If no group was selected, everyone is put in the same category.
 	if(concept.category=="")
 	{
-		finalData<-cbind(finalData,"STUDY")
+		finalData<-as.data.frame(cbind(finalData,"STUDY"))
 	}
 	else
 	{
@@ -155,7 +155,6 @@ snptype.category = ''
 	#Write the final data file.
 	#write.matrix(finalData,"outputfile",sep = "\t")
 	# Using write.table; write.matrix was leaving trailing white-space in the file - see JIRA issue TRANSREL-24.
-    write.csv(finalData,"~/finalDataDebug.csv", row.names=TRUE)
     write.table(finalData,filename, sep = "\t", quote = FALSE, row.names = FALSE)
     print("-------------------")
 }
