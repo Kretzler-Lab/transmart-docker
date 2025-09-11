@@ -65,6 +65,8 @@ snptype.category = ''
 	# colnames(finalData) <- c("PATIENT_NUM")
 
     finalData <- data.frame(PATIENT_NUM = as.integer(unique(dataFile$PATIENT_NUM)))
+
+    
 	
 	#Add the value for the time to the final data.
 	finalData<-merge(finalData,splitData[[concept.time]][c('PATIENT_NUM','VALUE')],by="PATIENT_NUM")
@@ -153,6 +155,7 @@ snptype.category = ''
 	#Write the final data file.
 	#write.matrix(finalData,"outputfile",sep = "\t")
 	# Using write.table; write.matrix was leaving trailing white-space in the file - see JIRA issue TRANSREL-24.
+    write.csv(finalData,"/tmp/finalDataDebug.csv",row.names=TRUE)
     write.table(finalData,filename, sep = "\t", quote = FALSE, row.names = FALSE)
     print("-------------------")
 }
