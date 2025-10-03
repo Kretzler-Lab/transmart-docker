@@ -49,7 +49,7 @@ services:
       - './transmart-app/Rscripts:/tmp/Rscripts'
 
   tmdb:
-    image: kretzlerdevs/transmart-db:test-build
+    image: kretzlerdevs/transmart-db:1.0
     restart: unless-stopped
     user: postgres
     expose:
