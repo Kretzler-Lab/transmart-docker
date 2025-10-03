@@ -29,7 +29,7 @@ services:
       - "appweblogs-app2:/usr/local/tomcat/logs"
 
   tmdb-app2:
-    image: kretzlerdevs/transmart-db:1:0
+    image: kretzlerdevs/transmart-db:1.0
     restart: unless-stopped
     ports:
       - ${DOCKER_DB_PORT_APP2:-5432}:5432   
