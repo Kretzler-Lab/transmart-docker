@@ -49,8 +49,9 @@ services:
       - './transmart-app/Rscripts:/tmp/Rscripts'
 
   tmdb:
-    image: kretzlerdevs/transmart-db:1.0
+    image: kretzlerdevs/transmart-db:test-build
     restart: unless-stopped
+    user: postgres
     expose:
       - 5432
     ports:

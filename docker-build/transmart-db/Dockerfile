@@ -22,7 +22,7 @@ RUN apt-get update && \
     yes '' | /usr/share/postgresql-common/pgdg/apt.postgresql.org.sh && \
     DEBIAN_FRONTEND="noninteractive" TZ="America/New_York" apt-get install -y --no-install-recommends iproute2 iptables net-tools postgresql-15 postgresql-client-15 postgresql-contrib-15
 
-RUN git clone --sparse https://github.com/Kretzler-Lab/transmart.git && cd transmart && git sparse-checkout set /transmart-data && \
+RUN git clone --sparse https://github.com/Kretzler-Lab/transmart.git && cd transmart && git sparse-checkout set transmart-data && \
     cd .. && ln -s transmart/transmart-data transmart-data
 
 USER postgres
