@@ -51,6 +51,7 @@ services:
   tmdb:
     image: kretzlerdevs/transmart-db:1.0
     restart: unless-stopped
+    user: postgres
     expose:
       - 5432
     ports:
