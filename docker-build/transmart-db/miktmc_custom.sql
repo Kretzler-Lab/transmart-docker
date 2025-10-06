@@ -1,3 +1,9 @@
+DELETE FROM searchapp.plugin_module WHERE name IN ('aCGH Survival Analysis', 'Forest Plot', 'Frequency Plot for aCGH', 'Group Test for aCGH', 'IC50');
+
+DELETE FROM i2b2metadata.i2b2 WHERE c_fullname = '\Public Studies\';
+
+DELETE FROM i2b2metadata.i2b2_secure WHERE c_fullname = '\Public Studies\';
+
 CREATE INDEX wrk_cd_idx ON tm_wz.wrk_clinical_data USING btree
 (data_type, data_value, visit_name, data_label, category_cd, usubjid);
 CREATE SEQUENCE searchapp.data_attestation_id_seq;
