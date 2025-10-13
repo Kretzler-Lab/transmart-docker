@@ -205,7 +205,16 @@ You will be asked for the password, which is transmart. After the command
 finishes, you should have all your old data in your new TranSMART
 server!
 
-Loading your own studies
+Loading your own studies via helper scripts
+------------------------
+1. Start a screen session
+2. Put the study folder in [transmart-docker]/studies
+3. Run the "load_clinical_docker.sh" or "load_expression_docker.sh" script with the study directory as the only parameter:
+```sh
+bash load_clinical_docker.sh Neptune_v36
+```
+
+Loading your own studies manually
 ------------------------
 1. Start a screen session
 2. Put the study folder in [transmart-docker]/studies
@@ -217,13 +226,13 @@ For example:
 ```sh
 docker run -ti --rm --network transmart -v /app/transmart/transmart-docker/studies/NEPTUNE_v36:/home/tmload/transmart-data/samples/studies/Neptune_V36 -e JAVAMAXMEM='4096' kretzlerdevs/transmart-load:1.0 /bin/bash
 ```
-5. IMPORTANT: For some reason, Kettle does NOT use the PGHOST set in the vars file as the database host, so you'll need to edit the COMMON_DB_SERVER variable in `/home/tmload/transmart-data/samples/postgres/kettle-home/.kettle/kettle.properties`
+4. IMPORTANT: For some reason, Kettle does NOT use the PGHOST set in the vars file as the database host, so you'll need to edit the COMMON_DB_SERVER variable in `/home/tmload/transmart-data/samples/postgres/kettle-home/.kettle/kettle.properties`
 if you are loading to a different database container than the default. You may also need to change the PGHOST in the vars file in the transmart-data directory `/home/tmload/transmart-data/vars` to point at the correct container
 Once inside the container, navigate to transmart-data directory and run the usual load script, but as sudo, e.g. 
 ```sh
    sudo bash -c "source ./vars && make -C samples/postgres load_clinical_Neptune_V36"
 ```
-6. If the above command doesn't work, you will need to increase the memory that Java has access to. 
+5. If the above command doesn't work, you will need to increase the memory that Java has access to. 
 ```
 sudo bash -c "export PENTAHO_DI_JAVA_OPTIONS="-Xmx2g" && export _JAVA_OPTIONS=-Xmx8G && source ./vars && make -C samples/postgres load_clinical_Neptune_V36"
 ```
