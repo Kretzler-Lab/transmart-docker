@@ -35,6 +35,7 @@ RUN git init transmart && \
 
 RUN curl -O https://miktmc-artifact-repository-public.s3.us-east-2.amazonaws.com/data-integration.zip
 RUN unzip -q data-integration.zip && rm data-integration.zip
+ADD load_clinical.sh load_clinical.sh
 
 ADD kettle.properties /home/tmload/transmart-data/samples/postgres/kettle-home/.kettle/kettle.properties
 
