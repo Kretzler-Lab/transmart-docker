@@ -5,7 +5,7 @@
 # This will create a vars-ubuntu file in this directory which you can use
 # instead of editing this sample.
 
-# {{{ PostgreSQL
+ # {{{ PostgreSQL
 #
 # These database settings are probably fine if you built postgres from source
 # and you running it under your user. If you installed it from a package
@@ -57,13 +57,13 @@ ORACLE_TABLESPACES_DIR=/home/oracle/app/oracle/oradata
 # Only needed for ETL
 
 # End with /
-TRANSMARTDATA=$HOME/transmart-data/
+TRANSMARTDATA=/home/tmload/transmart-data/
 # End with /
-KETTLE_JOBS_PSQL=$HOME/transmart-etl/Postgres/GPL-1.0/Kettle/Kettle-ETL/
+KETTLE_JOBS_PSQL=/home/tmload/transmart-etl/Kettle/postgres/Kettle-ETL/
 # End with /
 KETTLE_JOBS_ORA=
 
-KITCHEN=$HOME/data-integration/kitchen.sh
+KITCHEN=/home/tmload/data-integration/kitchen.sh
 
 R_JOBS_PSQL=/path/to/transmart-etl/Kettle/postgres/R/
 
@@ -71,7 +71,7 @@ KETTLE_JOBS=$KETTLE_JOBS_PSQL
 
 #only needed for configuration
 #end with /
-TSUSER_HOME=$HOME/
+TSUSER_HOME=/home/tmload/
 
 #optional TAR commend - e.g. tar on Mac does not work;
 # on Mac homebrew: brew install gnu-tar ; will set command gtar
