@@ -1,8 +1,18 @@
 # tranSMART Loader Docker Image
-This Dockerfile builds the Docker image that contains the tranSMART study loader(s). It requires a zipped copy of transmart-data and transmart-etl, which are currently not in this Git repo. 
+This Dockerfile builds the Docker image that contains the tranSMART study loader(s). It requires a copy of Pentaho PDI and the transmart-data scripts. 
 
 ## Using
-Currently, this image does not use the usual transmart-data makefiles, but instead you need to create a custom loading shell scripts that set the Kettle parameters accordingly. Run by invoking this image and mount the folder 
+There are two ways to use this image:
+
+1. Logging into the running container and executing the transmart-data makefiles:
+```sh
+docker run -ti --rm --network transmart -v /app/transmart/transmart-docker/studies/[STUDY_DIR]:/home/tmload/transmart-data/samples/studies/[STUDY_DIR] -e JAVAMAXMEM='4096' kretzlerdevs/transmart-load:1.0 /bin/bash
+```
+```
+sudo bash -c "export PENTAHO_DI_JAVA_OPTIONS="-Xmx2g" && export _JAVA_OPTIONS=-Xmx8G && source ./vars && make -C samples/postgres load_clinical_Neptune_V36"
+```
+
+2. OR, create a custom loading shell script that sets the Kettle parameters accordingly. Run by invoking this image and mount the folder 
 with the study as "/my_study" and execute the custom load script:
 
 ```

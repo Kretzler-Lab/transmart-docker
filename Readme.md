@@ -209,9 +209,9 @@ Loading your own studies via helper scripts
 ------------------------
 1. Start a screen session
 2. Put the study folder in [transmart-docker]/studies
-3. Run the "load_clinical_docker.sh" or "load_expression_docker.sh" script with the study directory as the only parameter:
+3. Run the "load_clinical_docker.sh" or "load_expression_docker.sh" script with the study directory and the app number (right now we only have 1 and 2) as the parameters:
 ```sh
-bash load_clinical_docker.sh Neptune_v36
+bash load_clinical_docker.sh Neptune_v36 1
 ```
 
 Loading your own studies manually
