@@ -190,13 +190,13 @@ com.recomdata.adminEmail = "rpc2TMSupport@umich.edu"
 com.recomdata.appTitle = "RPC2 tranSMART"
 
 //Quick Start Guide URL
-quickStartURL = "../../files/RPC2_tranSMART_Quick_Start_Guide.pdf"
-scatterPlotURL = "../../files/RPC2_scatterplot.pdf"
-boxPlotURL = "../../files/RPC2_boxplot.pdf"
-diffexURL = "../../files/RPC2_diffex.pdf"
-proteinsURL = "../../files/Proteins_in_RPC2_tranSMART.xlsx"
-selectingDataURL = "../../files/RPC2_selectingdata.pdf"
-metabolitesURL = "../../files/Metabolites_in_tranSMART.xlsx"
+quickStartURL = "../../webapps/files/RPC2_tranSMART_Quick_Start_Guide.pdf"
+scatterPlotURL = "../../webapps/files/RPC2_scatterplot.pdf"
+boxPlotURL = "../../webapps/files/RPC2_boxplot.pdf"
+diffexURL = "../../webapps/files/RPC2_diffex.pdf"
+proteinsURL = "../../webapps/files/Proteins_in_RPC2_tranSMART.xlsx"
+selectingDataURL = "../../webapps/files/RPC2_selectingdata.pdf"
+metabolitesURL = "../../webapps/files/Metabolites_in_tranSMART.xlsx"
 
 
 // Location of the help pages. Should be an absolute URL.
