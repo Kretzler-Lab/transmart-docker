@@ -81,8 +81,8 @@ ui {
         uploadData.hide = true
         datasetExplorer {
             gridView.hide = true
-            dataExport.hide = true
-            dataExportJobs.hide = true
+            dataExport.hide = false
+            dataExportJobs.hide = false
             // Note: by default the analysisJobs panel is NOT shown
             // Currently, it is only used in special cases
             analysisJobs.show = false
