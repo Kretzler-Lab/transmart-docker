@@ -80,14 +80,14 @@ ui {
         gwas.hide = true
         uploadData.hide = true
         datasetExplorer {
-            gridView.hide = true
+            gridView.hide = false
             dataExport.hide = false
             dataExportJobs.hide = false
             // Note: by default the analysisJobs panel is NOT shown
             // Currently, it is only used in special cases
             analysisJobs.show = false
             workspace.hide = false
-    	    rawDataExport.enabled = false
+    	    rawDataExport.enabled = true
         }
     }
     jirareport.hide = true
