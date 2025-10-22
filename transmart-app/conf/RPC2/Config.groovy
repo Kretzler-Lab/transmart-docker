@@ -194,7 +194,7 @@ quickStartURL = "../../files/RPC2_tranSMART_Quick_Start_Guide.pdf"
 scatterPlotURL = "../../files/RPC2_scatterplot.pdf"
 boxPlotURL = "../../files/RPC2_boxplot.pdf"
 diffexURL = "../../files/RPC2_diffex.pdf"
-proteinsURL = "../../files/Proteins_in_RPC2_tranSMART.xlsx"
+proteinsURL = "../../files/Proteins_in_tranSMART.xlsx"
 selectingDataURL = "../../files/RPC2_selectingdata.pdf"
 metabolitesURL = "../../files/Metabolites_in_tranSMART.xlsx"
 
