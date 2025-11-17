@@ -68,7 +68,7 @@ services:
       - ${ENV_FILE_APP2}
     volumes:
       - "apptmp-app2:/tmp"
-      - "./transmart-app/Rscripts:/Rscripts"
+      - "./transmart-app/Rscripts:/tmp/Rscripts"
     networks:
       default:
         aliases:
