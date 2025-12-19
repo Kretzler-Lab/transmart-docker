@@ -23,7 +23,7 @@ services:
 
 
   tmapp:
-    image: kretzlerdevs/transmart-app:1.0
+    image: kretzlerdevs/transmart-app:survival-fix
     restart: unless-stopped
     ports:
       - 8080
@@ -49,7 +49,7 @@ services:
       - "${DOCKER_APP_LOGO_DIR}:/usr/local/tomcat/webapps/transmart/images"
 
   tmdb:
-    image: kretzlerdevs/transmart-db:1.0
+    image: kretzlerdevs/transmart-db:test-build
     restart: unless-stopped
     user: postgres
     expose:
