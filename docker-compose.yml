@@ -23,7 +23,7 @@ services:
 
 
   tmapp:
-    image: kretzlerdevs/transmart-app:1.0
+    image: kretzlerdevs/transmart-app:1.2
     restart: unless-stopped
     ports:
       - 8080
