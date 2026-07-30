@@ -3,7 +3,7 @@ version: '3.5'
 services:
 
   tmapp-app2:
-    image: kretzlerdevs/transmart-app:1.2
+    image: ${TMAPP_IMAGE_VERSION}
     restart: unless-stopped
     expose:
       - 8080
