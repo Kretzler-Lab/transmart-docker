@@ -16,14 +16,27 @@ services:
       - "./transmart-web/httpd.conf:/usr/local/apache2/conf/httpd.conf"
       - "${DOCKER_APP_DOCS_DIR}:/usr/local/apache2/htdocs/files"
       - "./transmart-web/certs:/etc/apache2/certs"
+      - certbot-certs:/etc/incommon
+      - certbot-www:/var/www/certbot
     networks:
       default:
         aliases:
           - tmweb
-
+ 
+  certbot:
+    image: certbot/certbot
+    container_name: certbot-service
+    volumes:
+      - certbot-certs:/etc/incommon                      	 # shared with apache
+      - certbot-www:/var/www/certbot                        # shared with apache
+      - ./cli.ini:/etc/incommon/cli.ini:ro
+    entrypoint: /bin/sh
+    command: ["-c", "trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot --quiet; sleep 12h & wait $!; done"]
+    networks:
+      default:
 
   tmapp:
-    image: kretzlerdevs/transmart-app:1.0
+    image: ${TMAPP_IMAGE_VERSION}
     restart: unless-stopped
     ports:
       - 8080
@@ -116,6 +129,8 @@ volumes:
   appweblogs:
   postgresdata:
   postgreslogs:
+  certbot-certs:
+  certbot-www:
 
 networks:
   default:
