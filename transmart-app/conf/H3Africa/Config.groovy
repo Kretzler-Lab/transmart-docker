@@ -291,7 +291,7 @@ com.recomdata.plugins.resultSize = 5000
 /* {{{ RModules & Data Export Configuration */
 environments {
     // This is to target a remove Rserv. Bear in mind the need for shared network storage
-    RModules.host = "tmrserve-h3"
+    RModules.host = "tmrserve-app2"
     RModules.port = 6311
 
     // This is not used in recent versions; the URL is always /analysisFiles/

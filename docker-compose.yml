@@ -16,7 +16,7 @@ services:
       - "./transmart-web/httpd.conf:/usr/local/apache2/conf/httpd.conf"
       - "${DOCKER_APP_DOCS_DIR}:/usr/local/apache2/htdocs/files"
       - "./transmart-web/certs:/etc/apache2/certs"
-      - certbot-certs:/etc/incommon
+      - certbot-certs:/etc/letsencrypt
       - certbot-www:/var/www/certbot
     networks:
       default:
@@ -26,10 +26,11 @@ services:
   certbot:
     image: certbot/certbot
     container_name: certbot-service
+    restart: unless-stopped
     volumes:
-      - certbot-certs:/etc/incommon                      	 # shared with apache
+      - certbot-certs:/etc/letsencrypt                      	 # shared with apache
       - certbot-www:/var/www/certbot                        # shared with apache
-      - ./cli.ini:/etc/incommon/cli.ini:ro
+      - ./cli.ini:/etc/letsencrypt/cli.ini:ro
     entrypoint: /bin/sh
     command: ["-c", "trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot --quiet; sleep 12h & wait $!; done"]
     networks:
