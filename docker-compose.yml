@@ -61,7 +61,6 @@ services:
       - "apptmp:/tmp"
       - "appweblogs:/usr/local/tomcat/logs"
       - './transmart-app/Rscripts:/tmp/Rscripts'
-      - "${DOCKER_APP_LOGO_DIR}:/usr/local/tomcat/webapps/transmart/images"
 
   tmdb:
     image: kretzlerdevs/transmart-db:1.0
