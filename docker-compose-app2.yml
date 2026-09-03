@@ -26,7 +26,7 @@ services:
       - "appdata-app2:/root/.grails"
       - "apptmp-app2:/tmp"
       - "appwebapps-app2:/usr/local/tomcat/webapps"
-      - "./transmart-app/Rscripts:/Rscripts"     
+      - "./transmart-app/Rscripts:/tmp/Rscripts"     
       - "appweblogs-app2:/usr/local/tomcat/logs"
 
   tmdb-app2:
