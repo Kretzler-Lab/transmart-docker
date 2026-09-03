@@ -57,6 +57,7 @@ services:
       - "./transmart-app/DataSource.groovy:/usr/local/tomcat/.grails/transmartConfig/DataSource.groovy"
       - "./transmart-app/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
       - "appdata:/root/.grails"
+      - "appwebapps:/usr/local/tomcat/webapps"
       - "apptmp:/tmp"
       - "appweblogs:/usr/local/tomcat/logs"
       - './transmart-app/Rscripts:/tmp/Rscripts'
