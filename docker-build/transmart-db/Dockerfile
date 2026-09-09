@@ -55,11 +55,12 @@ RUN cd transmart-data && make -C env /var/lib/postgresql/tablespaces ../vars gro
     /etc/init.d/postgresql stop && \
     cd .. && \
     rm -fR transmart && \
-    apt-get purge -y --auto-remove curl unzip make php7.2-cli php7.2-json ca-certificates
+    apt-get purge -y --auto-remove curl unzip make php7.2-cli php7.2-json ca-certificates && \
+    chown 29164 /etc/ssl/private/ssl-cert-snakeoil.key
 
 EXPOSE 5432
 
 USER postgres
 
-ENTRYPOINT ["/usr/lib/postgresql/15/bin/postgres", "-D", "/var/lib/postgresql/15/main", "-c", "config_file=/etc/postgresql/15/main/postgresql.conf"]
+ENTRYPOINT ["/usr/lib/postgresql/15/bin/postgres", "-D", "/var/lib/postgresql/15/main", "-c", "config_file=/etc/postgresql/15/main/postgresql.conf", "-c", "ssl=off"] 
 

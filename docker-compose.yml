@@ -23,7 +23,7 @@ services:
 
 
   tmapp:
-    image: kretzlerdevs/transmart-app:1.0
+    image: kretzlerdevs/transmart-app:1.2
     restart: unless-stopped
     ports:
       - 8080
@@ -61,9 +61,16 @@ services:
       default:
          aliases:
           - tmdb
+    shm_size: '8g'
+    #user: 29164:65500
     volumes:
+            #- "/nfs/corenfs/IntMed-miktmc-data/transmart/curegn/postgresql:/var/lib/postgresql"
+        #- "/nfs/corenfs/IntMed-miktmc-data/transmart:/test"
       - "postgresdata:/var/lib/postgresql"
       - "postgreslogs:/var/log/postgresql"
+      - "./postgresql.conf:/etc/postgresql/15/main/postgresql.conf"
+        #- "/nfs/corenfs/IntMed-miktmc-data/transmart/curegn/pgsql_tmp:/
+        #command: ["-c", "ssl=off"]
 
   tmsolr:
     image: transmartfoundation/transmart-solr:latest
