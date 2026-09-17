@@ -54,6 +54,7 @@ services:
     volumes:
       - "${DOCKER_APP_CONFIG_DIR}/Config.groovy:/usr/local/tomcat/.grails/transmartConfig/Config.groovy"
       - "${DOCKER_APP_DOCS_DIR}/:/usr/local/tomcat/webapps/files/"
+      - "${DOCKER_APP_LOG_DIR}:/usr/local/tomcat/webapps/transmart/images/"
       - "./transmart-app/DataSource.groovy:/usr/local/tomcat/.grails/transmartConfig/DataSource.groovy"
       - "./transmart-app/setenv.sh:/usr/local/tomcat/bin/setenv.sh"
       - "appdata:/root/.grails"
