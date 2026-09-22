@@ -51,7 +51,7 @@ def explodedWarDir    = catalinaBase + '/webapps/transmart'
 def solrPort          = 8983 //port of appserver where solr runs (under ctx path /solr)
 def searchIndex       = catalinaBase + '/searchIndex' //create this directory
 // for running transmart as WAR, create this directory and then create an alias
-def jobsDirectory     = "/var/tmp/jobs/"
+def jobsDirectory     = "/tmp"
 def oauthEnabled      = true
 def samlEnabled       = false
 def gwavaEnabled      = false
@@ -298,7 +298,7 @@ com.recomdata.plugins.resultSize = 5000
 /* {{{ RModules & Data Export Configuration */
 environments {
     // This is to target a remove Rserv. Bear in mind the need for shared network storage
-    RModules.host = "127.0.0.1"
+    RModules.host = "tmrserve"
     RModules.port = 6311
 
     // This is not used in recent versions; the URL is always /analysisFiles/
