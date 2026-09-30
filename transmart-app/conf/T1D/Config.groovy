@@ -51,7 +51,7 @@ def explodedWarDir    = catalinaBase + '/webapps/transmart'
 def solrPort          = 8983 //port of appserver where solr runs (under ctx path /solr)
 def searchIndex       = catalinaBase + '/searchIndex' //create this directory
 // for running transmart as WAR, create this directory and then create an alias
-def jobsDirectory     = "/var/tmp/jobs/"
+def jobsDirectory     = "/tmp"
 def oauthEnabled      = true
 def samlEnabled       = false
 def gwavaEnabled      = false
@@ -153,13 +153,13 @@ log4j = {
 environments {
     development {
         com.rwg.solr.scheme = 'http'
-        com.rwg.solr.host   = 'localhost:8983'
+        com.rwg.solr.host   = 'tmsolr:8983'
         com.rwg.solr.path   = '/solr/rwg/select/'
     }
 
     production {
         com.rwg.solr.scheme = 'http'
-        com.rwg.solr.host   = 'localhost:' + solrPort
+        com.rwg.solr.host   = 'tmsolr:' + solrPort
         com.rwg.solr.path   = '/solr/rwg/select/'
     }
 }
