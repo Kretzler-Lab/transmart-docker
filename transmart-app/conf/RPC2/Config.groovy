@@ -157,10 +157,10 @@ log4j = {
 /* {{{ Faceted Search Configuration */
 environments {
     development {                                                                                                                                                    com.rwg.solr.scheme = 'http'
-        com.rwg.solr.host   = 'tmsolr:8983'                                                                                                                          com.rwg.solr.path   = '/solr/rwg/select/'
+        com.rwg.solr.host   = 'tmsolr-app2:8983'                                                                                                       com.rwg.solr.path   = '/solr/rwg/select/'
     }
     production {                                                                                                                                                     com.rwg.solr.scheme = 'http'
-        com.rwg.solr.host   = 'tmsolr:' + solrPort
+        com.rwg.solr.host   = 'tmsolr-app2:' + solrPort
         com.rwg.solr.path   = '/solr/rwg/select/'
     }
 }
