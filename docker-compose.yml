@@ -53,6 +53,9 @@ services:
           - tmapp
     volumes:
       - "${DOCKER_APP_CONFIG_DIR}/Config.groovy:/usr/local/tomcat/.grails/transmartConfig/Config.groovy"
+      # NOTE: The 'transmart.war' file won't expand with the two volumes below mounted.
+      # Comment these two lines out if you're bringing up with a new 'appwebapps' volume or deploying a new war file then uncomment
+      # and bring the container back up again. 
       - "${DOCKER_APP_DOCS_DIR}/:/usr/local/tomcat/webapps/files/"
       - "${DOCKER_APP_LOGO_DIR}:/usr/local/tomcat/webapps/transmart/images/"
       - "./transmart-app/DataSource.groovy:/usr/local/tomcat/.grails/transmartConfig/DataSource.groovy"
@@ -76,7 +79,7 @@ services:
     networks:
       default:
          aliases:
-          - tmdb
+           - tmdb
     volumes:
       - "postgresdata:/var/lib/postgresql"
       - "postgreslogs:/var/log/postgresql"
